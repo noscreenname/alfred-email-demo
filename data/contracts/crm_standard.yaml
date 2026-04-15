@@ -1,0 +1,30 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: alfred.crm.standard
+name: CRM — standard
+version: 1.0.0
+status: active
+domain: sales
+description:
+  purpose: ODCS view of contact records.
+  usage: Alfred uses this to know who a sender is.
+schema:
+  - name: contacts
+    logicalType: object
+    physicalName: contacts
+    properties:
+      - name: contact_id
+        logicalType: string
+        required: true
+      - name: name
+        logicalType: string
+        required: true
+      - name: email
+        logicalType: string
+        required: true
+      - name: company
+        logicalType: string
+        required: false
+      - name: sender_tier
+        logicalType: string
+        required: false

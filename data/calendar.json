@@ -1,0 +1,962 @@
+[
+  {
+    "event_id": "e0073",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-08T13:00:00Z",
+    "end": "2026-04-08T13:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0110",
+    "title": "Weekly staff sync",
+    "start": "2026-04-08T13:00:00Z",
+    "end": "2026-04-08T13:45:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0119",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-09T09:00:00Z",
+    "end": "2026-04-09T09:30:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0038",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-09T11:00:00Z",
+    "end": "2026-04-09T12:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0114",
+    "title": "Lunch \u2014 Atlas Robotics",
+    "start": "2026-04-09T11:00:00Z",
+    "end": "2026-04-09T12:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0051",
+    "title": "Design review",
+    "start": "2026-04-09T12:00:00Z",
+    "end": "2026-04-09T12:45:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0044",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-09T14:00:00Z",
+    "end": "2026-04-09T15:00:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0080",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-09T14:00:00Z",
+    "end": "2026-04-09T14:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0061",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-09T15:00:00Z",
+    "end": "2026-04-09T16:00:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0001",
+    "title": "Coffee with Camille",
+    "start": "2026-04-09T17:00:00Z",
+    "end": "2026-04-09T18:00:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0090",
+    "title": "Board prep",
+    "start": "2026-04-09T18:00:00Z",
+    "end": "2026-04-09T19:00:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0043",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-10T08:00:00Z",
+    "end": "2026-04-10T09:00:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0022",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-10T09:00:00Z",
+    "end": "2026-04-10T09:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0023",
+    "title": "Coffee with Camille",
+    "start": "2026-04-10T10:00:00Z",
+    "end": "2026-04-10T10:45:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0035",
+    "title": "Security review",
+    "start": "2026-04-10T11:00:00Z",
+    "end": "2026-04-10T12:00:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0083",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-10T11:00:00Z",
+    "end": "2026-04-10T11:45:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0089",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-10T11:00:00Z",
+    "end": "2026-04-10T12:00:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0009",
+    "title": "Security review",
+    "start": "2026-04-10T14:00:00Z",
+    "end": "2026-04-10T15:00:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0011",
+    "title": "Design review",
+    "start": "2026-04-10T15:00:00Z",
+    "end": "2026-04-10T16:00:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0064",
+    "title": "Design review",
+    "start": "2026-04-10T17:00:00Z",
+    "end": "2026-04-10T18:00:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0078",
+    "title": "Coffee with Camille",
+    "start": "2026-04-10T17:00:00Z",
+    "end": "2026-04-10T17:30:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0046",
+    "title": "Board prep",
+    "start": "2026-04-10T18:00:00Z",
+    "end": "2026-04-10T18:45:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0027",
+    "title": "Lunch \u2014 Atlas Robotics",
+    "start": "2026-04-11T09:00:00Z",
+    "end": "2026-04-11T10:00:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0087",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-11T09:00:00Z",
+    "end": "2026-04-11T09:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0004",
+    "title": "Weekly staff sync",
+    "start": "2026-04-11T10:00:00Z",
+    "end": "2026-04-11T11:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0025",
+    "title": "Q2 planning",
+    "start": "2026-04-11T14:00:00Z",
+    "end": "2026-04-11T14:45:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0033",
+    "title": "Lunch \u2014 Atlas Robotics",
+    "start": "2026-04-11T17:00:00Z",
+    "end": "2026-04-11T18:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0059",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-11T17:00:00Z",
+    "end": "2026-04-11T17:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0052",
+    "title": "Q2 planning",
+    "start": "2026-04-12T08:00:00Z",
+    "end": "2026-04-12T08:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0029",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-12T09:00:00Z",
+    "end": "2026-04-12T09:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0084",
+    "title": "Q2 planning",
+    "start": "2026-04-12T09:00:00Z",
+    "end": "2026-04-12T09:45:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0093",
+    "title": "Weekly staff sync",
+    "start": "2026-04-12T09:00:00Z",
+    "end": "2026-04-12T09:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0054",
+    "title": "Weekly staff sync",
+    "start": "2026-04-12T12:00:00Z",
+    "end": "2026-04-12T12:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0028",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-12T14:00:00Z",
+    "end": "2026-04-12T14:45:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0062",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-13T08:00:00Z",
+    "end": "2026-04-13T09:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0091",
+    "title": "Q2 planning",
+    "start": "2026-04-13T08:00:00Z",
+    "end": "2026-04-13T09:30:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0115",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-13T10:00:00Z",
+    "end": "2026-04-13T10:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0101",
+    "title": "1:1 with Priya",
+    "start": "2026-04-13T13:00:00Z",
+    "end": "2026-04-13T13:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0017",
+    "title": "Weekly staff sync",
+    "start": "2026-04-13T15:00:00Z",
+    "end": "2026-04-13T16:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0030",
+    "title": "Security review",
+    "start": "2026-04-13T15:00:00Z",
+    "end": "2026-04-13T16:00:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0042",
+    "title": "Weekly staff sync",
+    "start": "2026-04-13T15:00:00Z",
+    "end": "2026-04-13T15:30:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0099",
+    "title": "Security review",
+    "start": "2026-04-13T17:00:00Z",
+    "end": "2026-04-13T18:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0018",
+    "title": "1:1 with Priya",
+    "start": "2026-04-14T10:00:00Z",
+    "end": "2026-04-14T11:00:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0013",
+    "title": "Lunch \u2014 Atlas Robotics",
+    "start": "2026-04-14T15:00:00Z",
+    "end": "2026-04-14T16:00:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0086",
+    "title": "Q2 planning",
+    "start": "2026-04-14T15:00:00Z",
+    "end": "2026-04-14T16:00:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0120",
+    "title": "Weekly staff sync",
+    "start": "2026-04-15T08:00:00Z",
+    "end": "2026-04-15T09:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0071",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-15T10:00:00Z",
+    "end": "2026-04-15T10:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0094",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-15T10:00:00Z",
+    "end": "2026-04-15T10:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0026",
+    "title": "Security review",
+    "start": "2026-04-15T14:00:00Z",
+    "end": "2026-04-15T14:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0063",
+    "title": "Board prep",
+    "start": "2026-04-15T14:00:00Z",
+    "end": "2026-04-15T15:00:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0039",
+    "title": "Coffee with Camille",
+    "start": "2026-04-15T15:00:00Z",
+    "end": "2026-04-15T15:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0072",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-15T16:00:00Z",
+    "end": "2026-04-15T17:00:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0111",
+    "title": "Coffee with Camille",
+    "start": "2026-04-16T08:00:00Z",
+    "end": "2026-04-16T09:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0019",
+    "title": "Board prep",
+    "start": "2026-04-16T09:00:00Z",
+    "end": "2026-04-16T10:00:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0076",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-16T09:00:00Z",
+    "end": "2026-04-16T09:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0096",
+    "title": "Design review",
+    "start": "2026-04-16T09:00:00Z",
+    "end": "2026-04-16T09:30:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0081",
+    "title": "Security review",
+    "start": "2026-04-16T13:00:00Z",
+    "end": "2026-04-16T14:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0105",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-16T14:00:00Z",
+    "end": "2026-04-16T14:45:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0102",
+    "title": "Weekly staff sync",
+    "start": "2026-04-16T15:00:00Z",
+    "end": "2026-04-16T15:45:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0047",
+    "title": "1:1 with Priya",
+    "start": "2026-04-17T09:00:00Z",
+    "end": "2026-04-17T09:45:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0074",
+    "title": "Coffee with Camille",
+    "start": "2026-04-17T09:00:00Z",
+    "end": "2026-04-17T09:45:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0003",
+    "title": "Coffee with Camille",
+    "start": "2026-04-17T12:00:00Z",
+    "end": "2026-04-17T13:00:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0067",
+    "title": "Design review",
+    "start": "2026-04-17T12:00:00Z",
+    "end": "2026-04-17T13:00:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0014",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-17T13:00:00Z",
+    "end": "2026-04-17T13:45:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0098",
+    "title": "Q2 planning",
+    "start": "2026-04-18T09:00:00Z",
+    "end": "2026-04-18T09:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0034",
+    "title": "Board prep",
+    "start": "2026-04-18T10:00:00Z",
+    "end": "2026-04-18T10:45:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0006",
+    "title": "Q2 planning",
+    "start": "2026-04-18T11:00:00Z",
+    "end": "2026-04-18T12:30:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0082",
+    "title": "Board prep",
+    "start": "2026-04-18T13:00:00Z",
+    "end": "2026-04-18T14:30:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0048",
+    "title": "Board prep",
+    "start": "2026-04-18T14:00:00Z",
+    "end": "2026-04-18T14:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0085",
+    "title": "Coffee with Camille",
+    "start": "2026-04-18T14:00:00Z",
+    "end": "2026-04-18T14:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0040",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-19T13:00:00Z",
+    "end": "2026-04-19T13:45:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0116",
+    "title": "Security review",
+    "start": "2026-04-19T17:00:00Z",
+    "end": "2026-04-19T17:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0117",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-19T17:00:00Z",
+    "end": "2026-04-19T17:45:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0020",
+    "title": "Weekly staff sync",
+    "start": "2026-04-19T18:00:00Z",
+    "end": "2026-04-19T18:45:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0008",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-20T15:00:00Z",
+    "end": "2026-04-20T15:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0050",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-21T09:00:00Z",
+    "end": "2026-04-21T10:30:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0049",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-21T11:00:00Z",
+    "end": "2026-04-21T11:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0055",
+    "title": "Board prep",
+    "start": "2026-04-21T12:00:00Z",
+    "end": "2026-04-21T12:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0075",
+    "title": "1:1 with Priya",
+    "start": "2026-04-21T15:00:00Z",
+    "end": "2026-04-21T15:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0024",
+    "title": "Security review",
+    "start": "2026-04-22T08:00:00Z",
+    "end": "2026-04-22T08:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0068",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-22T08:00:00Z",
+    "end": "2026-04-22T09:00:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0032",
+    "title": "Design review",
+    "start": "2026-04-22T11:00:00Z",
+    "end": "2026-04-22T11:30:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0010",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-22T15:00:00Z",
+    "end": "2026-04-22T16:00:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0100",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-23T08:00:00Z",
+    "end": "2026-04-23T09:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0015",
+    "title": "Weekly staff sync",
+    "start": "2026-04-23T13:00:00Z",
+    "end": "2026-04-23T13:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0104",
+    "title": "Weekly staff sync",
+    "start": "2026-04-23T14:00:00Z",
+    "end": "2026-04-23T15:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0108",
+    "title": "Lunch \u2014 Atlas Robotics",
+    "start": "2026-04-23T16:00:00Z",
+    "end": "2026-04-23T17:30:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0118",
+    "title": "1:1 with Priya",
+    "start": "2026-04-23T16:00:00Z",
+    "end": "2026-04-23T17:00:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0060",
+    "title": "Weekly staff sync",
+    "start": "2026-04-24T08:00:00Z",
+    "end": "2026-04-24T08:30:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0066",
+    "title": "Design review",
+    "start": "2026-04-24T08:00:00Z",
+    "end": "2026-04-24T09:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0037",
+    "title": "Board prep",
+    "start": "2026-04-24T11:00:00Z",
+    "end": "2026-04-24T12:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0057",
+    "title": "Q2 planning",
+    "start": "2026-04-24T13:00:00Z",
+    "end": "2026-04-24T13:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0109",
+    "title": "Board prep",
+    "start": "2026-04-24T13:00:00Z",
+    "end": "2026-04-24T14:30:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0045",
+    "title": "Security review",
+    "start": "2026-04-24T14:00:00Z",
+    "end": "2026-04-24T15:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0077",
+    "title": "Q2 planning",
+    "start": "2026-04-24T14:00:00Z",
+    "end": "2026-04-24T15:00:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0053",
+    "title": "1:1 with Priya",
+    "start": "2026-04-24T16:00:00Z",
+    "end": "2026-04-24T17:00:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0107",
+    "title": "Security review",
+    "start": "2026-04-25T08:00:00Z",
+    "end": "2026-04-25T09:30:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0092",
+    "title": "Q2 planning",
+    "start": "2026-04-25T11:00:00Z",
+    "end": "2026-04-25T11:30:00Z",
+    "attendees": 2,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0012",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-25T14:00:00Z",
+    "end": "2026-04-25T14:45:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0058",
+    "title": "1:1 with Priya",
+    "start": "2026-04-26T10:00:00Z",
+    "end": "2026-04-26T11:00:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0112",
+    "title": "Design review",
+    "start": "2026-04-26T11:00:00Z",
+    "end": "2026-04-26T11:45:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0069",
+    "title": "Q2 planning",
+    "start": "2026-04-26T12:00:00Z",
+    "end": "2026-04-26T12:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0041",
+    "title": "Coffee with Camille",
+    "start": "2026-04-26T14:00:00Z",
+    "end": "2026-04-26T15:00:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0070",
+    "title": "Security review",
+    "start": "2026-04-26T15:00:00Z",
+    "end": "2026-04-26T15:45:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0007",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-26T18:00:00Z",
+    "end": "2026-04-26T19:00:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0056",
+    "title": "Q2 planning",
+    "start": "2026-04-26T18:00:00Z",
+    "end": "2026-04-26T18:30:00Z",
+    "attendees": 5,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0088",
+    "title": "Lunch \u2014 Atlas Robotics",
+    "start": "2026-04-27T08:00:00Z",
+    "end": "2026-04-27T08:45:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0002",
+    "title": "Lunch \u2014 Atlas Robotics",
+    "start": "2026-04-27T16:00:00Z",
+    "end": "2026-04-27T16:45:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0103",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-27T17:00:00Z",
+    "end": "2026-04-27T17:45:00Z",
+    "attendees": 4,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0005",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-28T10:00:00Z",
+    "end": "2026-04-28T10:45:00Z",
+    "attendees": 3,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0031",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-28T10:00:00Z",
+    "end": "2026-04-28T11:30:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0021",
+    "title": "Demo: Kestrel AI",
+    "start": "2026-04-28T12:00:00Z",
+    "end": "2026-04-28T12:45:00Z",
+    "attendees": 7,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0079",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-28T14:00:00Z",
+    "end": "2026-04-28T14:30:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0016",
+    "title": "Design review",
+    "start": "2026-04-28T15:00:00Z",
+    "end": "2026-04-28T15:30:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0097",
+    "title": "Design review",
+    "start": "2026-04-28T15:00:00Z",
+    "end": "2026-04-28T15:45:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0106",
+    "title": "Renewal call \u2014 Northwind Capital",
+    "start": "2026-04-28T16:00:00Z",
+    "end": "2026-04-28T16:45:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0065",
+    "title": "Customer onboarding \u2014 Cedar Studios",
+    "start": "2026-04-29T08:00:00Z",
+    "end": "2026-04-29T08:45:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0113",
+    "title": "Coffee with Camille",
+    "start": "2026-04-29T11:00:00Z",
+    "end": "2026-04-29T12:00:00Z",
+    "attendees": 8,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0036",
+    "title": "Coffee with Camille",
+    "start": "2026-04-29T12:00:00Z",
+    "end": "2026-04-29T12:45:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  },
+  {
+    "event_id": "e0095",
+    "title": "Proposal walkthrough \u2014 Bluefin",
+    "start": "2026-04-29T18:00:00Z",
+    "end": "2026-04-29T18:30:00Z",
+    "attendees": 6,
+    "organizer": "alex.vance@alfred.demo"
+  }
+]

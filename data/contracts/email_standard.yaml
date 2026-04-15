@@ -1,0 +1,39 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: alfred.email.standard
+name: Email inbox — standard
+version: 1.0.0
+status: active
+domain: productivity
+description:
+  purpose: ODCS-compliant view of inbound email messages.
+  usage: Consumed by Alfred's decision engine and UI.
+schema:
+  - name: emails
+    logicalType: object
+    physicalName: emails
+    properties:
+      - name: message_id
+        logicalType: string
+        required: true
+      - name: from_name
+        logicalType: string
+        required: true
+      - name: from_email
+        logicalType: string
+        required: true
+      - name: subject
+        logicalType: string
+        required: true
+      - name: body
+        logicalType: string
+        required: true
+      - name: received_at
+        logicalType: date
+        required: true
+      - name: thread_id
+        logicalType: string
+        required: false
+      - name: label
+        logicalType: string
+        required: false

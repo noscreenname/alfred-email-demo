@@ -1,0 +1,46 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: alfred.calendar.extended
+name: Calendar — extended (agent-aware)
+version: 1.0.0
+status: active
+domain: productivity
+description:
+  purpose: Agent-aware calendar view — surfaces freshness Alfred must trust.
+  usage: Consumed by Alfred in extended mode.
+schema:
+  - name: events
+    logicalType: object
+    physicalName: events
+    properties:
+      - name: event_id
+        logicalType: string
+        required: true
+      - name: title
+        logicalType: string
+        required: true
+      - name: start
+        logicalType: date
+        required: true
+      - name: end
+        logicalType: date
+        required: true
+      - name: attendees
+        logicalType: integer
+        required: false
+      - name: organizer
+        logicalType: string
+        required: false
+      - name: data_age_minutes
+        logicalType: integer
+        required: true
+        agent_specific: true
+        rationale: Minutes since the agent last refreshed calendar state.
+      - name: safe_to_act
+        logicalType: boolean
+        required: true
+        agent_specific: true
+        rationale: Whether data is fresh enough to auto-schedule.
+# Additions vs standard:
+#   - data_age_minutes
+#   - safe_to_act

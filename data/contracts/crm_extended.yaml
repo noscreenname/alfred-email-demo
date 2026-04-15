@@ -1,0 +1,47 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: alfred.crm.extended
+name: CRM — extended (agent-aware)
+version: 1.0.0
+status: active
+domain: sales
+description:
+  purpose: Agent-aware CRM view — adds deal state Alfred must respect.
+  usage: Consumed by Alfred in extended mode.
+schema:
+  - name: contacts
+    logicalType: object
+    physicalName: contacts
+    properties:
+      - name: contact_id
+        logicalType: string
+        required: true
+      - name: name
+        logicalType: string
+        required: true
+      - name: email
+        logicalType: string
+        required: true
+      - name: company
+        logicalType: string
+        required: false
+      - name: sender_tier
+        logicalType: string
+        required: false
+      - name: crm_open_deal
+        logicalType: boolean
+        required: true
+        agent_specific: true
+        rationale: Flags whether any deal is in an active stage.
+      - name: deal_stage
+        logicalType: string
+        required: false
+        agent_specific: true
+        rationale: Active deal stage; negotiation/renewal/at-risk block auto-reply.
+      - name: deal_owner
+        logicalType: string
+        required: false
+        agent_specific: true
+        rationale: Who to escalate to if the deal is active.
+# Additions vs standard:
+#   - crm_open_deal, deal_stage, deal_owner

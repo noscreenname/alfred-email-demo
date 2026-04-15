@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Alfred — action log</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">ALFRED <span class="tagline">action log</span></div>
+    <nav>
+      <form method="get" action="/log" class="filter-form">
+        <label>filter:
+          <select name="mode" onchange="this.form.submit()">
+            <option value="" {% if not mode_filter %}selected{% endif %}>all</option>
+            <option value="standard" {% if mode_filter == 'standard' %}selected{% endif %}>standard</option>
+            <option value="extended" {% if mode_filter == 'extended' %}selected{% endif %}>extended</option>
+          </select>
+        </label>
+      </form>
+      <a class="link" href="/">back to inbox</a>
+    </nav>
+  </header>
+
+  <main class="log-layout">
+    <table class="log-table">
+      <thead>
+        <tr>
+          <th>time</th>
+          <th>mode</th>
+          <th>status</th>
+          <th>sender</th>
+          <th>subject</th>
+          <th>reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+        <tr class="status-{{ r.status|lower }}">
+          <td class="mono">{{ r.timestamp }}</td>
+          <td>{{ r.contract_mode }}</td>
+          <td><span class="pill pill-{{ r.status|lower }}">{{ r.status }}</span></td>
+          <td>{{ r.sender }}</td>
+          <td>{{ r.subject }}</td>
+          <td>{{ r.reason }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" class="placeholder">No actions yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

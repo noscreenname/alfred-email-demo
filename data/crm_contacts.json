@@ -1,0 +1,290 @@
+[
+  {
+    "contact_id": "c001",
+    "name": "Jonas Weber",
+    "email": "jonas.weber@northwindcapital.com",
+    "company": "Northwind Capital",
+    "sender_tier": "vip",
+    "deals": [
+      {
+        "deal_id": "d001",
+        "stage": "at-risk",
+        "owner": "Alex Vance",
+        "value_eur": 220000
+      }
+    ]
+  },
+  {
+    "contact_id": "c002",
+    "name": "Mateo Osei",
+    "email": "mateo.osei@ormondandashe.com",
+    "company": "Ormond & Ashe",
+    "sender_tier": "vip",
+    "deals": [
+      {
+        "deal_id": "d002",
+        "stage": "negotiation",
+        "owner": "Alex Vance",
+        "value_eur": 132000
+      }
+    ]
+  },
+  {
+    "contact_id": "c003",
+    "name": "Ines Weber",
+    "email": "ines.weber@atlasrobotics.com",
+    "company": "Atlas Robotics",
+    "sender_tier": "standard-client",
+    "deals": [
+      {
+        "deal_id": "d003",
+        "stage": "at-risk",
+        "owner": "Priya Shah",
+        "value_eur": 28000
+      }
+    ]
+  },
+  {
+    "contact_id": "c004",
+    "name": "Alice Weber",
+    "email": "alice.weber@bluefindata.com",
+    "company": "Bluefin Data",
+    "sender_tier": "standard-client",
+    "deals": [
+      {
+        "deal_id": "d004",
+        "stage": "negotiation",
+        "owner": "Alex Vance",
+        "value_eur": 149000
+      }
+    ]
+  },
+  {
+    "contact_id": "c005",
+    "name": "Alice Karlsson",
+    "email": "alice.karlsson@cedarstudios.com",
+    "company": "Cedar Studios",
+    "sender_tier": "standard-client",
+    "deals": [
+      {
+        "deal_id": "d005",
+        "stage": "negotiation",
+        "owner": "Jonas Becker",
+        "value_eur": 127000
+      }
+    ]
+  },
+  {
+    "contact_id": "c006",
+    "name": "Mateo Bianchi",
+    "email": "mateo.bianchi@deltafoundry.com",
+    "company": "Delta Foundry",
+    "sender_tier": "standard-client",
+    "deals": [
+      {
+        "deal_id": "d006",
+        "stage": "at-risk",
+        "owner": "Priya Shah",
+        "value_eur": 21000
+      }
+    ]
+  },
+  {
+    "contact_id": "c007",
+    "name": "Rahul Oduya",
+    "email": "rahul.oduya@echoanalytics.com",
+    "company": "Echo Analytics",
+    "sender_tier": "standard-client",
+    "deals": [
+      {
+        "deal_id": "d007",
+        "stage": "renewal",
+        "owner": "Priya Shah",
+        "value_eur": 91000
+      }
+    ]
+  },
+  {
+    "contact_id": "c008",
+    "name": "Sofia Osei",
+    "email": "sofia.osei@fjordlogistics.com",
+    "company": "Fjord Logistics",
+    "sender_tier": "standard-client",
+    "deals": [
+      {
+        "deal_id": "d008",
+        "stage": "renewal",
+        "owner": "Alex Vance",
+        "value_eur": 43000
+      }
+    ]
+  },
+  {
+    "contact_id": "c009",
+    "name": "Thibault Dupont",
+    "email": "thibault.dupont@garnierfils.fr",
+    "company": "Garnier et Fils",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c010",
+    "name": "Margaux Fontaine",
+    "email": "margaux.fontaine@libellulesa.fr",
+    "company": "Libellule SA",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c011",
+    "name": "Camille Rousseau",
+    "email": "camille.rousseau@maisoncorbeau.fr",
+    "company": "Maison Corbeau",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c012",
+    "name": "Thibault Dupont",
+    "email": "thibault.dupont@ateliervignes.fr",
+    "company": "Atelier Vignes",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c013",
+    "name": "Yara Karlsson",
+    "email": "yara.karlsson@granitelegal.com",
+    "company": "Granite Legal",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c014",
+    "name": "Priya Weber",
+    "email": "priya.weber@hearthretail.com",
+    "company": "Hearth Retail",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c015",
+    "name": "Mateo Park",
+    "email": "mateo.park@ivybiotech.com",
+    "company": "Ivy Biotech",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c016",
+    "name": "Priya Park",
+    "email": "priya.park@junomedia.com",
+    "company": "Juno Media",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c017",
+    "name": "Jonas Bianchi",
+    "email": "jonas.bianchi@kestrelai.com",
+    "company": "Kestrel AI",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c018",
+    "name": "Theo Oduya",
+    "email": "theo.oduya@lumapaints.com",
+    "company": "Luma Paints",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c019",
+    "name": "Rahul Nakamura",
+    "email": "rahul.nakamura@maplefreight.com",
+    "company": "Maple Freight",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c020",
+    "name": "Hana Oduya",
+    "email": "hana.oduya@nimbuscloud.com",
+    "company": "Nimbus Cloud",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c021",
+    "name": "Priya Karlsson",
+    "email": "priya.karlsson@orchidbeauty.com",
+    "company": "Orchid Beauty",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c022",
+    "name": "Rahul Karlsson",
+    "email": "rahul.karlsson@perchfinance.com",
+    "company": "Perch Finance",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c023",
+    "name": "Mateo Osei",
+    "email": "mateo.osei@quillpress.com",
+    "company": "Quill Press",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c024",
+    "name": "Omar Nakamura",
+    "email": "omar.nakamura@rooksecurity.com",
+    "company": "Rook Security",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c025",
+    "name": "Ines Osei",
+    "email": "ines.osei@sablehotels.com",
+    "company": "Sable Hotels",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c026",
+    "name": "Felix Park",
+    "email": "felix.park@terntravel.com",
+    "company": "Tern Travel",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c027",
+    "name": "Mateo Park",
+    "email": "mateo.park@umbradesign.com",
+    "company": "Umbra Design",
+    "sender_tier": "standard-client",
+    "deals": []
+  },
+  {
+    "contact_id": "c028",
+    "name": "Felix Bianchi",
+    "email": "felix.bianchi@vesperwines.com",
+    "company": "Vesper Wines",
+    "sender_tier": "prospect",
+    "deals": []
+  },
+  {
+    "contact_id": "c029",
+    "name": "Priya Osei",
+    "email": "priya.osei@wrentimber.com",
+    "company": "Wren Timber",
+    "sender_tier": "standard-client",
+    "deals": []
+  }
+]

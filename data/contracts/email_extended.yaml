@@ -1,0 +1,62 @@
+apiVersion: v3.1.0
+kind: DataContract
+id: alfred.email.extended
+name: Email inbox — extended (agent-aware)
+version: 1.0.0
+status: active
+domain: productivity
+description:
+  purpose: Agent-aware view of email — adds signals Alfred needs to reason safely.
+  usage: Consumed by Alfred when operating in extended mode.
+schema:
+  - name: emails
+    logicalType: object
+    physicalName: emails
+    properties:
+      - name: message_id
+        logicalType: string
+        required: true
+      - name: from_name
+        logicalType: string
+        required: true
+      - name: from_email
+        logicalType: string
+        required: true
+      - name: subject
+        logicalType: string
+        required: true
+      - name: body
+        logicalType: string
+        required: true
+      - name: received_at
+        logicalType: date
+        required: true
+      - name: thread_id
+        logicalType: string
+        required: false
+      - name: label
+        logicalType: string
+        required: false
+      - name: classification_label
+        logicalType: string
+        required: true
+        agent_specific: true
+        rationale: Machine-generated intent label Alfred uses to route.
+      - name: classification_confidence
+        logicalType: number
+        required: true
+        agent_specific: true
+        rationale: Confidence below threshold triggers escalation.
+      - name: off_system_refs
+        logicalType: array
+        required: false
+        agent_specific: true
+        rationale: Phrases like "as we discussed" imply context Alfred cannot verify.
+      - name: thread_complete
+        logicalType: boolean
+        required: false
+        agent_specific: true
+        rationale: Whether the full thread history is available to the agent.
+# Additions vs standard:
+#   - classification_label, classification_confidence
+#   - off_system_refs, thread_complete

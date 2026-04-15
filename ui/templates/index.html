@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Alfred — data contract transparency demo</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-mode="{{ contract_mode }}" data-first-id="{{ first_id }}">
+  <header class="topbar">
+    <div class="brand">ALFRED <span class="tagline">data contract transparency demo</span></div>
+    <nav>
+      <div class="mode-toggle" role="tablist">
+        <button type="button" data-mode-btn="standard" class="mode-btn">standard</button>
+        <button type="button" data-mode-btn="extended" class="mode-btn">extended</button>
+      </div>
+      <a class="link" href="/log">action log</a>
+      <button type="button" id="refresh-btn" class="link-btn">refresh</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="col inbox">
+      <h2>Inbox <span class="count">{{ inbox|length }}</span></h2>
+      <ul id="inbox-list">
+        {% for e in inbox %}
+        <li class="inbox-row" data-id="{{ e.message_id }}">
+          <div class="sender">{{ e.from_name }}</div>
+          <div class="subject">{{ e.subject }}</div>
+          <div class="meta">{{ e.received_at }}</div>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="col detail">
+      <div id="email-detail">
+        <div class="placeholder">Select an email.</div>
+      </div>
+    </section>
+
+    <section class="col decision">
+      <div id="decision-panel">
+        <div class="placeholder">No decision yet.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
