@@ -1,0 +1,67 @@
+{
+  "dataset": "crm_contacts",
+  "snapshot_at": "2026-04-15T06:00:00Z",
+  "contacts": [
+    {
+      "contact_id": "crm_081",
+      "full_name": "Sarah Chen",
+      "email": "sarah.chen@partnerco.com",
+      "company_id": "co_041",
+      "company_name": "PartnerCo",
+      "job_title": "Head of Partnerships",
+      "account_owner": "andriy.mandyev@company.com",
+      "sender_tier": "partner",
+      "last_interaction_at": "2026-04-08T14:30:00Z",
+      "preferred_language": "en"
+    },
+    {
+      "contact_id": "crm_092",
+      "full_name": "Account Management Team",
+      "email": "noreply@vendor.io",
+      "company_id": "co_059",
+      "company_name": "Vendor.io",
+      "job_title": null,
+      "account_owner": "procurement@company.com",
+      "sender_tier": "vendor",
+      "last_interaction_at": "2026-03-20T09:00:00Z",
+      "preferred_language": "en"
+    },
+    {
+      "contact_id": "crm_044",
+      "full_name": "Marc Lefèvre",
+      "email": "m.lefevre@artisan-conseil.fr",
+      "company_id": "co_033",
+      "company_name": "Artisan Conseil",
+      "job_title": "Directeur Général",
+      "account_owner": "andriy.mandyev@company.com",
+      "sender_tier": "standard-client",
+      "last_interaction_at": "2026-04-10T16:00:00Z",
+      "preferred_language": "fr"
+    },
+    {
+      "contact_id": "crm_067",
+      "full_name": "Pascal Renard",
+      "email": "p.renard@renard-industries.fr",
+      "company_id": "co_027",
+      "company_name": "Renard Industries",
+      "job_title": "PDG",
+      "account_owner": "andriy.mandyev@company.com",
+      "sender_tier": "standard-client",
+      "last_interaction_at": "2026-04-14T11:00:00Z",
+      "preferred_language": "fr"
+    },
+    {
+      "contact_id": "crm_101",
+      "full_name": "Supplier EU Accounts",
+      "email": "invoices@supplier-eu.com",
+      "company_id": "co_078",
+      "company_name": "Supplier EU",
+      "job_title": null,
+      "account_owner": "finance@company.com",
+      "sender_tier": "vendor",
+      "last_interaction_at": "2026-03-31T08:00:00Z",
+      "preferred_language": "en"
+    }
+  ],
+  "_note": "crm_067 (Pascal Renard / Renard Industries) has an open renewal deal in the CRM deal pipeline at stage 'negotiation'. This is not represented in this dataset — deal data lives in a separate pipeline not joined here."
+}

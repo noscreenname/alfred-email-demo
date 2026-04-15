@@ -1,0 +1,183 @@
+kind: DataContract
+apiVersion: v3.1.0
+id: dc-crm-contacts-v1
+info:
+  title: CRM Contacts
+  version: 3.1.0
+  description: >
+    Snapshot of contact and account records from the CRM system. Covers
+    identity, relationship ownership, communication preferences, and sender
+    tier classification. Used for personalisation, routing, and reporting.
+  owner: revenue-operations
+  contact:
+    name: Revenue Operations
+    email: revops@company.com
+  status: active
+  tags:
+    - crm
+    - contacts
+    - accounts
+    - routing
+
+servers:
+  production:
+    type: rest
+    host: api.internal/v1
+    path: /datasets/crm-contacts
+    format: json
+
+terms:
+  usage: Internal use only. CRM data is business-confidential. Access is role-restricted.
+  limitations: >
+    Contact-level data only. Deal pipeline, opportunity stage, and financial
+    data are in separate datasets and are not joined here. sender_tier reflects
+    the static account classification — it does not account for active
+    deal activity or relationship context changes.
+  billing: Internal cost centre — no external billing.
+
+schema:
+  - name: contact_id
+    type: string
+    required: true
+    unique: true
+    description: Unique identifier for the CRM contact record.
+    pii: false
+
+  - name: full_name
+    type: string
+    required: true
+    description: Full display name of the contact.
+    pii: true
+    classification: confidential
+
+  - name: email
+    type: string
+    required: true
+    description: Primary email address of the contact.
+    pii: true
+    classification: confidential
+
+  - name: company_id
+    type: string
+    required: true
+    description: Foreign key to the company/account record.
+    pii: false
+
+  - name: company_name
+    type: string
+    required: true
+    description: Name of the company or organisation the contact belongs to.
+    pii: false
+
+  - name: job_title
+    type: string
+    required: false
+    description: Contact's job title as recorded in the CRM. Nullable — not all contacts have a recorded title.
+    pii: false
+
+  - name: account_owner
+    type: string
+    required: true
+    description: Email address of the internal account owner responsible for this contact.
+    pii: false
+
+  - name: sender_tier
+    type: string
+    required: true
+    description: >
+      Static classification of the contact's relationship tier. Possible values:
+      vip, partner, standard-client, prospect, vendor, internal.
+      Set at account creation and updated manually by the account owner.
+      Does not reflect real-time deal activity or relationship changes.
+    pii: false
+    # NOTE: sender_tier is a static label. It does not change when a deal opens,
+    # progresses, or stalls. A contact can be classified as 'standard-client'
+    # while their company is in active renewal negotiation. Agents routing on
+    # sender_tier alone have no visibility into that context.
+
+  - name: last_interaction_at
+    type: timestamp
+    required: false
+    description: Timestamp of the most recent logged interaction in the CRM.
+    pii: false
+
+  - name: preferred_language
+    type: string
+    required: false
+    description: ISO 639-1 language code for the contact's preferred communication language.
+    pii: false
+
+quality:
+  - rule: no_null_contact_ids
+    dimension: completeness
+    description: contact_id must not be null.
+    query: "SELECT COUNT(*) FROM crm_contacts WHERE contact_id IS NULL"
+    mustBe: 0
+
+  - rule: no_null_emails
+    dimension: completeness
+    description: email must not be null.
+    query: "SELECT COUNT(*) FROM crm_contacts WHERE email IS NULL"
+    mustBe: 0
+
+  - rule: valid_email_format
+    dimension: validity
+    description: email must match a basic email format pattern.
+    query: "SELECT COUNT(*) FROM crm_contacts WHERE email NOT LIKE '%@%.%'"
+    mustBe: 0
+
+  - rule: valid_sender_tier_values
+    dimension: validity
+    description: sender_tier must be one of the defined enum values.
+    query: >
+      SELECT COUNT(*) FROM crm_contacts
+      WHERE sender_tier NOT IN (
+        'vip', 'partner', 'standard-client', 'prospect', 'vendor', 'internal'
+      )
+    mustBe: 0
+
+  - rule: no_null_account_owner
+    dimension: completeness
+    description: Every contact must have an assigned account owner.
+    query: "SELECT COUNT(*) FROM crm_contacts WHERE account_owner IS NULL"
+    mustBe: 0
+
+servicelevels:
+  availability:
+    percentage: 99.5
+    unit: percent
+  freshness:
+    description: >
+      CRM contact data is synced from the CRM system nightly at 06:00 CET.
+      Intraday changes to contact records are not reflected until the next
+      nightly sync.
+    cronExpression: "0 6 * * *"
+  retention:
+    period: indefinite
+    description: Contact records are retained for the lifetime of the customer relationship plus 5 years.
+
+# ─────────────────────────────────────────────────────────────────
+# GAPS FOR AGENT CONSUMERS (not covered by this contract)
+# ─────────────────────────────────────────────────────────────────
+# The following signals are absent from this contract. Agents routing
+# or responding based on this data have no way to know:
+#
+#   crm_open_deal      — whether this contact's company has an active deal
+#   deal_stage         — current stage in the deal pipeline (e.g. negotiation,
+#                        renewal, at-risk, closed)
+#   deal_owner         — who is managing the active deal internally
+#   relationship_flags — ad-hoc context set by account owners (e.g. "handle
+#                        manually this week", "in legal review")
+#   data_age_hours     — how long ago the nightly sync ran; a contact updated
+#                        at 07:00 will not appear until the next day's sync
+#
+# sender_tier is the only importance signal available to agents. It is a
+# static label that does not update when deal context changes. An agent
+# treating a 'standard-client' as routine may be acting at the worst possible
+# moment in a relationship — and have no signal to know it.
+#
+# Deal data is available in the separate dc-crm-deals-v1 contract. It is
+# not joined here by design — at the time this contract was authored, no
+# consumer required real-time deal context alongside contact identity.
+# Agents are a new consumer type with new requirements.
+# ─────────────────────────────────────────────────────────────────

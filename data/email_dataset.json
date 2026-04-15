@@ -1,0 +1,76 @@
+{
+  "dataset": "email_inbox",
+  "snapshot_at": "2026-04-15T11:22:00Z",
+  "messages": [
+    {
+      "message_id": "msg_001",
+      "thread_id": "thread_084",
+      "thread_message_count": 1,
+      "from_address": "sarah.chen@partnerco.com",
+      "from_name": "Sarah Chen",
+      "from_company": "PartnerCo",
+      "subject": "Quick check on Thursday 10am",
+      "body_preview": "Would 10am this Thursday work for a 30-min call to catch up on the Q3 partnership roadmap?",
+      "received_at": "2026-04-15T09:58:00Z",
+      "has_attachments": false,
+      "classification_label": "meeting-request",
+      "routing_action": "auto-handle"
+    },
+    {
+      "message_id": "msg_002",
+      "thread_id": "thread_091",
+      "thread_message_count": 1,
+      "from_address": "noreply@vendor.io",
+      "from_name": "Account Management Team",
+      "from_company": "Vendor.io",
+      "subject": "Following up on our discussion",
+      "body_preview": "Just following up on our discussion earlier this week. Could you confirm where things stand?",
+      "received_at": "2026-04-15T11:22:00Z",
+      "has_attachments": false,
+      "classification_label": "standard-followup",
+      "routing_action": "auto-handle"
+    },
+    {
+      "message_id": "msg_003",
+      "thread_id": "thread_057",
+      "thread_message_count": 3,
+      "from_address": "m.lefevre@artisan-conseil.fr",
+      "from_name": "Marc Lefèvre",
+      "from_company": "Artisan Conseil",
+      "subject": "As we discussed on the call last Thursday",
+      "body_preview": "As we discussed on the call last Thursday, can you confirm you're moving forward with the proposal?",
+      "received_at": "2026-04-15T14:05:00Z",
+      "has_attachments": false,
+      "classification_label": "proposal-confirmation",
+      "routing_action": "auto-handle"
+    },
+    {
+      "message_id": "msg_004",
+      "thread_id": "thread_102",
+      "thread_message_count": 2,
+      "from_address": "p.renard@renard-industries.fr",
+      "from_name": "Pascal Renard",
+      "from_company": "Renard Industries",
+      "subject": "A few questions before we sign",
+      "body_preview": "I have a few questions about the contract terms before we sign off. Nothing blocking — just wanted to clarify the SLA section.",
+      "received_at": "2026-04-15T16:30:00Z",
+      "has_attachments": false,
+      "classification_label": "contract-query",
+      "routing_action": "auto-handle"
+    },
+    {
+      "message_id": "msg_005",
+      "thread_id": "thread_110",
+      "thread_message_count": 1,
+      "from_address": "invoices@supplier-eu.com",
+      "from_name": "Supplier EU",
+      "from_company": "Supplier EU",
+      "subject": "Invoice #INV-2026-0412",
+      "body_preview": "Please find attached invoice #INV-2026-0412 for services rendered in March 2026.",
+      "received_at": "2026-04-15T08:10:00Z",
+      "has_attachments": true,
+      "classification_label": "invoice",
+      "routing_action": "auto-handle"
+    }
+  ]
+}

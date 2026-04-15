@@ -1,0 +1,179 @@
+kind: DataContract
+apiVersion: v3.1.0
+id: dc-email-inbox-v1
+info:
+  title: Email Inbox
+  version: 1.2.0
+  description: >
+    Curated snapshot of the user's email inbox, enriched with classification
+    labels and routing decisions. Consumed by downstream automation and
+    reporting pipelines.
+  owner: data-platform-team
+  contact:
+    name: Data Platform
+    email: data-platform@company.com
+  status: active
+  tags:
+    - email
+    - communication
+    - classification
+
+servers:
+  production:
+    type: rest
+    host: api.internal/v1
+    path: /datasets/email-inbox
+    format: json
+
+terms:
+  usage: Internal use only. Not to be shared with third-party systems without approval.
+  limitations: Snapshot data only. Does not reflect real-time inbox state.
+  billing: Internal cost centre — no external billing.
+
+schema:
+  - name: message_id
+    type: string
+    required: true
+    unique: true
+    description: Unique identifier for the message.
+    pii: false
+
+  - name: thread_id
+    type: string
+    required: true
+    description: Groups messages belonging to the same email thread.
+    pii: false
+
+  - name: thread_message_count
+    type: integer
+    required: true
+    description: Total number of messages in the thread at snapshot time.
+    pii: false
+
+  - name: from_address
+    type: string
+    required: true
+    description: Sender email address.
+    pii: true
+    classification: confidential
+
+  - name: from_name
+    type: string
+    required: false
+    description: Display name of the sender.
+    pii: true
+    classification: confidential
+
+  - name: from_company
+    type: string
+    required: false
+    description: Organisation associated with the sender.
+    pii: false
+
+  - name: subject
+    type: string
+    required: true
+    description: Email subject line.
+    pii: false
+
+  - name: body_preview
+    type: string
+    required: false
+    description: First 200 characters of the email body.
+    pii: true
+    classification: confidential
+
+  - name: received_at
+    type: timestamp
+    required: true
+    description: UTC timestamp when the message was received by the mail server.
+    pii: false
+
+  - name: has_attachments
+    type: boolean
+    required: true
+    description: Whether the message contains one or more file attachments.
+    pii: false
+
+  - name: classification_label
+    type: string
+    required: true
+    description: >
+      Category assigned by the upstream classification model. Possible values:
+      meeting-request, standard-followup, proposal-confirmation, contract-query,
+      invoice, support-request, internal, spam.
+    pii: false
+    # NOTE: classification_confidence is not exposed.
+    # The label appears with equal authority regardless of model confidence.
+    # Consumers cannot distinguish a 0.97 classification from a 0.54 one.
+
+  - name: routing_action
+    type: string
+    required: true
+    description: >
+      Downstream routing decision derived from classification_label. Possible
+      values: auto-handle, human-review, escalate, archive.
+    pii: false
+
+quality:
+  - rule: no_null_message_ids
+    dimension: completeness
+    description: message_id must not be null.
+    query: "SELECT COUNT(*) FROM email_inbox WHERE message_id IS NULL"
+    mustBe: 0
+
+  - rule: no_null_received_at
+    dimension: completeness
+    description: received_at must not be null.
+    query: "SELECT COUNT(*) FROM email_inbox WHERE received_at IS NULL"
+    mustBe: 0
+
+  - rule: valid_classification_labels
+    dimension: validity
+    description: classification_label must be one of the defined enum values.
+    query: >
+      SELECT COUNT(*) FROM email_inbox
+      WHERE classification_label NOT IN (
+        'meeting-request','standard-followup','proposal-confirmation',
+        'contract-query','invoice','support-request','internal','spam'
+      )
+    mustBe: 0
+
+  - rule: no_future_received_at
+    dimension: validity
+    description: received_at must not be in the future.
+    query: "SELECT COUNT(*) FROM email_inbox WHERE received_at > NOW()"
+    mustBe: 0
+
+servicelevels:
+  availability:
+    percentage: 99.5
+    unit: percent
+  freshness:
+    description: Inbox snapshot is refreshed every 15 minutes during business hours (07:00–22:00 CET). Hourly outside those hours.
+    cronExpression: "0/15 7-22 * * MON-FRI"
+    # NOTE: last_synced_at and data_age_minutes are not exposed per record.
+    # Consumers receive no signal indicating how old the data is at query time.
+    # The SLA guarantees a refresh cadence — not that the data is fresh enough
+    # for any specific action.
+  retention:
+    period: 90 days
+    description: Messages older than 90 days are archived and excluded from this dataset.
+
+# ─────────────────────────────────────────────────────────────────
+# GAPS FOR AGENT CONSUMERS (not covered by this contract)
+# ─────────────────────────────────────────────────────────────────
+# The following signals are absent from this contract. They are not
+# quality failures — this contract was designed for human consumers
+# who compensate for missing context intuitively. Agents cannot.
+#
+# Missing:
+#   classification_confidence  — score behind classification_label
+#   thread_complete            — whether the thread is complete in this dataset
+#   off_system_refs            — whether the message references context outside the data
+#   data_age_minutes           — age of the snapshot at query time
+#   safe_to_act                — composite flag for agent action safety
+#
+# These are not engineering gaps. They are product decisions not yet made
+# because agents were not a design-time consumer of this product.
+# ─────────────────────────────────────────────────────────────────

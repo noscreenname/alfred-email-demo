@@ -1,0 +1,160 @@
+kind: DataContract
+apiVersion: v3.1.0
+id: dc-calendar-events-v1
+info:
+  title: Calendar Events
+  version: 2.0.1
+  description: >
+    Snapshot of the authenticated user's calendar events, sourced from the
+    calendar application via OAuth sync. Used for scheduling, availability
+    checks, and meeting intelligence.
+  owner: data-platform-team
+  contact:
+    name: Data Platform
+    email: data-platform@company.com
+  status: active
+  tags:
+    - calendar
+    - scheduling
+    - availability
+
+servers:
+  production:
+    type: rest
+    host: api.internal/v1
+    path: /datasets/calendar-events
+    format: json
+
+terms:
+  usage: Internal use only. User calendar data is personal — access requires explicit user consent.
+  limitations: >
+    Snapshot only. Does not reflect real-time calendar state. Events created,
+    modified, or cancelled between sync cycles are not present in this dataset.
+  billing: Internal cost centre — no external billing.
+
+schema:
+  - name: event_id
+    type: string
+    required: true
+    unique: true
+    description: Unique identifier for the calendar event.
+    pii: false
+
+  - name: title
+    type: string
+    required: true
+    description: Display title of the event.
+    pii: true
+    classification: confidential
+
+  - name: start_time
+    type: timestamp
+    required: true
+    description: UTC start time of the event.
+    pii: false
+
+  - name: end_time
+    type: timestamp
+    required: true
+    description: UTC end time of the event.
+    pii: false
+
+  - name: status
+    type: string
+    required: true
+    description: >
+      Acceptance status of the event. Possible values: confirmed, tentative, cancelled.
+    pii: false
+
+  - name: attendees
+    type: array[string]
+    required: false
+    description: List of attendee email addresses.
+    pii: true
+    classification: confidential
+
+  - name: source
+    type: string
+    required: true
+    description: >
+      Origin of the event record. Possible values: calendar-app, email-invite,
+      external-sync. Indicates how the event entered the system.
+    pii: false
+
+  - name: organiser
+    type: string
+    required: false
+    description: Email address of the event organiser.
+    pii: true
+    classification: confidential
+
+  - name: location
+    type: string
+    required: false
+    description: Physical or virtual location for the event. Nullable.
+    pii: false
+
+quality:
+  - rule: no_null_event_ids
+    dimension: completeness
+    description: event_id must not be null.
+    query: "SELECT COUNT(*) FROM calendar_events WHERE event_id IS NULL"
+    mustBe: 0
+
+  - rule: no_null_start_time
+    dimension: completeness
+    description: start_time must not be null.
+    query: "SELECT COUNT(*) FROM calendar_events WHERE start_time IS NULL"
+    mustBe: 0
+
+  - rule: end_after_start
+    dimension: validity
+    description: end_time must be strictly after start_time.
+    query: "SELECT COUNT(*) FROM calendar_events WHERE end_time <= start_time"
+    mustBe: 0
+
+  - rule: valid_status_values
+    dimension: validity
+    description: status must be one of confirmed, tentative, cancelled.
+    query: >
+      SELECT COUNT(*) FROM calendar_events
+      WHERE status NOT IN ('confirmed', 'tentative', 'cancelled')
+    mustBe: 0
+
+servicelevels:
+  availability:
+    percentage: 99.0
+    unit: percent
+  freshness:
+    description: >
+      Calendar data is synced from the calendar application every 30 minutes.
+      Sync runs continuously, 24/7.
+    cronExpression: "0/30 * * * *"
+    # NOTE: last_synced_at is available at the pipeline level but is not
+    # exposed as a field in this dataset. Consumers cannot determine how old
+    # the snapshot is at query time.
+    #
+    # A 30-minute sync cadence is acceptable for reporting and analytics.
+    # For autonomous scheduling decisions, 30 minutes — or even 5 minutes —
+    # can be long enough for a conflict to appear and remain invisible.
+  retention:
+    period: 365 days
+    description: Historical events retained for one year for meeting intelligence use cases.
+
+# ─────────────────────────────────────────────────────────────────
+# GAPS FOR AGENT CONSUMERS (not covered by this contract)
+# ─────────────────────────────────────────────────────────────────
+# The following signals are absent from this contract. Scheduling
+# agents acting on this data have no way to know:
+#
+#   data_age_minutes   — how old this snapshot is at the moment of action
+#   last_synced_at     — when the sync last ran (pipeline-level only, not surfaced)
+#   safe_to_act        — whether the data is fresh enough for a scheduling decision
+#   coverage_complete  — whether the calendar reflects all actual commitments
+#                        (verbal agreements, standing calls, off-system blocks
+#                         are never represented in this dataset)
+#
+# The 30-minute SLA is a pipeline guarantee. It is not an action-safety
+# guarantee. An agent scheduling a meeting at 09:58 using a snapshot
+# from 09:14 has no signal that 44 minutes of calendar state are missing.
+# ─────────────────────────────────────────────────────────────────

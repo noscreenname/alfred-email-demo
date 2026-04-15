@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alfred — Step-through demo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;font-size:14px;line-height:1.6;color:#1a1917;background:#f7f5f0;padding:2rem 1rem}
+.app{max-width:860px;margin:0 auto;border:0.5px solid #ddd9d0;border-radius:12px;overflow:hidden;background:#fff}
+
+.top-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:0.5px solid #ddd9d0;background:#f0ede6}
+.tb-left{display:flex;align-items:center;gap:10px}
+.alfred-wordmark{font-size:15px;font-weight:500;letter-spacing:-0.01em}
+.tb-mode{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500}
+.mode-broken{background:#FCEBEB;color:#A32D2D}
+.mode-fixed{background:#EAF3DE;color:#3B6D11}
+.tb-progress{font-size:11px;color:#6b6760}
+
+.step-nav{display:flex;align-items:center;gap:8px}
+.nav-btn{padding:5px 12px;border-radius:8px;border:0.5px solid #888780;background:transparent;cursor:pointer;font-size:12px;font-weight:500;color:#1a1917;transition:all 0.12s}
+.nav-btn:hover{background:#f0ede6}
+.nav-btn:disabled{opacity:0.35;cursor:default}
+.nav-btn.primary{background:#1a1917;color:#fff;border-color:#1a1917}
+.nav-btn.primary:hover{opacity:0.85}
+
+.scenario-track{display:flex;gap:0;border-bottom:0.5px solid #ddd9d0;overflow:hidden}
+.scenario-dot{flex:1;height:3px;background:#ddd9d0;transition:background 0.25s}
+.scenario-dot.visited{background:#888780}
+.scenario-dot.active-broken{background:#E24B4A}
+.scenario-dot.active-fixed{background:#639922}
+
+.content{display:grid;grid-template-columns:1fr 1fr;min-height:460px}
+.email-pane{border-right:0.5px solid #ddd9d0;display:flex;flex-direction:column}
+.ep-header{padding:14px 16px 10px;border-bottom:0.5px solid #ddd9d0}
+.ep-label{font-size:10px;font-weight:500;letter-spacing:0.06em;color:#9e9a93;text-transform:uppercase;margin-bottom:6px}
+.ep-from{font-size:12px;font-weight:500}
+.ep-subject{font-size:15px;font-weight:500;letter-spacing:-0.02em;margin-top:2px}
+.ep-meta{font-size:11px;color:#6b6760;margin-top:3px}
+.ep-body{padding:16px;font-size:13px;color:#6b6760;line-height:1.75;flex:1}
+
+.contract-pane{display:flex;flex-direction:column}
+.cp-top{padding:14px 16px 10px;border-bottom:0.5px solid #ddd9d0}
+.cp-label{font-size:10px;font-weight:500;letter-spacing:0.06em;color:#9e9a93;text-transform:uppercase;margin-bottom:8px}
+.contract-fields{display:flex;flex-direction:column;gap:6px}
+.cf-row{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-radius:8px;border:0.5px solid #ddd9d0;background:#f0ede6;font-size:12px;gap:8px}
+.cf-key{color:#6b6760;flex-shrink:0}
+.cf-val{font-family:'Menlo','Courier New',monospace;font-size:11px;text-align:right}
+.cf-val.missing{color:#A32D2D}
+.cf-val.present{color:#3B6D11}
+.cf-val.neutral{color:#6b6760}
+
+.decision-area{padding:14px 16px;flex:1;display:flex;flex-direction:column;justify-content:flex-start}
+.da-label{font-size:10px;font-weight:500;letter-spacing:0.06em;color:#9e9a93;text-transform:uppercase;margin-bottom:10px}
+
+.alfred-card{border-radius:12px;border:0.5px solid;overflow:hidden}
+.ac-header{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:0.5px solid transparent}
+.ac-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.ac-status{font-size:12px;font-weight:500}
+.ac-body{padding:11px 12px;font-size:12px;line-height:1.7;color:#6b6760}
+.ac-body strong{color:#1a1917;font-weight:500}
+.ac-footer{padding:0 12px 11px;font-size:11px;font-weight:500;font-family:'Menlo','Courier New',monospace}
+
+.card-danger{border-color:#F7C1C1;background:#fff}
+.card-danger .ac-header{background:#FCEBEB;border-color:#F7C1C1}
+.card-danger .ac-dot{background:#E24B4A}
+.card-danger .ac-status{color:#A32D2D}
+.card-danger .ac-footer{color:#A32D2D}
+
+.card-safe{border-color:#C0DD97;background:#fff}
+.card-safe .ac-header{background:#EAF3DE;border-color:#C0DD97}
+.card-safe .ac-dot{background:#639922}
+.card-safe .ac-status{color:#3B6D11}
+.card-safe .ac-footer{color:#3B6D11}
+
+.card-warn{border-color:#FAC775;background:#fff}
+.card-warn .ac-header{background:#FAEEDA;border-color:#FAC775}
+.card-warn .ac-dot{background:#EF9F27}
+.card-warn .ac-status{color:#854F0B}
+.card-warn .ac-footer{color:#854F0B}
+
+.what-changed{margin-top:10px;padding:9px 11px;border-radius:8px;background:#f0ede6;border:0.5px solid #ddd9d0;font-size:11px;color:#6b6760;display:none}
+.what-changed.visible{display:block}
+.wc-label{font-size:10px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#9e9a93;margin-bottom:4px}
+
+.bottom-bar{padding:10px 16px;border-top:0.5px solid #ddd9d0;background:#f0ede6;display:flex;align-items:center;justify-content:space-between}
+.bb-hint{font-size:11px;color:#9e9a93}
+.bb-scenarios{display:flex;gap:6px}
+.sc-chip{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:500;cursor:pointer;border:0.5px solid #ddd9d0;color:#6b6760;background:transparent;transition:all 0.12s}
+.sc-chip:hover{border-color:#888780;color:#1a1917}
+.sc-chip.sc-active{background:#1a1917;color:#fff;border-color:#1a1917}
+
+@media(max-width:600px){.content{grid-template-columns:1fr}.email-pane{border-right:none;border-bottom:0.5px solid #ddd9d0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top-bar">
+    <div class="tb-left">
+      <div class="alfred-wordmark">Alfred</div>
+      <div class="tb-mode mode-broken" id="modeLabel">Without contract signals</div>
+    </div>
+    <div class="step-nav">
+      <button class="nav-btn" id="btnPrev" onclick="prev()" disabled>Back</button>
+      <span class="tb-progress" id="progressLabel">1 of 8</span>
+      <button class="nav-btn primary" id="btnNext" onclick="next()">Next →</button>
+    </div>
+  </div>
+
+  <div class="scenario-track" id="scenarioTrack"></div>
+
+  <div class="content">
+    <div class="email-pane">
+      <div class="ep-header">
+        <div class="ep-label">Inbox · Act mode</div>
+        <div class="ep-from" id="epFrom"></div>
+        <div class="ep-subject" id="epSubject"></div>
+        <div class="ep-meta" id="epMeta"></div>
+      </div>
+      <div class="ep-body" id="epBody"></div>
+    </div>
+
+    <div class="contract-pane">
+      <div class="cp-top">
+        <div class="cp-label">Data contract</div>
+        <div class="contract-fields" id="contractFields"></div>
+      </div>
+      <div class="decision-area">
+        <div class="da-label">Alfred's decision</div>
+        <div class="alfred-card" id="alfredCard">
+          <div class="ac-header"><div class="ac-dot"></div><div class="ac-status" id="acStatus"></div></div>
+          <div class="ac-body" id="acBody"></div>
+          <div class="ac-footer" id="acFooter"></div>
+        </div>
+        <div class="what-changed" id="whatChanged">
+          <div class="wc-label">What changed</div>
+          <div id="wcText"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="bb-hint" id="bbHint">Watching Alfred act without contract signals</div>
+    <div class="bb-scenarios" id="bottomScenarios"></div>
+  </div>
+</div>
+
+<script>
+const SCENARIOS = [
+  {
+    label: 'Staleness',
+    email: {
+      from: 'Sarah Chen — Head of Partnerships',
+      subject: 'Quick check on Thursday 10am',
+      meta: 'Received today · 09:58',
+      body: 'Hi,\n\nWould 10am this Thursday work for a 30-min call to catch up on the Q3 partnership roadmap? Let me know and I\'ll send an invite.\n\nThanks, Sarah'
+    },
+    before: {
+      fields: [
+        { key: 'calendar_sla', val: 'refreshed: hourly', cls: 'neutral' },
+        { key: 'last_synced_at', val: 'not exposed', cls: 'missing' },
+        { key: 'data_age_minutes', val: 'not exposed', cls: 'missing' },
+        { key: 'safe_to_act', val: 'not exposed', cls: 'missing' },
+      ],
+      cardClass: 'card-danger',
+      status: 'Acting — reply sent',
+      body: 'Alfred replied: <strong>"Thursday 10am works, I\'ll accept the invite."</strong><br><br>Calendar data was last synced 44 min ago. At 9:32am a conflicting call was blocked for 10–11am directly in the calendar app — not yet in Alfred\'s data. The slot is taken. Alfred just double-booked.',
+      footer: 'Reply sent · cannot be unsent'
+    },
+    after: {
+      fields: [
+        { key: 'calendar_sla', val: 'refreshed: hourly', cls: 'neutral' },
+        { key: 'last_synced_at', val: '09:14:22', cls: 'present' },
+        { key: 'data_age_minutes', val: '44', cls: 'present' },
+        { key: 'safe_to_act', val: 'false (threshold: 5min)', cls: 'present' },
+      ],
+      cardClass: 'card-safe',
+      status: 'Paused — escalating to human',
+      body: 'Alfred detected <strong>data_age_minutes: 44</strong> against a 5-minute threshold for scheduling decisions. <strong>safe_to_act: false</strong>.<br><br>Alfred\'s reasoning: "My calendar data is 44 minutes old. I cannot confirm availability with confidence — escalating to human review."',
+      footer: 'Escalated · awaiting human confirmation',
+      changed: 'Two fields added to the contract: data_age_minutes and safe_to_act. The SLA was already there — it just wasn\'t surfaced as a signal Alfred could act on at decision time.'
+    }
+  },
+  {
+    label: 'Confidence',
+    email: {
+      from: 'noreply@vendor.io',
+      subject: 'Following up on our discussion',
+      meta: 'Received today · 11:22',
+      body: 'Hello,\n\nJust following up on our discussion earlier this week. Could you confirm where things stand?\n\nBest,\nAccount Management Team'
+    },
+    before: {
+      fields: [
+        { key: 'classification', val: 'standard-followup', cls: 'neutral' },
+        { key: 'confidence_score', val: 'not exposed', cls: 'missing' },
+        { key: 'routing', val: 'auto-handle', cls: 'neutral' },
+      ],
+      cardClass: 'card-danger',
+      status: 'Acting — standard reply sent',
+      body: 'Alfred classified the email as <strong>standard-followup</strong> and sent a routine acknowledgement.<br><br>The classification confidence was 0.54. The email was a formal notice preceding a contract dispute. Legal should have reviewed it. Alfred had no way to know it was a borderline case.',
+      footer: 'Reply sent · legal not informed'
+    },
+    after: {
+      fields: [
+        { key: 'classification', val: 'standard-followup', cls: 'neutral' },
+        { key: 'confidence_score', val: '0.54', cls: 'present' },
+        { key: 'routing', val: 'auto-handle', cls: 'neutral' },
+      ],
+      cardClass: 'card-warn',
+      status: 'Flagged — below confidence threshold',
+      body: 'Alfred detected <strong>confidence_score: 0.54</strong>, below the 0.75 threshold for autonomous action.<br><br>Alfred\'s reasoning: "At 54% confidence I cannot determine if this is a routine follow-up or something requiring human judgment. Routing to human review."',
+      footer: 'Queued for human review',
+      changed: 'One field added: confidence_score. The classification label was already there — the problem was it looked equally authoritative whether it was 99% or 54% confident. Exposing the score gives Alfred a mechanism to escalate uncertainty.'
+    }
+  },
+  {
+    label: 'Implicit context',
+    email: {
+      from: 'Marc Lefèvre — Artisan Conseil',
+      subject: 'As we discussed on the call last Thursday',
+      meta: 'Received today · 14:05',
+      body: 'Hello,\n\nAs we discussed on the call last Thursday, can you confirm you\'re moving forward with the proposal? We\'d like to get the paperwork started before end of week.\n\nBest regards, Marc'
+    },
+    before: {
+      fields: [
+        { key: 'thread_messages', val: '3', cls: 'neutral' },
+        { key: 'thread_complete', val: 'not exposed', cls: 'missing' },
+        { key: 'off_system_refs', val: 'not exposed', cls: 'missing' },
+      ],
+      cardClass: 'card-danger',
+      status: 'Acting — commitment sent',
+      body: 'Alfred replied: <strong>"Confirmed — we\'re moving forward with the proposal."</strong><br><br>Alfred had no record of a Thursday call. The email implies a prior commitment Alfred cannot verify. That commitment may never have been made. Alfred just confirmed it on your behalf.',
+      footer: 'Commitment sent · context unverified'
+    },
+    after: {
+      fields: [
+        { key: 'thread_messages', val: '3', cls: 'neutral' },
+        { key: 'thread_complete', val: 'false', cls: 'present' },
+        { key: 'off_system_refs', val: 'detected', cls: 'present' },
+      ],
+      cardClass: 'card-warn',
+      status: 'Paused — missing context detected',
+      body: 'Alfred detected <strong>thread_complete: false</strong> and <strong>off_system_refs: detected</strong> (language pattern: "as we discussed on the call").<br><br>Alfred\'s reasoning: "This email references an external conversation not in my data. I cannot verify a prior commitment was made. Escalating rather than confirming on behalf of the user."',
+      footer: 'Escalated · off-system context flagged',
+      changed: 'Two fields added: thread_complete and off_system_refs. The contract told Alfred the thread had 3 messages. It didn\'t tell Alfred the thread was incomplete — or that the email referenced something that happened outside the system entirely.'
+    }
+  },
+  {
+    label: 'Dynamic importance',
+    email: {
+      from: 'Pascal Renard — Renard Industries',
+      subject: 'A few questions before we sign',
+      meta: 'Received today · 16:30',
+      body: 'Hello,\n\nI have a few questions about the contract terms before we sign off. Nothing blocking — just wanted to clarify the SLA section before we proceed.\n\nBest, Pascal'
+    },
+    before: {
+      fields: [
+        { key: 'sender_tier', val: 'standard-client', cls: 'neutral' },
+        { key: 'crm_open_deal', val: 'not exposed', cls: 'missing' },
+        { key: 'deal_stage', val: 'not exposed', cls: 'missing' },
+      ],
+      cardClass: 'card-danger',
+      status: 'Acting — template reply sent',
+      body: 'Alfred classified Pascal as <strong>standard-client</strong> and replied with a template SLA explanation.<br><br>Pascal\'s company is in active renewal negotiation, managed offline in the CRM. A template reply at this moment sends the wrong signal. The account manager should have handled this personally.',
+      footer: 'Template sent · account manager not notified'
+    },
+    after: {
+      fields: [
+        { key: 'sender_tier', val: 'standard-client', cls: 'neutral' },
+        { key: 'crm_open_deal', val: 'true', cls: 'present' },
+        { key: 'deal_stage', val: 'renewal · negotiation', cls: 'present' },
+      ],
+      cardClass: 'card-warn',
+      status: 'Paused — deal context detected',
+      body: 'Alfred detected <strong>crm_open_deal: true</strong> and <strong>deal_stage: renewal · negotiation</strong>.<br><br>Alfred\'s reasoning: "Although this sender is tier: standard-client, there is an open renewal negotiation in progress. Autonomous handling suppressed. Routing to account manager."',
+      footer: 'Routed to account manager',
+      changed: 'Two CRM fields surfaced into the data contract: crm_open_deal and deal_stage. Importance wasn\'t a fixed property of the sender — it was a function of context that existed in another system. The contract had to reach across to find it.'
+    }
+  }
+];
+
+const STEPS = [];
+SCENARIOS.forEach((sc, i) => {
+  STEPS.push({ scenarioIdx: i, phase: 'before' });
+  STEPS.push({ scenarioIdx: i, phase: 'after' });
+});
+
+let current = 0;
+
+function render() {
+  const step = STEPS[current];
+  const sc = SCENARIOS[step.scenarioIdx];
+  const data = step.phase === 'before' ? sc.before : sc.after;
+
+  document.getElementById('modeLabel').textContent = step.phase === 'before' ? 'Without contract signals' : 'With contract signals';
+  document.getElementById('modeLabel').className = 'tb-mode ' + (step.phase === 'before' ? 'mode-broken' : 'mode-fixed');
+
+  const total = STEPS.length;
+  document.getElementById('progressLabel').textContent = (current + 1) + ' of ' + total;
+  document.getElementById('btnPrev').disabled = current === 0;
+  document.getElementById('btnNext').disabled = current === total - 1;
+  document.getElementById('btnNext').textContent = current === total - 1 ? 'Done' : 'Next \u2192';
+
+  const track = document.getElementById('scenarioTrack');
+  track.innerHTML = '';
+  SCENARIOS.forEach((s, i) => {
+    const d = document.createElement('div');
+    d.className = 'scenario-dot';
+    if (i < step.scenarioIdx) d.classList.add('visited');
+    else if (i === step.scenarioIdx) d.classList.add(step.phase === 'before' ? 'active-broken' : 'active-fixed');
+    track.appendChild(d);
+  });
+
+  document.getElementById('epFrom').textContent = sc.email.from;
+  document.getElementById('epSubject').textContent = sc.email.subject;
+  document.getElementById('epMeta').textContent = sc.email.meta;
+  document.getElementById('epBody').innerHTML = sc.email.body.replace(/\n/g, '<br>');
+
+  const cf = document.getElementById('contractFields');
+  cf.innerHTML = '';
+  data.fields.forEach(f => {
+    const row = document.createElement('div');
+    row.className = 'cf-row';
+    row.innerHTML = '<span class="cf-key">' + f.key + '</span><span class="cf-val ' + f.cls + '">' + f.val + '</span>';
+    cf.appendChild(row);
+  });
+
+  const card = document.getElementById('alfredCard');
+  card.className = 'alfred-card ' + data.cardClass;
+  document.getElementById('acStatus').textContent = data.status;
+  document.getElementById('acBody').innerHTML = data.body;
+  document.getElementById('acFooter').textContent = data.footer;
+
+  const wc = document.getElementById('whatChanged');
+  if (step.phase === 'after' && data.changed) {
+    wc.classList.add('visible');
+    document.getElementById('wcText').textContent = data.changed;
+  } else {
+    wc.classList.remove('visible');
+  }
+
+  document.getElementById('bbHint').textContent = step.phase === 'before'
+    ? 'Watching Alfred act without contract signals'
+    : 'Same email. New contract fields. Different outcome.';
+
+  const chips = document.getElementById('bottomScenarios');
+  chips.innerHTML = '';
+  SCENARIOS.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'sc-chip' + (i === step.scenarioIdx ? ' sc-active' : '');
+    btn.textContent = s.label;
+    btn.onclick = () => { current = i * 2; render(); };
+    chips.appendChild(btn);
+  });
+}
+
+function next() { if (current < STEPS.length - 1) { current++; render(); } }
+function prev() { if (current > 0) { current--; render(); } }
+
+render();
+</script>
+</body>
+</html>

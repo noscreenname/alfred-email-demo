@@ -1,0 +1,63 @@
+{
+  "dataset": "calendar_events",
+  "snapshot_at": "2026-04-15T09:14:22Z",
+  "owner": "andriy.mandyev@company.com",
+  "events": [
+    {
+      "event_id": "evt_001",
+      "title": "Weekly team standup",
+      "start_time": "2026-04-15T09:00:00Z",
+      "end_time": "2026-04-15T09:30:00Z",
+      "status": "confirmed",
+      "attendees": ["andriy.mandyev@company.com", "team@company.com"],
+      "source": "calendar-app",
+      "organiser": "andriy.mandyev@company.com",
+      "location": null
+    },
+    {
+      "event_id": "evt_002",
+      "title": "1:1 with Sophie — Product",
+      "start_time": "2026-04-15T11:00:00Z",
+      "end_time": "2026-04-15T11:30:00Z",
+      "status": "confirmed",
+      "attendees": ["andriy.mandyev@company.com", "sophie.martin@company.com"],
+      "source": "calendar-app",
+      "organiser": "sophie.martin@company.com",
+      "location": null
+    },
+    {
+      "event_id": "evt_003",
+      "title": "Lunch — external",
+      "start_time": "2026-04-15T12:00:00Z",
+      "end_time": "2026-04-15T13:30:00Z",
+      "status": "confirmed",
+      "attendees": ["andriy.mandyev@company.com"],
+      "source": "calendar-app",
+      "organiser": "andriy.mandyev@company.com",
+      "location": "Brasserie du Marché"
+    },
+    {
+      "event_id": "evt_004",
+      "title": "Investor call prep",
+      "start_time": "2026-04-15T14:00:00Z",
+      "end_time": "2026-04-15T15:00:00Z",
+      "status": "confirmed",
+      "attendees": ["andriy.mandyev@company.com", "cfo@company.com"],
+      "source": "calendar-app",
+      "organiser": "cfo@company.com",
+      "location": null
+    },
+    {
+      "event_id": "evt_005",
+      "title": "Thursday — open for focus work",
+      "start_time": "2026-04-17T09:00:00Z",
+      "end_time": "2026-04-17T12:00:00Z",
+      "status": "tentative",
+      "attendees": ["andriy.mandyev@company.com"],
+      "source": "calendar-app",
+      "organiser": "andriy.mandyev@company.com",
+      "location": null
+    }
+  ],
+  "_note": "Thursday 10:00–11:00 was blocked at 09:32 directly in the calendar app after this snapshot. It does not appear in this dataset."
+}
