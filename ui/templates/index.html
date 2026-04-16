@@ -3,16 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <title>Alfred — data contract transparency demo</title>
-  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/style.css?v=3" />
 </head>
-<body data-mode="{{ contract_mode }}" data-first-id="{{ first_id }}">
+<body data-first-id="{{ first_id }}">
   <header class="topbar">
     <div class="brand">ALFRED <span class="tagline">data contract transparency demo</span></div>
     <nav>
-      <div class="mode-toggle" role="tablist">
-        <button type="button" data-mode-btn="standard" class="mode-btn">standard</button>
-        <button type="button" data-mode-btn="extended" class="mode-btn">extended</button>
-      </div>
       <a class="link" href="/log">action log</a>
       <button type="button" id="refresh-btn" class="link-btn">refresh</button>
     </nav>
@@ -32,19 +28,14 @@
       </ul>
     </section>
 
-    <section class="col detail">
+    <section class="main-area">
       <div id="email-detail">
-        <div class="placeholder">Select an email.</div>
+        <div class="placeholder">Select an email to compare how it is handled across four maturity levels.</div>
       </div>
-    </section>
-
-    <section class="col decision">
-      <div id="decision-panel">
-        <div class="placeholder">No decision yet.</div>
-      </div>
+      <div id="comparison-grid" class="comparison-grid"></div>
     </section>
   </main>
 
-  <script src="/static/app.js"></script>
+  <script src="/static/app.js?v=3"></script>
 </body>
 </html>
