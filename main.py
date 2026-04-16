@@ -39,9 +39,25 @@ class State:
     contacts_by_email: dict[str, dict[str, Any]] = {}
     emails_by_id: dict[str, dict[str, Any]] = {}
     loaded_at: datetime = datetime.now(timezone.utc)
+    # Mock-datasets emails (for agent output view)
+    mock_emails: list[dict[str, Any]] = []
+    mock_emails_by_id: dict[str, dict[str, Any]] = {}
+    # Pre-computed agent outputs (indexed by message_id)
+    agent_outputs: dict[str, dict[str, Any]] = {}
 
 
 state = State()
+
+
+def _load_jsonl(path: Path) -> dict[str, Any]:
+    """Load a JSONL file and index by email.message_id."""
+    out: dict[str, Any] = {}
+    with path.open() as f:
+        for line in f:
+            rec = json.loads(line)
+            mid = rec["email"]["message_id"]
+            out[mid] = rec
+    return out
 
 
 def _load_datasets() -> None:
@@ -54,9 +70,31 @@ def _load_datasets() -> None:
     state.contacts_by_email = {c["email"].lower(): c for c in state.contacts}
     state.emails_by_id = {e["message_id"]: e for e in state.emails}
     state.loaded_at = datetime.now(timezone.utc)
+
+    # Load mock-datasets emails
+    with (DATA_DIR / "mock-datasets.json").open() as f:
+        ds = json.load(f)
+    state.mock_emails = ds["emails"]
+    state.mock_emails_by_id = {e["message_id"]: e for e in state.mock_emails}
+
+    # Load pre-computed agent outputs
+    agent_files = {
+        "email_a_contract": "email_a_with_contract.jsonl",
+        "email_a_no_contract": "email_a_no_contract.jsonl",
+        "agenda_a_contract": "agenda_a_with_contract.jsonl",
+        "agenda_a_no_contract": "agenda_a_no_contract.jsonl",
+    }
+    for key, filename in agent_files.items():
+        path = DATA_DIR / filename
+        if path.exists():
+            indexed = _load_jsonl(path)
+            for mid, rec in indexed.items():
+                state.agent_outputs.setdefault(mid, {})[key] = rec
+
     logger.info(
-        "datasets loaded: %d emails, %d events, %d contacts",
+        "datasets loaded: %d emails, %d events, %d contacts, %d mock emails, %d agent outputs",
         len(state.emails), len(state.events), len(state.contacts),
+        len(state.mock_emails), len(state.agent_outputs),
     )
 
 
@@ -137,27 +175,37 @@ def _run_pipeline(message_id: str, contract_mode: str) -> dict[str, Any]:
 
 
 @app.get("/")
-def index(request: Request, mode: str = Query("standard")):
-    contract_mode = _normalize_mode(mode)
+def index(request: Request):
     inbox = [
         {
             "message_id": e["message_id"],
-            "from_name": e["from_name"],
+            "sender": e["sender"],
             "subject": e["subject"],
-            "received_at": e["received_at"],
+            "date": e["date"],
+            "labels": e.get("labels", []),
+            "urgency_score": e.get("urgency_score", 0),
         }
-        for e in state.emails
+        for e in state.mock_emails
     ]
     first_id = inbox[0]["message_id"] if inbox else None
     return templates.TemplateResponse(
         request,
         "index.html",
-        {
-            "inbox": inbox,
-            "first_id": first_id,
-            "contract_mode": contract_mode,
-        },
+        {"inbox": inbox, "first_id": first_id},
     )
+
+
+@app.get("/api/email/{message_id}/agents")
+def api_agents(message_id: str):
+    """Return pre-computed agent outputs for a given email."""
+    raw = state.mock_emails_by_id.get(message_id)
+    if raw is None:
+        raise HTTPException(status_code=404, detail=f"email {message_id} not found")
+    outputs = state.agent_outputs.get(message_id, {})
+    return JSONResponse({
+        "email": raw,
+        "agents": outputs,
+    })
 
 
 @app.get("/api/email/{message_id}")

@@ -1,38 +1,6 @@
-// Alfred — vanilla JS controller (4-tier comparison view).
+// Alfred — agent output comparison view.
 
 const state = { selectedId: null };
-
-const TIER_META = {
-  none: {
-    label: "No product",
-    desc: "Agent sees only raw email text. No CRM, calendar, or classification.",
-    level: 0,
-  },
-  uncontracted: {
-    label: "Product, no contract",
-    desc: "Data products exist but without formal governance. Agent accesses data blindly — no SLAs, no quality signals.",
-    level: 1,
-  },
-  standard: {
-    label: "Standard contract",
-    desc: "ODCS-compliant data products with guaranteed schemas, field presence, and freshness SLAs.",
-    level: 2,
-  },
-  agentic: {
-    label: "Agentic contract",
-    desc: "Full ODCS + agent-specific extensions: confidence thresholds, staleness checks, off-system detection.",
-    level: 3,
-  },
-};
-
-const TIER_ORDER = ["none", "uncontracted", "standard", "agentic"];
-
-const ISSUE_LABELS = {
-  inconsistency: "wrong decision",
-  risk: "failure mode",
-  gap: "knowledge gap",
-  assumption: "false assumption",
-};
 
 function escapeHtml(s) {
   return (s ?? "").toString()
@@ -45,79 +13,185 @@ async function loadEmail(id) {
   document.querySelectorAll(".inbox-row").forEach((r) => {
     r.classList.toggle("selected", r.dataset.id === id);
   });
-  const res = await fetch(`/api/email/${id}/compare`);
+  const res = await fetch(`/api/email/${id}/agents`);
   const data = await res.json();
-  renderDetail(data);
-  renderComparison(data);
+  renderDetail(data.email);
+  renderAgents(data.agents, data.email);
 }
 
-function renderDetail(data) {
-  const e = data.email;
+function renderDetail(e) {
+  const labels = (e.labels || []).map((l) =>
+    `<span class="label-tag">${escapeHtml(l)}</span>`
+  ).join("");
   document.getElementById("email-detail").innerHTML = `
     <div class="email-header">
       <h1>${escapeHtml(e.subject)}</h1>
-      <div class="from">${escapeHtml(e.from_name)} &lt;${escapeHtml(e.from_email)}&gt;</div>
-      <div class="from">${escapeHtml(e.received_at)}</div>
+      <div class="from">${escapeHtml(e.sender)}</div>
+      <div class="from">${escapeHtml(e.date)}</div>
+      <div class="email-labels">${labels}</div>
+      <div class="email-meta-row">
+        <span>urgency: ${(e.urgency_score ?? 0).toFixed(2)}</span>
+        <span>confidence: ${(e.classification_confidence ?? 0).toFixed(2)}</span>
+        <span>purpose: ${escapeHtml(e.purpose)}</span>
+        <span>thread: ${escapeHtml(e.thread_completeness)}</span>
+        <span>constraint: ${escapeHtml(e.handling_constraint)}</span>
+      </div>
     </div>
     <div class="email-body">${escapeHtml(e.body)}</div>
   `;
 }
 
-function renderComparison(data) {
-  const grid = document.getElementById("comparison-grid");
+function renderAgents(agents, email) {
+  const grid = document.getElementById("agents-grid");
+
+  const agentPairs = [
+    {
+      label: "EMAIL_A",
+      desc: "Email triage & response agent",
+      with_key: "email_a_contract",
+      without_key: "email_a_no_contract",
+    },
+    {
+      label: "AGENDA_A",
+      desc: "Scheduling & calendar agent",
+      with_key: "agenda_a_contract",
+      without_key: "agenda_a_no_contract",
+    },
+  ];
+
   let html = "";
+  for (const pair of agentPairs) {
+    const withData = agents[pair.with_key];
+    const withoutData = agents[pair.without_key];
 
-  for (const tier of TIER_ORDER) {
-    const meta = TIER_META[tier];
-    const t = data.tiers[tier];
-    const d = t.decision;
-    const statusCls = d.status.toLowerCase();
-    const issueCount = t.issues.length;
-
-    // Signals used
-    const signalsHtml = d.signals_used.length
-      ? d.signals_used.map((s) => `<span class="signal-tag">${escapeHtml(s)}</span>`).join("")
-      : '<span class="signal-tag none">none</span>';
-
-    // Issues
-    let issuesHtml = "";
-    if (issueCount > 0) {
-      issuesHtml = t.issues.map((i) => {
-        const label = ISSUE_LABELS[i.type] || i.type;
-        return `<div class="issue issue-${i.type}"><span class="issue-badge">${label}</span> ${escapeHtml(i.text)}</div>`;
-      }).join("");
-    } else {
-      issuesHtml = '<div class="no-issues">All signals available — full guardrails active</div>';
+    // Skip AGENDA_A section entirely if both are SKIP
+    if (pair.label === "AGENDA_A"
+        && withData?.output?.decision === "SKIP"
+        && withoutData?.output?.decision === "SKIP") {
+      continue;
     }
 
-    // Tier level indicator
-    const dots = Array.from({ length: 4 }, (_, i) =>
-      `<span class="level-dot ${i <= meta.level ? "filled" : ""}"></span>`
-    ).join("");
-
-    html += `
-      <div class="tier-card tier-${tier}">
-        <div class="tier-header">
-          <div class="tier-level">${dots}</div>
-          <h3>${meta.label}</h3>
-          <p class="tier-desc">${meta.desc}</p>
-        </div>
-        <div class="decision-card ${statusCls}">
-          <div class="decision-status ${statusCls}">${escapeHtml(d.status)}</div>
-          <div class="decision-reason">${escapeHtml(d.reason)}</div>
-          <div class="decision-meta">
-            <span>confidence ${d.confidence.toFixed(2)}</span>
-            <span>signals: ${signalsHtml}</span>
-          </div>
-        </div>
-        <div class="issues-section">
-          <div class="issues-header">${issueCount > 0 ? `${issueCount} issue${issueCount > 1 ? "s" : ""} detected` : "No issues"}</div>
-          ${issuesHtml}
-        </div>
+    html += `<div class="agent-section">
+      <div class="agent-section-header">
+        <h2>${pair.label}</h2>
+        <span class="agent-desc">${pair.desc}</span>
       </div>
-    `;
+      <div class="agent-pair">
+        ${renderAgentPanel(withData, "With contract", "with-contract")}
+        ${renderAgentPanel(withoutData, "Without contract", "no-contract")}
+      </div>
+    </div>`;
+  }
+
+  if (!html) {
+    html = '<div class="placeholder">No agent outputs available for this email.</div>';
   }
   grid.innerHTML = html;
+}
+
+function renderAgentPanel(data, modeLabel, modeCls) {
+  if (!data) {
+    return `<div class="agent-panel ${modeCls}">
+      <div class="panel-header"><h3>${modeLabel}</h3></div>
+      <div class="placeholder">No data</div>
+    </div>`;
+  }
+
+  const d = data.output;
+  const logic = data.decision_logic;
+  const statusCls = d.decision.toLowerCase();
+
+  // Decision badge
+  const decisionHtml = `<div class="decision-badge ${statusCls}">${escapeHtml(d.decision)}</div>`;
+
+  // Reason
+  const reasonHtml = `<div class="decision-reason">${escapeHtml(d.reason)}</div>`;
+
+  // Signals
+  const signalsUsed = (logic.signals_used || []).map((s) =>
+    `<span class="signal-tag used">${escapeHtml(s)}</span>`
+  ).join("") || '<span class="signal-tag none">none</span>';
+
+  const signalsMissing = (logic.signals_missing || []).map((s) =>
+    `<span class="signal-tag missing">${escapeHtml(s)}</span>`
+  ).join("");
+
+  // Warnings
+  const warningsHtml = (logic.warnings || []).map((w) =>
+    `<div class="warning-row">${escapeHtml(w)}</div>`
+  ).join("");
+
+  // Trace
+  const traceHtml = (logic.trace || []).map((t) =>
+    `<div class="trace-row">${escapeHtml(t)}</div>`
+  ).join("");
+
+  // Draft reply
+  let draftHtml = "";
+  if (d.draft_reply) {
+    draftHtml = `<div class="draft-section">
+      <div class="draft-label">Draft reply</div>
+      <div class="draft-body">${escapeHtml(d.draft_reply)}</div>
+    </div>`;
+  }
+
+  // Proposed slots (AGENDA_A)
+  let slotsHtml = "";
+  if (d.proposed_slots && d.proposed_slots.length > 0) {
+    const slots = d.proposed_slots.map((s) =>
+      `<div class="slot-row">${escapeHtml(s.date)} ${escapeHtml(s.time)} — ${escapeHtml(s.rationale)}</div>`
+    ).join("");
+    const excluded = (d.excluded_slots || []).map((s) =>
+      `<div class="slot-row excluded">${escapeHtml(s.date)} ${s.time ? escapeHtml(s.time) : ""} — ${escapeHtml(s.reason)}</div>`
+    ).join("");
+    slotsHtml = `<div class="slots-section">
+      <div class="slots-label">Proposed slots</div>
+      ${slots}
+      ${excluded ? `<div class="slots-label excluded-label">Excluded</div>${excluded}` : ""}
+    </div>`;
+  }
+
+  // Contact & reference context
+  let contextHtml = "";
+  if (data.contact) {
+    const c = data.contact;
+    contextHtml += `<div class="context-row">Contact: ${escapeHtml(c.name)} (${escapeHtml(c.relationship_type)}, ${escapeHtml(c.temporal_importance)}, policy=${escapeHtml(c.auto_reply_policy)})</div>`;
+  }
+  if (data.reference) {
+    const r = data.reference;
+    contextHtml += `<div class="context-row">Topic: ${escapeHtml(r.topic_name)} (${escapeHtml(r.context_completeness || "")}, threshold=${escapeHtml(r.action_threshold)})</div>`;
+  }
+
+  return `<div class="agent-panel ${modeCls}">
+    <div class="panel-header">
+      <h3>${modeLabel}</h3>
+      ${decisionHtml}
+    </div>
+    ${reasonHtml}
+    ${contextHtml ? `<div class="context-section">${contextHtml}</div>` : ""}
+    <div class="signals-section">
+      <div class="signals-label">Signals used</div>
+      <div class="signals-list">${signalsUsed}</div>
+      ${signalsMissing ? `<div class="signals-label missing-label">Signals missing</div><div class="signals-list">${signalsMissing}</div>` : ""}
+    </div>
+    ${warningsHtml ? `<div class="warnings-section"><div class="warnings-label">Warnings</div>${warningsHtml}</div>` : ""}
+    ${draftHtml}
+    ${slotsHtml}
+    <details class="trace-details">
+      <summary>Decision trace</summary>
+      <div class="trace-body">${traceHtml}</div>
+    </details>
+  </div>`;
+}
+
+function selectOffset(delta) {
+  const rows = [...document.querySelectorAll(".inbox-row")];
+  if (!rows.length) return;
+  const idx = rows.findIndex((r) => r.dataset.id === state.selectedId);
+  const next = Math.max(0, Math.min(rows.length - 1, idx + delta));
+  const row = rows[next];
+  loadEmail(row.dataset.id);
+  row.scrollIntoView({ block: "nearest" });
 }
 
 function wire() {
@@ -125,13 +199,10 @@ function wire() {
     r.addEventListener("click", () => loadEmail(r.dataset.id));
   });
 
-  const refreshBtn = document.getElementById("refresh-btn");
-  if (refreshBtn) {
-    refreshBtn.addEventListener("click", async () => {
-      await fetch("/api/refresh");
-      if (state.selectedId) loadEmail(state.selectedId);
-    });
-  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); selectOffset(1); }
+    if (e.key === "ArrowUp") { e.preventDefault(); selectOffset(-1); }
+  });
 
   const firstId = document.body.dataset.firstId;
   if (firstId) loadEmail(firstId);

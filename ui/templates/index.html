@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Alfred — data contract transparency demo</title>
-  <link rel="stylesheet" href="/static/style.css?v=3" />
+  <title>Alfred — agent output comparison</title>
+  <link rel="stylesheet" href="/static/style.css?v=4" />
 </head>
 <body data-first-id="{{ first_id }}">
   <header class="topbar">
     <div class="brand">ALFRED <span class="tagline">data contract transparency demo</span></div>
     <nav>
       <a class="link" href="/log">action log</a>
-      <button type="button" id="refresh-btn" class="link-btn">refresh</button>
     </nav>
   </header>
 
@@ -20,9 +19,9 @@
       <ul id="inbox-list">
         {% for e in inbox %}
         <li class="inbox-row" data-id="{{ e.message_id }}">
-          <div class="sender">{{ e.from_name }}</div>
+          <div class="sender">{{ e.sender }}</div>
           <div class="subject">{{ e.subject }}</div>
-          <div class="meta">{{ e.received_at }}</div>
+          <div class="meta">{{ e.date[:16] }}</div>
         </li>
         {% endfor %}
       </ul>
@@ -30,12 +29,12 @@
 
     <section class="main-area">
       <div id="email-detail">
-        <div class="placeholder">Select an email to compare how it is handled across four maturity levels.</div>
+        <div class="placeholder">Select an email to see how each agent handles it with and without a data contract.</div>
       </div>
-      <div id="comparison-grid" class="comparison-grid"></div>
+      <div id="agents-grid"></div>
     </section>
   </main>
 
-  <script src="/static/app.js?v=3"></script>
+  <script src="/static/app.js?v=4"></script>
 </body>
 </html>
