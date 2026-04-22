@@ -142,8 +142,6 @@ header .subtitle {
 
 /* Metrics bar */
 .level-metrics {
-    display: flex;
-    gap: 1.5rem;
     padding: 0.5rem 1.25rem;
     background: #f4f4f4;
     border-bottom: 1px solid #eee;
@@ -152,8 +150,58 @@ header .subtitle {
     font-family: "SF Mono", "Fira Code", monospace;
 }
 
+.metrics-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .level-metrics span {
     white-space: nowrap;
+}
+
+.metrics-total {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Raw data toggle */
+.raw-toggle {
+    border-top: 1px solid #eee;
+    padding: 0.5rem 1.25rem;
+}
+
+.toggle-btn {
+    padding: 0.3rem 0.75rem;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    color: #666;
+    cursor: pointer;
+}
+
+.toggle-btn:hover {
+    background: #eee;
+    color: #333;
+}
+
+.raw-context {
+    margin-top: 0.5rem;
+}
+
+.raw-context pre {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 /* Content typography */

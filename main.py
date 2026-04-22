@@ -1,5 +1,6 @@
 """Alfred MVP — 3-level maturity comparison research rig."""
 
+import time
 import traceback
 
 from fastapi import FastAPI, Form, Request
@@ -56,11 +57,14 @@ async def run(request: Request, period: str = Form("week")):
         level = level_info["number"]
         try:
             context = load_context(level, period)
+            t0 = time.monotonic()
             result = run_agent(SYSTEM_PROMPT, context)
+            elapsed = time.monotonic() - t0
             html = markdown.markdown(result["content"], extensions=["tables", "fenced_code"])
             results.append({
                 **level_info,
                 "content": html,
+                "raw_context": context,
                 "error": None,
                 "metrics": {
                     "input_tokens": result["input_tokens"],
@@ -68,12 +72,14 @@ async def run(request: Request, period: str = Form("week")):
                     "total_tokens": result["input_tokens"] + result["output_tokens"],
                     "context_chars": result["context_chars"],
                     "context_kb": round(result["context_chars"] / 1024, 1),
+                    "processing_seconds": round(elapsed, 1),
                 },
             })
         except Exception as e:
             results.append({
                 **level_info,
                 "content": None,
+                "raw_context": None,
                 "error": f"{type(e).__name__}: {e}",
                 "metrics": None,
             })

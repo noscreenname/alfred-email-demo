@@ -32,10 +32,13 @@
             </div>
             {% if result.metrics %}
             <div class="level-metrics">
-                <span>Input: {{ "{:,}".format(result.metrics.input_tokens) }} tokens</span>
-                <span>Output: {{ "{:,}".format(result.metrics.output_tokens) }} tokens</span>
-                <span>Total: {{ "{:,}".format(result.metrics.total_tokens) }} tokens</span>
-                <span>Data loaded: {{ result.metrics.context_kb }} KB</span>
+                <div class="metrics-row">
+                    <span title="Time to process this level">{{ result.metrics.processing_seconds }}s</span>
+                    <span title="Data volume sent to agent">{{ result.metrics.context_kb }} KB</span>
+                    <span title="Input tokens consumed">{{ "{:,}".format(result.metrics.input_tokens) }} in</span>
+                    <span title="Output tokens generated">{{ "{:,}".format(result.metrics.output_tokens) }} out</span>
+                    <span class="metrics-total" title="Total tokens">{{ "{:,}".format(result.metrics.total_tokens) }} total</span>
+                </div>
             </div>
             {% endif %}
             <div class="level-content">
@@ -47,6 +50,14 @@
                 {{ result.content | safe }}
                 {% endif %}
             </div>
+            {% if result.raw_context %}
+            <div class="raw-toggle">
+                <button onclick="toggleRaw(this)" class="toggle-btn">Show raw data</button>
+                <div class="raw-context" style="display: none;">
+                    <pre>{{ result.raw_context }}</pre>
+                </div>
+            </div>
+            {% endif %}
         </section>
         {% endfor %}
     </div>
@@ -60,5 +71,18 @@
     <footer>
         <p>Alfred — Data Contract Maturity Research Rig</p>
     </footer>
+
+    <script>
+    function toggleRaw(btn) {
+        const container = btn.nextElementSibling;
+        if (container.style.display === 'none') {
+            container.style.display = 'block';
+            btn.textContent = 'Hide raw data';
+        } else {
+            container.style.display = 'none';
+            btn.textContent = 'Show raw data';
+        }
+    }
+    </script>
 </body>
 </html>
