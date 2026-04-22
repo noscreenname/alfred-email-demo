@@ -11,7 +11,7 @@ body {
     background: #f7f5f0;
     color: #1a1a1a;
     line-height: 1.6;
-    max-width: 960px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 2rem 1.5rem;
 }
@@ -75,8 +75,14 @@ header .subtitle {
 /* Results */
 .results {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.results .level-block {
+    flex: 1;
+    min-width: 0;
 }
 
 /* Level blocks — progressively richer visual treatment */
