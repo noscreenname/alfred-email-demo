@@ -1,0 +1,203 @@
+# ============================================================
+# ODCS Data Contract — Inbox Intelligence Product
+# Version: 1.0
+# Owner: data-platform-team
+# Status: active
+# Last updated: 2026-04-18
+# ============================================================
+
+contract:
+  name: "Inbox Intelligence Product"
+  version: "1.0"
+  status: active
+  owner:
+    team: data-platform-team
+    contact: data-platform@internal-team.com
+    escalation: "Slack #data-platform-support"
+
+  description: >
+    Pre-joined email threads enriched with contact, calendar, and task context.
+    This product combines data from Gmail, Google Calendar, CRM (Salesforce export),
+    and Trello into a single denormalized dataset optimized for inbox triage
+    and prioritization use cases.
+
+  lifecycle:
+    created: "2026-01-15"
+    last_reviewed: "2026-04-18"
+    next_review: "2026-07-18"
+    deprecation_notice: null
+
+  freshness:
+    sla_minutes: 5
+    instruction: >
+      If product data is older than 5 minutes, classification accuracy may be
+      degraded. Note the data age in any output that depends on freshness.
+
+schema:
+  thread:
+    required_fields:
+      - name: thread_id
+        type: string
+        description: "Unique thread identifier"
+        nullable: false
+
+      - name: subject
+        type: string
+        description: "Email thread subject line"
+        nullable: false
+
+      - name: latest_message_date
+        type: datetime
+        description: "Timestamp of most recent message in thread (ISO 8601)"
+        nullable: false
+
+      - name: snippet
+        type: string
+        description: "Preview text of latest message (max 300 chars)"
+        nullable: false
+
+      - name: is_unread
+        type: boolean
+        description: "Whether the latest message has been read by the user"
+        nullable: false
+
+      - name: labels
+        type: array[string]
+        description: "Gmail labels applied to the thread"
+        nullable: false
+
+    sender_fields:
+      - name: sender.name
+        type: string
+        description: "Display name of the sender"
+        nullable: false
+
+      - name: sender.email
+        type: string
+        description: "Email address of the sender"
+        nullable: false
+        unique_across: contacts
+
+      - name: sender.organisation
+        type: string
+        description: "Organisation the sender belongs to"
+        nullable: true
+
+      - name: sender.relationship_type
+        type: enum
+        values: [client, partner, internal, vendor, newsletter, automated, unknown]
+        description: "Classification of sender's relationship to the user"
+        nullable: false
+        provenance: crm_sync
+
+      - name: sender.deal_stage
+        type: enum
+        values: [prospecting, negotiation, active, renewal, churned, null]
+        description: "Current deal stage if sender has an active deal"
+        nullable: true
+        provenance: crm_sync
+
+      - name: sender.deal_value
+        type: number
+        description: "Deal value in EUR"
+        nullable: true
+        provenance: crm_sync
+
+      - name: sender.deal_owner
+        type: string
+        description: "Email of the deal owner"
+        nullable: true
+        provenance: crm_sync
+
+    enrichment_fields:
+      - name: related_tasks
+        type: array[object]
+        description: "Trello tasks related to this thread's sender or topic"
+        nullable: true
+        provenance: trello_sync
+        fields:
+          - name: name
+            type: string
+          - name: status
+            type: enum
+            values: [To Do, In Progress, Blocked, Done]
+          - name: assignee
+            type: string
+          - name: due
+            type: date
+          - name: overdue
+            type: boolean
+
+      - name: calendar_context
+        type: array[object]
+        description: "Calendar events relevant to this thread (conflicts, recent meetings)"
+        nullable: true
+        provenance: calendar_sync
+        fields:
+          - name: event
+            type: string
+          - name: start
+            type: datetime
+          - name: end
+            type: datetime
+          - name: conflict
+            type: boolean
+            description: "True if the email proposes a time that conflicts with an existing event"
+          - name: conflict_note
+            type: string
+
+quality_rules:
+  - rule: "No null sender.email"
+    severity: critical
+    description: "Every thread must have a valid sender email address"
+
+  - rule: "No null sender.relationship_type"
+    severity: critical
+    description: "Every sender must be classified. Use 'unknown' for unrecognized senders."
+
+  - rule: "related_tasks[].overdue must be accurate"
+    severity: high
+    description: "Overdue flag must reflect comparison of due date vs current date"
+
+  - rule: "calendar_context[].conflict must be accurate"
+    severity: high
+    description: "Conflict detection must compare proposed times against confirmed calendar events"
+
+  - rule: "snippet max 300 characters"
+    severity: low
+    description: "Snippets exceeding 300 chars should be truncated"
+
+taxonomy:
+  cross_source_mappings:
+    - mapping: "thread.sender.email = contacts.email = trello.cards[].assignee"
+      description: >
+        Email sender identity maps to CRM contact record and Trello task assignee.
+        This enables: (1) enriching email classification with deal context,
+        (2) linking overdue tasks to incoming emails from the same person,
+        (3) identifying when a sender's email relates to work the user owns.
+
+    - mapping: "thread.latest_message_date overlaps calendar.events[].start/end"
+      description: >
+        Temporal overlap detection between proposed meeting times in emails
+        and confirmed calendar events. Enables conflict detection.
+
+    - mapping: "thread.sender.organisation = contacts.organisation"
+      description: >
+        Organisation-level grouping. Multiple contacts from the same org
+        (e.g., Marc and Pierre from Acme Corp) share deal context.
+
+  classification_guidance:
+    require_action_signals:
+      - "sender.deal_stage in ['negotiation', 'renewal'] AND related_tasks[].overdue = true"
+      - "calendar_context[].conflict = true"
+      - "sender.relationship_type = 'client' AND snippet contains question or request"
+      - "related_tasks[].assignee = user AND related_tasks[].overdue = true"
+
+    informatif_signals:
+      - "sender.relationship_type = 'internal' AND snippet contains 'FYI' or 'no action needed'"
+      - "sender.relationship_type = 'newsletter'"
+      - "sender.relationship_type = 'unknown' AND snippet contains substantive proposal"
+
+    notification_signals:
+      - "sender.relationship_type = 'automated'"
+      - "sender.relationship_type = 'vendor' AND subject contains 'invoice' or 'shipped'"

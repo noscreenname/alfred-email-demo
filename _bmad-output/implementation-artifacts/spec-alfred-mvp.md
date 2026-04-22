@@ -2,7 +2,8 @@
 title: 'Alfred MVP — 3-level maturity comparison research rig'
 type: 'feature'
 created: '2026-04-22'
-status: 'draft'
+status: 'done'
+baseline_commit: '007d4f1'
 context:
   - _bmad-output/planning-artifacts/architecture.md
   - _bmad-output/planning-artifacts/prd.md
@@ -53,7 +54,7 @@ context:
 ## Code Map
 
 - `main.py` -- FastAPI app: GET / (form), POST /run (trigger pipeline, render results)
-- `agent.py` -- load_context(level, period) + run_agent(system_prompt, context) → markdown
+- `alfred_agent.py` -- load_context(level, period) + run_agent(system_prompt, context) → markdown (renamed from agent.py to avoid shadow with existing agent/ package)
 - `prompts/system.md` -- shared system prompt (Alfred recap instructions)
 - `templates/index.html` -- form + 3 vertically stacked recap blocks with CSS classes per level
 - `static/style.css` -- visual differentiation per level, screenshot-ready layout
@@ -70,17 +71,17 @@ context:
 ## Tasks & Acceptance
 
 **Execution:**
-- [ ] `data/level-1/*` -- Create 4 raw mock data files (gmail.json, calendar.json, crm.csv, trello.json) with ~15-20 email threads including the 3 must-have scenarios (CRM miss, calendar conflict, unknown sender)
-- [ ] `data/level-2/inbox-product.json` -- Create pre-joined curated dataset from the same underlying data. Each email record includes contact info, related tasks, calendar context.
-- [ ] `data/level-3/inbox-product.json` -- Copy level-2 product verbatim
-- [ ] `data/level-3/contract.yaml` -- Create ODCS contract: schema definition, quality rules, taxonomy mapping (email.author = contacts.email = trello.assignee), lifecycle, ownership, SLA
-- [ ] `prompts/system.md` -- Write system prompt per architecture doc (4-section recap: Recap, Require Action, Stats, Everything Else)
-- [ ] `agent.py` -- Implement load_context(level, period) that reads appropriate data directory and formats prompt context string. Implement run_agent(system_prompt, context) that calls Anthropic API with temperature 0.
-- [ ] `main.py` -- FastAPI app with GET / (render form) and POST /run (loop through 3 levels, call agent, render template with results). Startup validation for required data files.
-- [ ] `templates/index.html` -- Jinja2 template: time period form (day/week/month) + 3 stacked recap blocks. Each block has a level header and renders markdown content. CSS class per level for visual differentiation.
-- [ ] `static/style.css` -- Minimal screenshot-ready styling. Level 1/2/3 get progressively richer visual treatment (e.g., subtle background tint, annotation styling). No chrome, no sidebar.
-- [ ] `requirements.txt` -- Pin dependencies: fastapi, uvicorn[standard], jinja2, anthropic, python-dotenv, pyyaml, markdown
-- [ ] `.env.example` -- Template with ANTHROPIC_API_KEY placeholder
+- [x] `data/level-1/*` -- Create 4 raw mock data files (gmail.json, calendar.json, crm.csv, trello.json) with ~15-20 email threads including the 3 must-have scenarios (CRM miss, calendar conflict, unknown sender)
+- [x] `data/level-2/inbox-product.json` -- Create pre-joined curated dataset from the same underlying data. Each email record includes contact info, related tasks, calendar context.
+- [x] `data/level-3/inbox-product.json` -- Copy level-2 product verbatim
+- [x] `data/level-3/contract.yaml` -- Create ODCS contract: schema definition, quality rules, taxonomy mapping (email.author = contacts.email = trello.assignee), lifecycle, ownership, SLA
+- [x] `prompts/system.md` -- Write system prompt per architecture doc (4-section recap: Recap, Require Action, Stats, Everything Else)
+- [x] `alfred_agent.py` -- Implement load_context(level, period) that reads appropriate data directory and formats prompt context string. Implement run_agent(system_prompt, context) that calls Anthropic API with temperature 0.
+- [x] `main.py` -- FastAPI app with GET / (render form) and POST /run (loop through 3 levels, call agent, render template with results). Startup validation for required data files.
+- [x] `templates/index.html` -- Jinja2 template: time period form (day/week/month) + 3 stacked recap blocks. Each block has a level header and renders markdown content. CSS class per level for visual differentiation.
+- [x] `static/style.css` -- Minimal screenshot-ready styling. Level 1/2/3 get progressively richer visual treatment (e.g., subtle background tint, annotation styling). No chrome, no sidebar.
+- [x] `requirements.txt` -- Pin dependencies: fastapi, uvicorn[standard], jinja2, anthropic, python-dotenv, pyyaml, markdown
+- [x] `.env.example` -- Template with ANTHROPIC_API_KEY placeholder
 
 **Acceptance Criteria:**
 - Given a valid ANTHROPIC_API_KEY in .env, when user runs `pip install -r requirements.txt && uvicorn main:app` and opens localhost:8000, then the form page loads
@@ -98,3 +99,35 @@ context:
 - Open localhost:8000, submit form with "week" — 3 stacked recaps render
 - Compare Level 1 vs Level 3 output for the CRM miss scenario — Level 3 should show cross-source context Level 1 missed
 - Screenshot the full page — should be slide-ready without post-processing
+
+## Suggested Review Order
+
+**Data layer — the research artifact**
+
+- 15 mock email threads with 3 must-have scenarios (CRM miss, calendar conflict, unknown sender)
+  [`gmail.json:1`](../../data/level-1/gmail.json#L1)
+
+- Pre-joined curated product — each thread enriched with sender, task, calendar context
+  [`inbox-product.json:1`](../../data/level-2/inbox-product.json#L1)
+
+- ODCS contract with taxonomy mappings and classification guidance — the thesis mechanism
+  [`contract.yaml:1`](../../data/level-3/contract.yaml#L1)
+
+**Agent pipeline — the for loop**
+
+- System prompt: 4-section recap format with `_Context:_` field for cross-source enrichment
+  [`system.md:1`](../../prompts/system.md#L1)
+
+- load_context() per level + run_agent() with temperature 0 and empty-content guard
+  [`alfred_agent.py:35`](../../alfred_agent.py#L35)
+
+**Web layer — glue code**
+
+- Single GET / + POST /run route with per-level error handling and period validation
+  [`main.py:1`](../../main.py#L1)
+
+- Form + 3 stacked recap blocks with CSS classes per level, no JavaScript
+  [`index.html:1`](../../templates/index.html#L1)
+
+- Visual differentiation: grey/orange/green left borders for L1/L2/L3
+  [`style.css:1`](../../static/style.css#L1)

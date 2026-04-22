@@ -1,0 +1,169 @@
+{
+  "messages": [
+    {
+      "id": "msg_001",
+      "threadId": "thread_001",
+      "from": "marc.lefevre@acme-corp.com",
+      "to": "andriy@example.com",
+      "subject": "Re: Following up on our discussion",
+      "date": "2026-04-18T09:14:00+02:00",
+      "snippet": "Hi Andriy, just wanted to circle back on what we discussed last Thursday. I've reviewed the proposal internally and have a few points I'd like to go over. Could we find 30 minutes next week?",
+      "labels": ["INBOX", "UNREAD"],
+      "isUnread": true
+    },
+    {
+      "id": "msg_002",
+      "threadId": "thread_002",
+      "from": "sarah.chen@partner-org.io",
+      "to": "andriy@example.com",
+      "subject": "Meeting request — Thursday 2pm",
+      "date": "2026-04-17T14:22:00+02:00",
+      "snippet": "Hey Andriy, are you available Thursday at 2pm CET for a quick sync on the integration timeline? I'd like to align on the Q3 deliverables before the steering committee next Monday.",
+      "labels": ["INBOX", "UNREAD"],
+      "isUnread": true
+    },
+    {
+      "id": "msg_003",
+      "threadId": "thread_003",
+      "from": "j.martinez@newco.io",
+      "to": "andriy@example.com",
+      "subject": "Partnership opportunity — data mesh tooling",
+      "date": "2026-04-18T11:05:00+02:00",
+      "snippet": "Hi Andriy, I came across your talk on data contracts at the Berlin meetup last month. We're building a data mesh platform and I think there could be interesting synergies. Would you be open to a 20-minute call?",
+      "labels": ["INBOX", "UNREAD"],
+      "isUnread": true
+    },
+    {
+      "id": "msg_004",
+      "threadId": "thread_004",
+      "from": "elena.volkov@internal-team.com",
+      "to": "andriy@example.com",
+      "subject": "Sprint review notes — data pipeline team",
+      "date": "2026-04-17T16:45:00+02:00",
+      "snippet": "Hi Andriy, attaching the sprint review notes from today's session. Key highlights: the ingestion pipeline migration is 80% complete, we identified a blocker on the schema registry integration. No action needed from you — just keeping you in the loop.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_005",
+      "threadId": "thread_005",
+      "from": "notifications@github.com",
+      "to": "andriy@example.com",
+      "subject": "[data-contracts-toolkit] Issue #247: Schema validation fails on nested arrays",
+      "date": "2026-04-18T08:30:00+02:00",
+      "snippet": "New issue opened by @user-xyz: When validating a schema with nested arrays, the validator throws an unexpected error...",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_006",
+      "threadId": "thread_006",
+      "from": "receipts@aws.amazon.com",
+      "to": "andriy@example.com",
+      "subject": "Your AWS invoice for April 2026",
+      "date": "2026-04-16T03:00:00+02:00",
+      "snippet": "Your AWS invoice for the billing period April 1-15, 2026 is now available. Total: €342.17.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_007",
+      "threadId": "thread_007",
+      "from": "pierre.dubois@acme-corp.com",
+      "to": "andriy@example.com",
+      "subject": "Re: Contract renewal timeline",
+      "date": "2026-04-17T10:30:00+02:00",
+      "snippet": "Andriy, quick heads up — the legal team needs the signed addendum by end of month. Marc mentioned you two are still discussing the technical scope. Let me know if I can help unblock.",
+      "labels": ["INBOX", "UNREAD"],
+      "isUnread": true
+    },
+    {
+      "id": "msg_008",
+      "threadId": "thread_008",
+      "from": "newsletter@dataengineering-weekly.com",
+      "to": "andriy@example.com",
+      "subject": "Data Engineering Weekly #287 — dbt 2.0 deep dive",
+      "date": "2026-04-16T07:00:00+02:00",
+      "snippet": "This week: dbt 2.0 launches with native Python models, Snowflake acquires data observability startup, and why data contracts are becoming the new API specs...",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_009",
+      "threadId": "thread_009",
+      "from": "calendar-noreply@google.com",
+      "to": "andriy@example.com",
+      "subject": "Reminder: Team standup — tomorrow 9:30 AM",
+      "date": "2026-04-17T18:00:00+02:00",
+      "snippet": "Reminder: Team standup is scheduled for tomorrow, Friday April 18, at 9:30 AM CET.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_010",
+      "threadId": "thread_010",
+      "from": "thomas.berg@client-b.de",
+      "to": "andriy@example.com",
+      "subject": "Quick question on data quality metrics",
+      "date": "2026-04-18T10:15:00+02:00",
+      "snippet": "Hi Andriy, we're setting up our data quality dashboard and I wanted to ask — which metrics do you recommend tracking for contract compliance? We're using Great Expectations but open to alternatives.",
+      "labels": ["INBOX", "UNREAD"],
+      "isUnread": true
+    },
+    {
+      "id": "msg_011",
+      "threadId": "thread_011",
+      "from": "shipping@zalando.de",
+      "to": "andriy@example.com",
+      "subject": "Your order has been shipped",
+      "date": "2026-04-17T12:00:00+02:00",
+      "snippet": "Good news! Your order #ZL-9283747 has been shipped and is on its way. Expected delivery: April 19-20.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_012",
+      "threadId": "thread_012",
+      "from": "lisa.park@internal-team.com",
+      "to": "andriy@example.com",
+      "subject": "FYI: New data governance policy draft",
+      "date": "2026-04-16T14:20:00+02:00",
+      "snippet": "Hi all, sharing the draft data governance policy for review. Comments welcome by end of next week. This covers data classification, retention, and access control standards.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_013",
+      "threadId": "thread_013",
+      "from": "noreply@linkedin.com",
+      "to": "andriy@example.com",
+      "subject": "You have 5 new connection requests",
+      "date": "2026-04-18T06:00:00+02:00",
+      "snippet": "Sarah Chen, Marc Lefèvre, and 3 others want to connect with you.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_014",
+      "threadId": "thread_014",
+      "from": "ops-alerts@internal-team.com",
+      "to": "andriy@example.com",
+      "subject": "[RESOLVED] Pipeline delay — customer_events ingestion",
+      "date": "2026-04-17T22:15:00+02:00",
+      "snippet": "The customer_events ingestion pipeline delay has been resolved. Root cause: upstream API rate limiting. SLA impact: 47 minutes. No data loss.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    },
+    {
+      "id": "msg_015",
+      "threadId": "thread_015",
+      "from": "marc.lefevre@acme-corp.com",
+      "to": "andriy@example.com",
+      "subject": "Re: Technical scope for Phase 2",
+      "date": "2026-04-16T15:40:00+02:00",
+      "snippet": "Andriy, I've attached the updated requirements for Phase 2. The main change is the addition of real-time streaming, which Pierre flagged as a priority for the renewal. Let me know your thoughts.",
+      "labels": ["INBOX"],
+      "isUnread": false
+    }
+  ]
+}

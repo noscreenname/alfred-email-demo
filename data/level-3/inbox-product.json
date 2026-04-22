@@ -1,0 +1,334 @@
+{
+  "product": {
+    "name": "Inbox Intelligence Product",
+    "owner": "data-platform-team",
+    "description": "Pre-joined email threads enriched with contact, calendar, and task context.",
+    "last_updated": "2026-04-18T12:00:00+02:00"
+  },
+  "threads": [
+    {
+      "thread_id": "thread_001",
+      "subject": "Re: Following up on our discussion",
+      "latest_message_date": "2026-04-18T09:14:00+02:00",
+      "sender": {
+        "name": "Marc Lefèvre",
+        "email": "marc.lefevre@acme-corp.com",
+        "organisation": "Acme Corp",
+        "relationship_type": "client",
+        "deal_stage": "negotiation",
+        "deal_value": 120000,
+        "deal_owner": "andriy@example.com"
+      },
+      "snippet": "Hi Andriy, just wanted to circle back on what we discussed last Thursday. I've reviewed the proposal internally and have a few points I'd like to go over. Could we find 30 minutes next week?",
+      "is_unread": true,
+      "labels": ["INBOX", "UNREAD"],
+      "related_tasks": [
+        {
+          "name": "Prepare Acme proposal revision — Phase 2 scope",
+          "status": "In Progress",
+          "assignee": "andriy@example.com",
+          "due": "2026-04-17",
+          "overdue": true
+        }
+      ],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_002",
+      "subject": "Meeting request — Thursday 2pm",
+      "latest_message_date": "2026-04-17T14:22:00+02:00",
+      "sender": {
+        "name": "Sarah Chen",
+        "email": "sarah.chen@partner-org.io",
+        "organisation": "Partner Org",
+        "relationship_type": "partner"
+      },
+      "snippet": "Hey Andriy, are you available Thursday at 2pm CET for a quick sync on the integration timeline? I'd like to align on the Q3 deliverables before the steering committee next Monday.",
+      "is_unread": true,
+      "labels": ["INBOX", "UNREAD"],
+      "related_tasks": [],
+      "calendar_context": [
+        {
+          "event": "Data governance working group",
+          "start": "2026-04-18T14:00:00+02:00",
+          "end": "2026-04-18T15:00:00+02:00",
+          "conflict": true,
+          "conflict_note": "Proposed meeting time overlaps with confirmed event"
+        }
+      ]
+    },
+    {
+      "thread_id": "thread_003",
+      "subject": "Partnership opportunity — data mesh tooling",
+      "latest_message_date": "2026-04-18T11:05:00+02:00",
+      "sender": {
+        "name": "J. Martinez",
+        "email": "j.martinez@newco.io",
+        "organisation": "NewCo",
+        "relationship_type": "unknown"
+      },
+      "snippet": "Hi Andriy, I came across your talk on data contracts at the Berlin meetup last month. We're building a data mesh platform and I think there could be interesting synergies. Would you be open to a 20-minute call?",
+      "is_unread": true,
+      "labels": ["INBOX", "UNREAD"],
+      "related_tasks": [],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_004",
+      "subject": "Sprint review notes — data pipeline team",
+      "latest_message_date": "2026-04-17T16:45:00+02:00",
+      "sender": {
+        "name": "Elena Volkov",
+        "email": "elena.volkov@internal-team.com",
+        "organisation": "Internal",
+        "relationship_type": "internal"
+      },
+      "snippet": "Hi Andriy, attaching the sprint review notes from today's session. Key highlights: the ingestion pipeline migration is 80% complete, we identified a blocker on the schema registry integration. No action needed from you — just keeping you in the loop.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [
+        {
+          "name": "Schema registry integration — unblock pipeline team",
+          "status": "Blocked",
+          "assignee": "elena.volkov@internal-team.com",
+          "due": "2026-04-22",
+          "overdue": false
+        }
+      ],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_005",
+      "subject": "[data-contracts-toolkit] Issue #247: Schema validation fails on nested arrays",
+      "latest_message_date": "2026-04-18T08:30:00+02:00",
+      "sender": {
+        "name": "GitHub Notifications",
+        "email": "notifications@github.com",
+        "organisation": "GitHub",
+        "relationship_type": "automated"
+      },
+      "snippet": "New issue opened by @user-xyz: When validating a schema with nested arrays, the validator throws an unexpected error...",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_006",
+      "subject": "Your AWS invoice for April 2026",
+      "latest_message_date": "2026-04-16T03:00:00+02:00",
+      "sender": {
+        "name": "AWS Billing",
+        "email": "receipts@aws.amazon.com",
+        "organisation": "Amazon Web Services",
+        "relationship_type": "vendor"
+      },
+      "snippet": "Your AWS invoice for the billing period April 1-15, 2026 is now available. Total: €342.17.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_007",
+      "subject": "Re: Contract renewal timeline",
+      "latest_message_date": "2026-04-17T10:30:00+02:00",
+      "sender": {
+        "name": "Pierre Dubois",
+        "email": "pierre.dubois@acme-corp.com",
+        "organisation": "Acme Corp",
+        "relationship_type": "client",
+        "deal_stage": "negotiation",
+        "deal_value": 120000,
+        "deal_owner": "andriy@example.com"
+      },
+      "snippet": "Andriy, quick heads up — the legal team needs the signed addendum by end of month. Marc mentioned you two are still discussing the technical scope. Let me know if I can help unblock.",
+      "is_unread": true,
+      "labels": ["INBOX", "UNREAD"],
+      "related_tasks": [
+        {
+          "name": "Prepare Acme proposal revision — Phase 2 scope",
+          "status": "In Progress",
+          "assignee": "andriy@example.com",
+          "due": "2026-04-17",
+          "overdue": true
+        }
+      ],
+      "calendar_context": [
+        {
+          "event": "Lunch with Pierre (Acme)",
+          "start": "2026-04-16T12:00:00+02:00",
+          "end": "2026-04-16T13:30:00+02:00",
+          "conflict": false,
+          "conflict_note": "Recent in-person meeting with this contact"
+        }
+      ]
+    },
+    {
+      "thread_id": "thread_008",
+      "subject": "Data Engineering Weekly #287 — dbt 2.0 deep dive",
+      "latest_message_date": "2026-04-16T07:00:00+02:00",
+      "sender": {
+        "name": "Data Engineering Weekly",
+        "email": "newsletter@dataengineering-weekly.com",
+        "organisation": "Data Engineering Weekly",
+        "relationship_type": "newsletter"
+      },
+      "snippet": "This week: dbt 2.0 launches with native Python models, Snowflake acquires data observability startup, and why data contracts are becoming the new API specs...",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_009",
+      "subject": "Reminder: Team standup — tomorrow 9:30 AM",
+      "latest_message_date": "2026-04-17T18:00:00+02:00",
+      "sender": {
+        "name": "Google Calendar",
+        "email": "calendar-noreply@google.com",
+        "organisation": "Google",
+        "relationship_type": "automated"
+      },
+      "snippet": "Reminder: Team standup is scheduled for tomorrow, Friday April 18, at 9:30 AM CET.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [],
+      "calendar_context": [
+        {
+          "event": "Team standup",
+          "start": "2026-04-18T09:30:00+02:00",
+          "end": "2026-04-18T09:45:00+02:00",
+          "conflict": false,
+          "conflict_note": "Event already on calendar"
+        }
+      ]
+    },
+    {
+      "thread_id": "thread_010",
+      "subject": "Quick question on data quality metrics",
+      "latest_message_date": "2026-04-18T10:15:00+02:00",
+      "sender": {
+        "name": "Thomas Berg",
+        "email": "thomas.berg@client-b.de",
+        "organisation": "Client B",
+        "relationship_type": "client",
+        "deal_stage": "active",
+        "deal_value": 45000,
+        "deal_owner": "andriy@example.com"
+      },
+      "snippet": "Hi Andriy, we're setting up our data quality dashboard and I wanted to ask — which metrics do you recommend tracking for contract compliance? We're using Great Expectations but open to alternatives.",
+      "is_unread": true,
+      "labels": ["INBOX", "UNREAD"],
+      "related_tasks": [
+        {
+          "name": "Client B — data quality metrics recommendation",
+          "status": "To Do",
+          "assignee": "andriy@example.com",
+          "due": "2026-04-21",
+          "overdue": false
+        }
+      ],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_011",
+      "subject": "Your order has been shipped",
+      "latest_message_date": "2026-04-17T12:00:00+02:00",
+      "sender": {
+        "name": "Zalando",
+        "email": "shipping@zalando.de",
+        "organisation": "Zalando",
+        "relationship_type": "vendor"
+      },
+      "snippet": "Good news! Your order #ZL-9283747 has been shipped and is on its way. Expected delivery: April 19-20.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_012",
+      "subject": "FYI: New data governance policy draft",
+      "latest_message_date": "2026-04-16T14:20:00+02:00",
+      "sender": {
+        "name": "Lisa Park",
+        "email": "lisa.park@internal-team.com",
+        "organisation": "Internal",
+        "relationship_type": "internal"
+      },
+      "snippet": "Hi all, sharing the draft data governance policy for review. Comments welcome by end of next week. This covers data classification, retention, and access control standards.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [
+        {
+          "name": "Review data governance policy draft",
+          "status": "To Do",
+          "assignee": "andriy@example.com",
+          "due": "2026-04-25",
+          "overdue": false
+        }
+      ],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_013",
+      "subject": "You have 5 new connection requests",
+      "latest_message_date": "2026-04-18T06:00:00+02:00",
+      "sender": {
+        "name": "LinkedIn",
+        "email": "noreply@linkedin.com",
+        "organisation": "LinkedIn",
+        "relationship_type": "automated"
+      },
+      "snippet": "Sarah Chen, Marc Lefèvre, and 3 others want to connect with you.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_014",
+      "subject": "[RESOLVED] Pipeline delay — customer_events ingestion",
+      "latest_message_date": "2026-04-17T22:15:00+02:00",
+      "sender": {
+        "name": "Ops Alerts",
+        "email": "ops-alerts@internal-team.com",
+        "organisation": "Internal",
+        "relationship_type": "automated"
+      },
+      "snippet": "The customer_events ingestion pipeline delay has been resolved. Root cause: upstream API rate limiting. SLA impact: 47 minutes. No data loss.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [],
+      "calendar_context": []
+    },
+    {
+      "thread_id": "thread_015",
+      "subject": "Re: Technical scope for Phase 2",
+      "latest_message_date": "2026-04-16T15:40:00+02:00",
+      "sender": {
+        "name": "Marc Lefèvre",
+        "email": "marc.lefevre@acme-corp.com",
+        "organisation": "Acme Corp",
+        "relationship_type": "client",
+        "deal_stage": "negotiation",
+        "deal_value": 120000,
+        "deal_owner": "andriy@example.com"
+      },
+      "snippet": "Andriy, I've attached the updated requirements for Phase 2. The main change is the addition of real-time streaming, which Pierre flagged as a priority for the renewal. Let me know your thoughts.",
+      "is_unread": false,
+      "labels": ["INBOX"],
+      "related_tasks": [
+        {
+          "name": "Prepare Acme proposal revision — Phase 2 scope",
+          "status": "In Progress",
+          "assignee": "andriy@example.com",
+          "due": "2026-04-17",
+          "overdue": true
+        }
+      ],
+      "calendar_context": []
+    }
+  ]
+}

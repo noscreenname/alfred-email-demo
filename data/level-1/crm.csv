@@ -1,0 +1,7 @@
+contact_id,name,email,organisation,relationship_type,deal_stage,deal_value,deal_owner,last_interaction,notes
+C001,Marc Lefèvre,marc.lefevre@acme-corp.com,Acme Corp,client,negotiation,120000,andriy@example.com,2026-04-14,Phase 2 scope under discussion. Key decision maker on technical requirements.
+C002,Pierre Dubois,pierre.dubois@acme-corp.com,Acme Corp,client,negotiation,120000,andriy@example.com,2026-04-16,Legal/commercial lead for Acme. Working on contract renewal addendum.
+C003,Sarah Chen,sarah.chen@partner-org.io,Partner Org,partner,,,,2026-04-10,Integration partner for Q3 deliverables. Steering committee member.
+C004,Thomas Berg,thomas.berg@client-b.de,Client B,client,active,45000,andriy@example.com,2026-04-15,Data quality consulting engagement. Ongoing support.
+C005,Elena Volkov,elena.volkov@internal-team.com,Internal,internal,,,,2026-04-18,Data pipeline team lead. Reports to Andriy.
+C006,Lisa Park,lisa.park@internal-team.com,Internal,internal,,,,2026-04-16,Data governance specialist. Reports to Andriy.

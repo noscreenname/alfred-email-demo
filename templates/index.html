@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfred — Data Contract Maturity Comparison</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Alfred — Inbox Recap</h1>
+        <p class="subtitle">Same agent, same data, different packaging. How does data maturity affect context quality?</p>
+    </header>
+
+    <form action="/run" method="post" class="period-form">
+        <label for="period">Time period:</label>
+        <select name="period" id="period">
+            <option value="day" {% if period == 'day' %}selected{% endif %}>Day</option>
+            <option value="week" {% if period == 'week' %}selected{% endif %}>Week</option>
+            <option value="month" {% if period == 'month' %}selected{% endif %}>Month</option>
+        </select>
+        <button type="submit">Run Alfred</button>
+    </form>
+
+    {% if results %}
+    <div class="results">
+        {% for result in results %}
+        <section class="level-block level-{{ result.number }}">
+            <div class="level-header">
+                <h2>{{ result.name }}</h2>
+                <p class="level-description">{{ result.description }}</p>
+            </div>
+            <div class="level-content">
+                {% if result.error %}
+                <div class="error-block">
+                    <p><strong>Error:</strong> {{ result.error }}</p>
+                </div>
+                {% else %}
+                {{ result.content | safe }}
+                {% endif %}
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <p>Select a time period and click <strong>Run Alfred</strong> to generate recaps at each maturity level.</p>
+        <p class="note">This will make 3 sequential LLM calls — expect ~30 seconds.</p>
+    </div>
+    {% endif %}
+
+    <footer>
+        <p>Alfred — Data Contract Maturity Research Rig</p>
+    </footer>
+</body>
+</html>

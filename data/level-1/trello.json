@@ -1,0 +1,54 @@
+{
+  "cards": [
+    {
+      "id": "card_001",
+      "name": "Prepare Acme proposal revision — Phase 2 scope",
+      "list": "In Progress",
+      "assignee": "andriy@example.com",
+      "due": "2026-04-17",
+      "overdue": true,
+      "labels": ["client-work", "high-priority"],
+      "description": "Revise the technical proposal for Acme Phase 2 based on Marc's feedback. Include real-time streaming requirements."
+    },
+    {
+      "id": "card_002",
+      "name": "Review data governance policy draft",
+      "list": "To Do",
+      "assignee": "andriy@example.com",
+      "due": "2026-04-25",
+      "overdue": false,
+      "labels": ["internal", "governance"],
+      "description": "Review Lisa's draft data governance policy and provide feedback."
+    },
+    {
+      "id": "card_003",
+      "name": "Prepare conference talk — data contracts for agents",
+      "list": "In Progress",
+      "assignee": "andriy@example.com",
+      "due": "2026-05-10",
+      "overdue": false,
+      "labels": ["speaking", "personal"],
+      "description": "Build the Alfred demo and prepare slides for the data contracts talk."
+    },
+    {
+      "id": "card_004",
+      "name": "Schema registry integration — unblock pipeline team",
+      "list": "Blocked",
+      "assignee": "elena.volkov@internal-team.com",
+      "due": "2026-04-22",
+      "overdue": false,
+      "labels": ["internal", "technical"],
+      "description": "Resolve schema registry compatibility issue blocking the ingestion pipeline migration."
+    },
+    {
+      "id": "card_005",
+      "name": "Client B — data quality metrics recommendation",
+      "list": "To Do",
+      "assignee": "andriy@example.com",
+      "due": "2026-04-21",
+      "overdue": false,
+      "labels": ["client-work"],
+      "description": "Respond to Thomas Berg's request for recommended data quality metrics for contract compliance monitoring."
+    }
+  ]
+}

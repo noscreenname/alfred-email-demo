@@ -1,0 +1,58 @@
+{
+  "events": [
+    {
+      "id": "evt_001",
+      "summary": "Team standup",
+      "start": "2026-04-18T09:30:00+02:00",
+      "end": "2026-04-18T09:45:00+02:00",
+      "status": "confirmed",
+      "attendees": ["andriy@example.com", "elena.volkov@internal-team.com", "lisa.park@internal-team.com"],
+      "location": "Google Meet"
+    },
+    {
+      "id": "evt_002",
+      "summary": "1:1 with Elena — pipeline migration",
+      "start": "2026-04-17T11:00:00+02:00",
+      "end": "2026-04-17T11:30:00+02:00",
+      "status": "confirmed",
+      "attendees": ["andriy@example.com", "elena.volkov@internal-team.com"],
+      "location": "Google Meet"
+    },
+    {
+      "id": "evt_003",
+      "summary": "Architecture review — schema registry",
+      "start": "2026-04-17T14:00:00+02:00",
+      "end": "2026-04-17T15:00:00+02:00",
+      "status": "confirmed",
+      "attendees": ["andriy@example.com", "elena.volkov@internal-team.com", "lisa.park@internal-team.com", "thomas.berg@client-b.de"],
+      "location": "Zoom"
+    },
+    {
+      "id": "evt_004",
+      "summary": "Data governance working group",
+      "start": "2026-04-18T14:00:00+02:00",
+      "end": "2026-04-18T15:00:00+02:00",
+      "status": "confirmed",
+      "attendees": ["andriy@example.com", "lisa.park@internal-team.com"],
+      "location": "Conference room B"
+    },
+    {
+      "id": "evt_005",
+      "summary": "Lunch with Pierre (Acme)",
+      "start": "2026-04-16T12:00:00+02:00",
+      "end": "2026-04-16T13:30:00+02:00",
+      "status": "confirmed",
+      "attendees": ["andriy@example.com", "pierre.dubois@acme-corp.com"],
+      "location": "Le Bouillon, 14 Rue de Rivoli"
+    },
+    {
+      "id": "evt_006",
+      "summary": "Deep work — conference talk prep",
+      "start": "2026-04-18T10:00:00+02:00",
+      "end": "2026-04-18T12:00:00+02:00",
+      "status": "confirmed",
+      "attendees": ["andriy@example.com"],
+      "location": ""
+    }
+  ]
+}
