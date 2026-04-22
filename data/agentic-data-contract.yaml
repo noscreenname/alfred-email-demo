@@ -1,0 +1,873 @@
+# ============================================================
+# Agentic Data Contract
+# Use case: Personal Email & Calendar Assistant
+# Version: 0.1-draft
+# Last updated: 2026-04-16
+# ============================================================
+# Philosophy:
+#   This contract describes not just what each data product is,
+#   but what an agent can DO with it, under which conditions,
+#   and how to behave when those conditions are not met.
+#   Instructions in plain English are addressed directly to the agent.
+# ============================================================
+
+
+# ------------------------------------------------------------
+# PART 1 — AGENT MANIFEST
+# Capability map: what actions are possible, and what combination
+# of data products is required to unlock each one.
+# ------------------------------------------------------------
+
+manifest:
+  use_case: "Personal email and calendar assistant"
+  agent_id: "email-calendar-assistant-v1"
+  agent_type: AGENT                          # not human, not pipeline, not API
+  agent_role: email-calendar-assistant
+
+  autonomy_levels:
+    INFORM:
+      description: "Read, summarise, and present information to the user. No outbound action taken."
+    DRAFT:
+      description: "Produce a draft output (reply, invite, summary) for human review before sending."
+    ACT:
+      description: "Execute an action autonomously without human review. Highest trust level. Apply conservatively."
+
+  capability_map:
+
+    summarise_inbox:
+      autonomy: INFORM
+      requires: [inbox]
+      instruction: >
+        You may summarise the inbox autonomously using inbox data alone.
+        Present urgency, sender, and topic. Do not draft replies at this stage.
+
+    triage_and_prioritise:
+      autonomy: INFORM
+      requires: [inbox, contacts, priorities]
+      instruction: >
+        Use contacts to enrich sender context and priorities to weight importance.
+        Surface the top items the user should attend to today.
+        If priorities.last_reviewed_at > 14 days, warn the user the priority list may be stale
+        before presenting the triage.
+
+    draft_reply:
+      autonomy: DRAFT
+      requires: [inbox, contacts, preferences, references]
+      instruction: >
+        Produce a draft reply for human review. Never send autonomously at this level.
+        Apply preferences for tone and length. Cross-check references to ensure
+        the reply does not contradict or ignore an ongoing topic.
+        If references.context_completeness = known_gaps for the relevant topic,
+        flag this to the user before presenting the draft.
+
+    send_reply:
+      autonomy: ACT
+      requires: [inbox, contacts, preferences, references]
+      instruction: >
+        You may send a reply autonomously only when ALL of the following are true:
+        - inbox.handling_constraint = auto_ok for this message
+        - contacts.auto_reply_policy = allowed for this sender
+        - contacts.temporal_importance != critical
+        - contacts.open_context_flag = false
+        - references.context_completeness = full for any linked topic
+        - inbox.classification_confidence > 0.75
+        - preferences.delegation_boundaries confirms this topic is in can_reply_autonomously[]
+        If any condition is not met, fall back to DRAFT and explain why to the user.
+
+    propose_meeting_slot:
+      autonomy: DRAFT
+      requires: [calendar, contacts, preferences]
+      instruction: >
+        Propose available slots for human confirmation. Do not book.
+        Use preferences.energy_schedule to avoid proposing during deep_work windows.
+        If calendar.data_age_minutes > 10, warn the user that availability may have changed
+        and ask them to confirm before you send the proposal.
+
+    schedule_meeting:
+      autonomy: ACT
+      requires: [calendar, contacts, preferences]
+      instruction: >
+        You may book a meeting autonomously only when ALL of the following are true:
+        - calendar.data_age_minutes < 2
+        - calendar.off_calendar_risk = false for the proposed slot
+        - calendar.movability_confidence > 0.8 for any event being moved
+        - contacts.temporal_importance = standard for all attendees
+        - contacts.auto_reply_policy != never for all attendees
+        - preferences.delegation_boundaries confirms schedule_meeting is in can_act_autonomously[]
+        If calendar.data_age_minutes is between 2 and 10, fall back to DRAFT.
+        If calendar.off_calendar_risk = true, inform the user and do not propose that slot.
+
+    surface_topic_context:
+      autonomy: INFORM
+      requires: [references, contacts]
+      instruction: >
+        Surface relevant topic context when an incoming email references an ongoing situation.
+        If references.context_completeness = partial, present what is known and flag what may be missing.
+        If references.context_completeness = known_gaps, tell the user explicitly:
+        "I have incomplete context on this topic. I can summarise what I know,
+        but I recommend you review before I draft anything."
+
+  degraded_mode:
+    instruction: >
+      If you detect a data quality issue, sync failure, or threshold breach across
+      any required data product, do the following:
+      1. Check the status_endpoint for the affected product.
+      2. If a known incident is confirmed, inform the user:
+         "The [product] data product is currently degraded (confirmed incident: [status]).
+          I am switching to a lower autonomy level until it recovers."
+      3. Drop to the highest autonomy level still supported by healthy data products.
+      4. If no status endpoint is reachable, treat the product as unavailable and inform the user.
+      5. Never act on data you have reason to distrust. When in doubt, inform and ask.
+
+
+# ------------------------------------------------------------
+# PART 2 — DATASET CONTRACTS
+# One contract per data product. Each follows the same structure:
+#   - Standard contract fields (schema, quality, freshness, ownership)
+#   - Agentic contract extension (roles, action rules, status, scope)
+# ------------------------------------------------------------
+
+data_products:
+
+  # ----------------------------------------------------------
+  # 1. INBOX
+  # ----------------------------------------------------------
+  inbox:
+    meta:
+      name: "Inbox"
+      description: "Email threads and messages from the executive's primary inbox."
+      version: "2.1"
+      domain: "communication"
+
+    # Standard contract
+    schema:
+      guaranteed_fields: [sender, recipient, date, subject, body, thread_id, labels]
+      inferred_fields:
+        - name: tone
+          values: [formal, neutral, casual]
+          note: "Classified by NLP pipeline. Treat as a signal, not a fact."
+        - name: purpose
+          values: [request, inform, fyi, escalation, social]
+          note: "Classification confidence exposed separately. Escalate if confidence is low."
+        - name: urgency_score
+          type: float_0_to_1
+          note: "Inferred. Do not act on urgency_score alone without checking classification_confidence."
+        - name: call_to_action
+          type: boolean
+          note: "True if the message appears to require a response or decision."
+
+    quality:
+      rules:
+        - "No null sender field."
+        - "No orphaned thread_id (every message belongs to a thread)."
+        - "Inferred fields are present but may be null for short or ambiguous messages."
+
+    freshness:
+      sla_minutes: 5
+      instruction: >
+        If inbox data is older than 5 minutes, warn the user before presenting a triage.
+        If older than 15 minutes, do not initiate any action. Inform the user and check
+        the status endpoint.
+
+    ownership:
+      owner: "messaging-team"
+      escalation: "Slack #data-inbox-support"
+
+    # Agentic contract extension
+    agentic:
+
+      roles:
+        email-calendar-assistant:
+          permissions: [read, classify, draft, act_if_permitted]
+          instruction: >
+            You are the designated consumer of this product. Use it to triage, summarise,
+            draft, and (where permitted by this contract) send replies.
+        scheduling-agent:
+          permissions: [read]
+          instruction: >
+            You may read inbox data to detect meeting requests. You may not draft or send
+            email replies. Pass meeting requests to the capability map for scheduling.
+
+      action_rules:
+
+        - action: summarise_inbox
+          autonomy: INFORM
+          condition: "freshness_minutes < 10"
+          instruction: >
+            You may summarise autonomously. If freshness_minutes > 10, present the summary
+            but tell the user: "Inbox data is [X] minutes old. Some recent messages may not appear."
+
+        - action: draft_reply
+          autonomy: DRAFT
+          condition: >
+            freshness_minutes < 10
+            AND classification_confidence > 0.6
+            AND thread_completeness IN [full, partial]
+          instruction: >
+            Draft a reply for human review. If classification_confidence is between 0.6 and 0.75,
+            add a note to the draft: "I classified this as [purpose] with moderate confidence.
+            Please verify the intent before sending."
+            If thread_completeness = partial, prepend: "Note: this thread may reference
+            context I do not have access to."
+            Never draft if thread_completeness = references_off_system without flagging it.
+
+        - action: send_reply
+          autonomy: ACT
+          condition: >
+            freshness_minutes < 5
+            AND classification_confidence > 0.75
+            AND thread_completeness = full
+            AND handling_constraint = auto_ok
+            AND tone_shift = false
+          instruction: >
+            You may send autonomously only when all conditions above are met.
+            If tone_shift = true, always escalate to DRAFT regardless of other conditions.
+            If handling_constraint = draft_only, produce a draft and tell the user why you did not send.
+            If handling_constraint = human_required, do not draft. Notify the user and wait.
+
+      operational_status:
+        status_endpoint: "https://status.internal/inbox-product"
+        support_channel: "Slack #data-inbox-support"
+        instruction: >
+          Before any ACT-level action, verify the status endpoint returns healthy.
+          If the endpoint is unreachable or returns degraded, fall back to DRAFT and
+          inform the user: "I cannot confirm inbox data integrity right now. Here is a draft
+          for your review."
+
+      scope_declaration:
+        covers: "Primary inbox only (Gmail workspace account)."
+        known_gaps:
+          - "WhatsApp and SMS messages are not captured here."
+          - "Verbal commitments referenced in email threads have no system record."
+          - "Emails deleted or archived before sync are not recoverable."
+        instruction: >
+          If a message references context that appears to exist outside this inbox
+          (e.g. "as per our call", "following our conversation"), set thread_completeness
+          to references_off_system and do not act autonomously. Tell the user:
+          "This message references context I may not have. I recommend you review before I reply."
+
+
+  # ----------------------------------------------------------
+  # 2. CONTACTS
+  # ----------------------------------------------------------
+  contacts:
+    meta:
+      name: "Contacts"
+      description: "People and organisations in the executive's professional and personal network."
+      version: "1.4"
+      domain: "relationships"
+
+    schema:
+      guaranteed_fields: [contact_id, name, email, organisation, relationship_type, interaction_count]
+      inferred_fields:
+        - name: relationship_strength_score
+          type: float_0_to_1
+          note: "Inferred from interaction frequency and recency. Do not use as the sole basis for autonomy decisions."
+        - name: topics_discussed
+          type: list_of_tags
+          note: "Extracted from email history. Indicative only."
+
+    quality:
+      rules:
+        - "relationship_type must be a validated enum: client, prospect, internal, personal, vendor, unknown."
+        - "provenance field required on all non-guaranteed fields: human_entered, crm_sync, or inferred."
+        - "email field must be unique per contact."
+
+    freshness:
+      sla_minutes: 60
+      instruction: >
+        If contact record freshness > 60 minutes for a sender you are about to act on,
+        check the status endpoint before proceeding.
+        If last_verified_at > 30 days for a contact, treat relationship context as potentially
+        stale and do not use it to justify autonomous action.
+
+    ownership:
+      owner: "crm-team"
+      escalation: "Slack #crm-data-support"
+
+    agentic:
+
+      roles:
+        email-calendar-assistant:
+          permissions: [read, enrich_context]
+          instruction: >
+            Use contact data to personalise drafts and assess action eligibility.
+            You may not create, modify, or delete contact records.
+        scheduling-agent:
+          permissions: [read_availability_signals]
+          instruction: >
+            You may read relationship_type and auto_reply_policy to assess scheduling appropriateness.
+            You may not access full contact history.
+
+      action_rules:
+
+        - action: enrich_triage
+          autonomy: INFORM
+          condition: "freshness_minutes < 120"
+          instruction: >
+            Use relationship_type and temporal_importance to weight the triage.
+            If temporal_importance = critical, always surface the message at the top of the triage
+            regardless of urgency_score.
+
+        - action: draft_reply
+          autonomy: DRAFT
+          condition: >
+            provenance IN [human_entered, crm_sync]
+            AND last_verified_at < 30 days
+            AND open_context_flag = false
+          instruction: >
+            Use relationship_type to calibrate tone and length.
+            If provenance = inferred for relationship_type, add a caveat to the draft:
+            "Relationship context for this sender is inferred and may not be accurate."
+            If open_context_flag = true, always flag to the user before drafting:
+            "There is an open situation with this contact. Please review before I draft."
+
+        - action: send_reply
+          autonomy: ACT
+          condition: >
+            auto_reply_policy = allowed
+            AND temporal_importance = standard
+            AND open_context_flag = false
+            AND last_verified_at < 14 days
+          instruction: >
+            If auto_reply_policy = draft_only, produce a draft. Do not send.
+            If auto_reply_policy = never, do not draft. Notify the user:
+            "This contact is flagged for personal replies only. I have not drafted anything."
+            If temporal_importance = elevated or critical, fall back to DRAFT and explain:
+            "This contact has elevated importance right now. I have prepared a draft for your review."
+
+        - action: schedule_meeting
+          autonomy: ACT
+          condition: >
+            relationship_type IN [client, prospect, internal, personal]
+            AND auto_reply_policy != never
+            AND temporal_importance = standard
+          instruction: >
+            If temporal_importance = elevated, fall back to DRAFT for the meeting invite.
+            Inform the user: "This contact is currently elevated importance. I have drafted
+            an invite rather than sending it directly."
+
+      operational_status:
+        status_endpoint: "https://status.internal/contacts-product"
+        support_channel: "Slack #crm-data-support"
+        instruction: >
+          If the contacts product is degraded, do not use relationship_type or temporal_importance
+          to gate actions. Fall back to INFORM only and tell the user:
+          "Contact data is currently unavailable. I cannot assess relationship context."
+
+      scope_declaration:
+        covers: "Contacts synced from CRM and Gmail contact history."
+        known_gaps:
+          - "Contacts known to the executive personally but never entered into CRM are absent."
+          - "Relationship status changes managed verbally or offline are not reflected here."
+          - "Temporary importance shifts (e.g. mid-negotiation) require manual update to temporal_importance."
+        instruction: >
+          If a sender is not found in the contacts dataset, do not assume they are low-priority.
+          Tell the user: "I do not have a contact record for this sender. I recommend you review
+          before I take any action."
+
+
+  # ----------------------------------------------------------
+  # 3. CALENDAR
+  # ----------------------------------------------------------
+  calendar:
+    meta:
+      name: "Calendar"
+      description: "The executive's schedule, availability, and event metadata."
+      version: "3.0"
+      domain: "scheduling"
+
+    schema:
+      guaranteed_fields: [event_id, title, start, end, status, attendees, location, format]
+      inferred_fields:
+        - name: movability
+          values: [can_move, flexible, fixed]
+          note: "Inferred from event type and history. Confirm with human before acting on fixed events."
+        - name: buffer_needed
+          type: object
+          fields: [pre_minutes, post_minutes]
+          note: "Estimated. Verify against preferences.energy_schedule before booking adjacent slots."
+        - name: prep_required
+          type: boolean
+          note: "Inferred from event title and attendee list. May miss context-specific prep requirements."
+
+    quality:
+      rules:
+        - "No two confirmed events may overlap."
+        - "Status must be a validated enum: confirmed, tentative, cancelled, free."
+        - "format must be a validated enum: in_person, video, phone, all_hands, side_chat, async."
+
+    freshness:
+      sla_minutes: 2
+      instruction: >
+        Calendar freshness is critical. Always check data_age_minutes before any scheduling action.
+        The acceptable threshold varies by action — see action_rules below.
+        If the sync pipeline is delayed, check the status endpoint immediately.
+        Do not propose or book slots based on data you cannot verify is current.
+
+    ownership:
+      owner: "calendar-sync-team"
+      escalation: "Slack #calendar-data-support"
+
+    agentic:
+
+      roles:
+        scheduling-agent:
+          permissions: [read, propose, book_if_permitted]
+          instruction: >
+            You are the primary scheduling consumer of this product. Use it to assess
+            availability and execute meeting bookings where all conditions are met.
+        email-calendar-assistant:
+          permissions: [read_availability_signals]
+          instruction: >
+            You may use calendar data to answer availability questions in email context.
+            You may not book meetings directly. Route scheduling requests to the scheduling capability.
+
+      action_rules:
+
+        - action: answer_availability_question
+          autonomy: INFORM
+          condition: "data_age_minutes < 15"
+          instruction: >
+            You may answer "am I free at X?" questions based on calendar data.
+            Always include: "Based on data from [data_age_minutes] minutes ago."
+            If data_age_minutes > 15, say: "My calendar data is [X] minutes old.
+            I recommend checking directly before committing to a time."
+
+        - action: propose_meeting_slot
+          autonomy: DRAFT
+          condition: >
+            data_age_minutes < 10
+            AND off_calendar_risk = false for proposed slot
+          instruction: >
+            Propose 2–3 options. Apply preferences.energy_schedule to avoid deep_work blocks.
+            Apply logistics_constraints (travel_time_min, prep_time_min) when computing real availability.
+            Do not propose tentative slots unless you flag them as tentative.
+            If off_calendar_risk = true for a slot, exclude it and do not explain why to external parties —
+            simply say that slot is unavailable.
+            If data_age_minutes is between 5 and 10, append to your message:
+            "Availability based on data from [X] minutes ago. Please confirm before sending."
+
+        - action: schedule_meeting
+          autonomy: ACT
+          condition: >
+            data_age_minutes < 2
+            AND off_calendar_risk = false
+            AND movability_confidence > 0.8 for any displaced event
+            AND event_priority_rank allows displacement
+          instruction: >
+            You may book autonomously only when all conditions above are met.
+            If data_age_minutes is between 2 and 5, fall back to DRAFT. Tell the user:
+            "Calendar data is [X] minutes old. I have prepared the invite for your confirmation
+            rather than sending directly."
+            If data_age_minutes > 5, do not propose. Tell the user to check availability manually.
+            Never book over a confirmed event. Never move a fixed event without explicit user instruction.
+            If the meeting format is in_person, verify location logistics before confirming.
+
+        - action: reschedule_meeting
+          autonomy: ACT
+          condition: >
+            data_age_minutes < 2
+            AND event being moved has movability = can_move OR flexible
+            AND movability_confidence > 0.85
+          instruction: >
+            If movability = fixed or movability_confidence < 0.85, fall back to DRAFT.
+            Tell the user: "I am not confident this event can be moved without your input."
+            Always notify all attendees of the change once confirmed.
+
+      operational_status:
+        status_endpoint: "https://status.internal/calendar-sync"
+        support_channel: "Slack #calendar-data-support"
+        instruction: >
+          If data_age_minutes exceeds 10 and the status endpoint confirms a sync issue,
+          inform the user: "Calendar sync is currently delayed ([status]). I cannot safely
+          propose or book slots. Please check your calendar directly."
+          If the endpoint is unreachable, treat calendar data as unreliable and switch to INFORM only.
+
+      scope_declaration:
+        covers: "Primary Google Calendar workspace account only."
+        known_gaps:
+          - "Shared and delegated calendars are not included."
+          - "Off-calendar commitments (standing calls, informal recurring meetings) have no record."
+          - "Events updated via mobile app may take up to 5 minutes to sync."
+          - "Personal calendar (non-work) is excluded unless explicitly linked."
+        instruction: >
+          Always treat the calendar as a partial view of actual commitments.
+          When proposing slots, tell the user: "This is based on your primary calendar.
+          If you have commitments not recorded there, please review before confirming."
+
+
+  # ----------------------------------------------------------
+  # 4. PREFERENCES
+  # ----------------------------------------------------------
+  preferences:
+    meta:
+      name: "Preferences"
+      description: "The executive's working style, communication preferences, and delegation rules."
+      version: "1.2"
+      domain: "personalisation"
+
+    schema:
+      guaranteed_fields:
+        - daily_routine             # morning_person | afternoon_person
+        - reply_style               # short | medium | detailed
+        - response_intent_default   # acknowledge | inform | decide
+        - do_not_disturb_windows    # list of time ranges
+        - meeting_preferences       # preferred_duration, max_per_day, buffer_between
+        - delegation_boundaries     # see structure below
+        - context_sensitivity_map   # see structure below
+        - override_triggers         # see structure below
+        - energy_schedule           # time windows by type: deep_work, meetings_ok, unavailable
+
+      delegation_boundaries:
+        can_reply_autonomously: "List of topics/contexts where agent may send without review."
+        draft_only: "List of topics/contexts where agent must always produce a draft."
+        always_escalate: "List of topics/contacts where agent must never draft — notify user only."
+
+      context_sensitivity_map:
+        description: "Senders or topics that always require human voice regardless of other conditions."
+        examples: [board, legal, investors, press, personnel_matters]
+
+      override_triggers:
+        description: "Conditions that override all other rules and force escalation."
+        examples:
+          - "Email contains keywords: legal, lawsuit, confidential, board, urgent escalation"
+          - "Sender is in always_escalate list"
+          - "Classification confidence < 0.5 on any required field"
+
+    quality:
+      rules:
+        - "All fields are human_set only. No inferred values permitted in this dataset."
+        - "delegation_boundaries must be explicitly populated. An empty list is not a valid default."
+
+    freshness:
+      sla_days: 14
+      instruction: >
+        Preferences are human-maintained. Check last_updated_at before applying them to
+        any ACT-level decision. If last_updated_at > 14 days, apply preferences for INFORM
+        and DRAFT only. Do not act autonomously on preferences older than 14 days.
+        If last_updated_at > 30 days, notify the user at session start:
+        "Your preferences were last updated [X] days ago. Some may no longer reflect
+        your current working style. Would you like to review them?"
+
+    ownership:
+      owner: "exec-direct"
+      escalation: "Request preference refresh directly from the executive."
+
+    agentic:
+
+      roles:
+        email-calendar-assistant:
+          permissions: [read]
+          instruction: >
+            Apply preferences to personalise all outputs. You may never modify this dataset.
+            If you identify a preference that appears inconsistent with the executive's recent
+            behaviour, note it in your session summary but do not change the record.
+        scheduling-agent:
+          permissions: [read_scheduling_fields]
+          instruction: >
+            You may read energy_schedule, meeting_preferences, and delegation_boundaries.
+            Apply them to all scheduling decisions. You may not read or use
+            context_sensitivity_map — that is for the email assistant only.
+
+      action_rules:
+
+        - action: apply_preferences_to_draft
+          autonomy: DRAFT
+          condition: "last_updated_at < 30 days"
+          instruction: >
+            Apply reply_style, response_intent_default, and context_sensitivity_map.
+            If the sender appears in context_sensitivity_map, always use a personal,
+            non-templated tone and flag the draft: "Sensitivity note: this contact
+            typically requires personal attention."
+
+        - action: apply_preferences_to_act
+          autonomy: ACT
+          condition: "last_updated_at < 14 days AND delegation_boundaries populated"
+          instruction: >
+            Before any autonomous action, evaluate override_triggers.
+            If any trigger fires, stop. Do not act. Notify the user:
+            "An override condition was detected ([trigger]). I have not taken action."
+            Check delegation_boundaries: the topic must appear in can_reply_autonomously[]
+            or can_act_autonomously[]. If it appears in draft_only[] or always_escalate[],
+            follow those rules regardless of other conditions.
+
+        - action: apply_energy_schedule
+          autonomy: INFORM
+          condition: "last_updated_at < 30 days"
+          instruction: >
+            When proposing meeting slots, never suggest deep_work windows.
+            When triaging, flag urgent items that arrive during unavailable windows:
+            "This arrived during a do-not-disturb window. Review when available."
+
+      operational_status:
+        status_endpoint: null
+        support_channel: "Request preference refresh directly from executive."
+        instruction: >
+          This dataset has no automated pipeline. If you cannot access it,
+          fall back to DRAFT for all actions and inform the user:
+          "I cannot access your preferences. I have prepared a draft rather than acting."
+
+      scope_declaration:
+        covers: "Explicitly articulated preferences only."
+        known_gaps:
+          - "Implicit preferences never articulated by the executive are not captured."
+          - "Context-dependent exceptions (e.g. different style with a specific client) may not be encoded."
+          - "Preferences may lag behind recent changes in working style."
+        instruction: >
+          Preferences are a guide, not a complete picture of the executive's working style.
+          When you observe a systematic mismatch between preferences and the executive's
+          corrections, surface it: "You have adjusted my drafts in a consistent way.
+          Would you like to update your preferences to reflect this?"
+
+
+  # ----------------------------------------------------------
+  # 5. PRIORITIES
+  # ----------------------------------------------------------
+  priorities:
+    meta:
+      name: "Priorities"
+      description: "The executive's current goals, active projects, responsibilities, and focus areas."
+      version: "1.0"
+      domain: "context"
+
+    schema:
+      guaranteed_fields:
+        - goals                    # list: {name, weight_1_to_5, time_horizon, sensitivity_flag}
+        - active_projects          # list: {name, weight_1_to_5, time_horizon, blocking_dependencies, sensitivity_flag}
+        - responsibilities         # list of standing domains (e.g. "product strategy", "investor relations")
+        - focus_this_week          # free text, set manually each week
+        - errands                  # list of one-off pending tasks
+
+      field_notes:
+        weight: "1 = low, 5 = critical. Use to rank competing urgency signals."
+        time_horizon: "this_week | this_month | this_quarter"
+        blocking_dependencies: "Contacts or topics whose response is on the critical path for this project."
+        sensitivity_flag: "True = executive must stay personally involved. Agent is DRAFT only on this item."
+
+    quality:
+      rules:
+        - "All entries are human-set. No system inference permitted."
+        - "focus_this_week must be updated at least weekly or flagged as stale."
+        - "weight must be populated for all active_projects."
+
+    freshness:
+      sla_days: 7
+      instruction: >
+        Priorities are only useful if current. If last_reviewed_at > 7 days,
+        apply them for INFORM only. Do not use stale priorities to justify autonomous action.
+        If last_reviewed_at > 14 days, notify the user at session start:
+        "Your priority list hasn't been reviewed in [X] days. I'll use it for context only
+        until you update it."
+
+    ownership:
+      owner: "exec-direct"
+      escalation: "Request priority review directly from the executive."
+
+    agentic:
+
+      roles:
+        email-calendar-assistant:
+          permissions: [read]
+          instruction: >
+            Use priorities to weight the importance of incoming messages and calibrate urgency.
+            A message related to a weight=5 project should always surface at the top of the triage,
+            even if urgency_score from inbox is low.
+        scheduling-agent:
+          permissions: [read]
+          instruction: >
+            Use priorities to assess whether a meeting request is relevant to current goals.
+            If a meeting request has no link to any active project or responsibility,
+            flag it as low priority in your proposal.
+
+      action_rules:
+
+        - action: weight_triage_by_priorities
+          autonomy: INFORM
+          condition: "last_reviewed_at < 14 days"
+          instruction: >
+            Apply weight and time_horizon to score incoming messages.
+            Messages touching this_week items with weight >= 4 should be surfaced first.
+            Messages touching blocking_dependencies should always be elevated regardless of weight.
+
+        - action: use_priorities_for_draft
+          autonomy: DRAFT
+          condition: "last_reviewed_at < 7 days"
+          instruction: >
+            Reference active_projects and focus_this_week to contextualise drafts.
+            If a reply touches a sensitivity_flag=true project, mark the draft:
+            "This topic is flagged for personal involvement. Please review carefully before sending."
+
+        - action: use_priorities_for_act
+          autonomy: ACT
+          condition: >
+            last_reviewed_at < 7 days
+            AND sensitivity_flag = false for the relevant project
+          instruction: >
+            Do not act autonomously on any item linked to a sensitivity_flag=true project.
+            If a blocking dependency contact sends a message, always elevate to DRAFT
+            and notify the user: "This message is from a blocking dependency on [project].
+            I have prepared a draft rather than responding automatically."
+
+        - action: escalate_for_blocking_dependency
+          autonomy: INFORM
+          condition: "always"
+          instruction: >
+            If any incoming message is from a contact listed in blocking_dependencies
+            for any active project, immediately surface it to the user regardless of
+            all other classification signals. This overrides urgency_score and handling_constraint.
+
+      operational_status:
+        status_endpoint: null
+        support_channel: "Request priority review directly from executive."
+        instruction: >
+          If priority data is unavailable, do not attempt to weight or rank messages.
+          Inform the user: "I cannot access your priority list. I will present messages
+          without priority weighting until it is available."
+
+      scope_declaration:
+        covers: "Explicitly stated priorities only."
+        known_gaps:
+          - "Implicit priorities never articulated are not captured."
+          - "Rapidly shifting focus not yet updated by the executive will not be reflected."
+          - "Cross-functional dependencies outside the executive's direct view are absent."
+        instruction: >
+          If an incoming message appears highly relevant but does not match any
+          listed priority or project, do not ignore it. Surface it to the user:
+          "This message doesn't match your current priority list, but it may be relevant.
+          I've flagged it for your review."
+
+
+  # ----------------------------------------------------------
+  # 6. REFERENCES
+  # ----------------------------------------------------------
+  references:
+    meta:
+      name: "References"
+      description: "Registry of ongoing and past topics, situations, and context threads the executive is involved in."
+      version: "1.1"
+      domain: "context"
+
+    schema:
+      guaranteed_fields:
+        - topic_id
+        - topic_name
+        - classification             # business | personal
+        - status                     # active | stalled | closing | closed
+        - summary                    # human-written, free text
+        - linked_contacts            # list of contact_ids
+        - linked_emails              # list of thread_ids
+        - last_updated_at
+        - context_completeness       # full | partial | known_gaps
+        - off_system_refs            # list of known off-system interactions (calls, in-person, etc.)
+        - action_threshold           # auto_ok | draft_only | human_required
+        - momentum                   # active | stalled | closing
+        - linked_priority            # reference to priorities.active_projects entry if applicable
+
+    quality:
+      rules:
+        - "context_completeness must be explicitly set. Unknown is not a valid value — choose partial if unsure."
+        - "action_threshold must be set for all active topics."
+        - "off_system_refs must list all known off-system interactions, even if details are unavailable."
+
+    freshness:
+      sla_hours: 48
+      instruction: >
+        Topic context older than 48 hours may no longer reflect the current state of a situation.
+        For stalled or closing topics, flag to the user if last_updated_at > 72 hours.
+        For active topics, flag if last_updated_at > 24 hours before using context to act.
+
+    ownership:
+      owner: "exec + ea"
+      escalation: "Slack #knowledge-data-support"
+
+    agentic:
+
+      roles:
+        email-calendar-assistant:
+          permissions: [read, link_emails_to_topics]
+          instruction: >
+            Use references to enrich context for incoming messages. You may link
+            new emails to existing topics but you may not create, modify, or close topic records.
+            If an email appears to open a new topic with no existing reference,
+            surface it to the user: "This appears to be a new topic. Would you like me to
+            create a reference entry for it?"
+        scheduling-agent:
+          permissions: [read]
+          instruction: >
+            Use references to assess whether a meeting request is linked to an active topic.
+            If the topic has action_threshold = human_required, flag the meeting request
+            for human review before booking.
+
+      action_rules:
+
+        - action: surface_topic_context
+          autonomy: INFORM
+          condition: "last_updated_at < 72 hours AND context_completeness IN [full, partial]"
+          instruction: >
+            When an incoming email matches a known topic, surface the relevant reference summary.
+            If context_completeness = partial, tell the user:
+            "I have partial context on this topic. Some relevant information may exist
+            outside my records (see off_system_refs)."
+            If last_updated_at > 48 hours, note: "Topic context is [X] hours old and may not
+            reflect the latest developments."
+
+        - action: use_references_for_draft
+          autonomy: DRAFT
+          condition: >
+            context_completeness IN [full, partial]
+            AND action_threshold IN [auto_ok, draft_only]
+            AND last_updated_at < 48 hours
+          instruction: >
+            Use the topic summary to contextualise the draft. Do not contradict
+            the known state of the topic. If off_system_refs is populated,
+            flag in the draft: "Note: there are known off-system interactions
+            on this topic that I cannot access. Please verify the draft reflects
+            the full picture."
+
+        - action: use_references_for_act
+          autonomy: ACT
+          condition: >
+            context_completeness = full
+            AND action_threshold = auto_ok
+            AND off_system_refs = []
+            AND momentum != stalled
+          instruction: >
+            If context_completeness = known_gaps, you must not act. Tell the user:
+            "I have incomplete context on this topic and cannot respond safely without
+            your input."
+            If action_threshold = human_required, you must not act and must not draft.
+            Notify the user: "This topic requires your personal attention."
+            If momentum = stalled, surface the stalled state rather than acting:
+            "This topic appears stalled. Would you like me to draft a follow-up?"
+
+        - action: detect_new_topic
+          autonomy: INFORM
+          condition: "always"
+          instruction: >
+            If an incoming email references a situation, project, or relationship that
+            does not match any existing topic, flag it to the user:
+            "This message may relate to a topic I don't have a record for.
+            Would you like me to create one? This will help me handle
+            future messages on this topic more accurately."
+
+      operational_status:
+        status_endpoint: "https://status.internal/references-product"
+        support_channel: "Slack #knowledge-data-support"
+        instruction: >
+          If the references product is unavailable, do not use topic context for any action.
+          Fall back to inbox and contacts data only, and inform the user:
+          "Topic context is temporarily unavailable. I am working with inbox and
+          contact data only. My responses may lack situational context."
+
+      scope_declaration:
+        covers: "Topics explicitly registered by the executive or EA."
+        known_gaps:
+          - "Verbal agreements and off-channel discussions are noted in off_system_refs but not fully captured."
+          - "Topics that predate system adoption have no history in this dataset."
+          - "Fast-moving situations may not be updated in time to reflect the current state."
+        instruction: >
+          The references dataset is the most context-dependent product in this contract.
+          When in doubt about completeness, surface the gap to the user rather than
+          acting on partial information. A well-informed user is always preferable
+          to a confident but incomplete agent action.
