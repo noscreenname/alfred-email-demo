@@ -1,58 +1,87 @@
 {
   "events": [
     {
-      "id": "evt_001",
-      "summary": "Team standup",
-      "start": "2026-04-18T09:30:00+02:00",
-      "end": "2026-04-18T09:45:00+02:00",
-      "status": "confirmed",
-      "attendees": ["andriy@example.com", "elena.volkov@internal-team.com", "lisa.park@internal-team.com"],
-      "location": "Google Meet"
+      "id": "1gkfamcntdqou06qmjejcjvh1e",
+      "summary": "busy",
+      "start": "2026-04-15T08:00:00+02:00",
+      "end": "2026-04-15T20:00:00+02:00",
+      "status": "confirmed"
     },
     {
-      "id": "evt_002",
-      "summary": "1:1 with Elena — pipeline migration",
-      "start": "2026-04-17T11:00:00+02:00",
-      "end": "2026-04-17T11:30:00+02:00",
+      "id": "3p8r1v9ad8n9td6gv27jdaub00",
+      "summary": "Repet LPC",
+      "start": "2026-04-15T10:30:00+02:00",
+      "end": "2026-04-15T11:00:00+02:00",
       "status": "confirmed",
-      "attendees": ["andriy@example.com", "elena.volkov@internal-team.com"],
-      "location": "Google Meet"
+      "attendees": [
+        "lucascerdan@gmail.com",
+        "a.mandyev@gmail.com"
+      ],
+      "conferenceUrl": "https://meet.google.com/wkg-gngo-ikb"
     },
     {
-      "id": "evt_003",
-      "summary": "Architecture review — schema registry",
-      "start": "2026-04-17T14:00:00+02:00",
-      "end": "2026-04-17T15:00:00+02:00",
-      "status": "confirmed",
-      "attendees": ["andriy@example.com", "elena.volkov@internal-team.com", "lisa.park@internal-team.com", "thomas.berg@client-b.de"],
-      "location": "Zoom"
+      "id": "3uc8rf189murfdav6mupi3g3ai",
+      "summary": "Fia",
+      "start": "2026-04-15T19:00:00+02:00",
+      "end": "2026-04-15T21:00:00+02:00",
+      "status": "confirmed"
     },
     {
-      "id": "evt_004",
-      "summary": "Data governance working group",
-      "start": "2026-04-18T14:00:00+02:00",
-      "end": "2026-04-18T15:00:00+02:00",
-      "status": "confirmed",
-      "attendees": ["andriy@example.com", "lisa.park@internal-team.com"],
-      "location": "Conference room B"
+      "id": "62p09m95fl1k6v00c2uttue63q",
+      "summary": "L&B",
+      "start": "2026-04-15T21:30:00+02:00",
+      "end": "2026-04-16T01:00:00+02:00",
+      "status": "confirmed"
     },
     {
-      "id": "evt_005",
-      "summary": "Lunch with Pierre (Acme)",
-      "start": "2026-04-16T12:00:00+02:00",
-      "end": "2026-04-16T13:30:00+02:00",
-      "status": "confirmed",
-      "attendees": ["andriy@example.com", "pierre.dubois@acme-corp.com"],
-      "location": "Le Bouillon, 14 Rue de Rivoli"
+      "id": "6csm2c9h6com4b9kc8p6cb9kc4q6ab9o69ijab9pccr34or164p36pb270",
+      "summary": "Train Edinburg",
+      "start": "2026-04-16T18:30:00+02:00",
+      "end": "2026-04-17T00:00:00+02:00",
+      "status": "confirmed"
     },
     {
-      "id": "evt_006",
-      "summary": "Deep work — conference talk prep",
-      "start": "2026-04-18T10:00:00+02:00",
-      "end": "2026-04-18T12:00:00+02:00",
+      "id": "4mnijabmkvcp5mm5j2haesa2q7",
+      "summary": "Placeholder for community webinar (Nick and Andriy to dial in 15' early for AV checks)",
+      "start": "2026-04-16T16:45:00+02:00",
+      "end": "2026-04-16T18:00:00+02:00",
       "status": "confirmed",
-      "attendees": ["andriy@example.com"],
-      "location": ""
+      "attendees": [
+        "nick@valuefromdata.ai",
+        "a.mandyev@gmail.com"
+      ],
+      "location": "https://community.valuefromdata.ai/live/why-your-agents-need-data-contracts-too"
+    },
+    {
+      "id": "1i5q0tg7o4og3grj41v64icrk3",
+      "summary": "Train",
+      "start": "2026-04-22T14:00:00+02:00",
+      "end": "2026-04-22T20:00:00+02:00",
+      "status": "confirmed"
+    },
+    {
+      "id": "4n7t0urqinvtepeaqbd683si2k",
+      "summary": "Train to Lille Europe",
+      "start": "2026-04-22T14:01:00+02:00",
+      "end": "2026-04-22T15:26:00+02:00",
+      "status": "confirmed",
+      "location": "London Saint-Pancras Int'l (Londres)"
+    },
+    {
+      "id": "o5co3rknf8vq0hl2vlu7m016ts",
+      "summary": "Train to Lyon Part Dieu",
+      "start": "2026-04-22T16:54:00+02:00",
+      "end": "2026-04-22T17:54:00+02:00",
+      "status": "confirmed",
+      "location": "Lille Europe"
+    },
+    {
+      "id": "mqvf1ct0sgtmtml4t9n26tfnkg",
+      "summary": "Train to Lyon Part-Dieu",
+      "start": "2026-04-22T16:54:00+02:00",
+      "end": "2026-04-22T20:02:00+02:00",
+      "status": "confirmed",
+      "location": "Lille Europe"
     }
   ]
 }

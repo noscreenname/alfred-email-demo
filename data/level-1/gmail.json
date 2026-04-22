@@ -1,169 +1,800 @@
 {
-  "messages": [
+  "threads": [
     {
-      "id": "msg_001",
-      "threadId": "thread_001",
-      "from": "marc.lefevre@acme-corp.com",
-      "to": "andriy@example.com",
-      "subject": "Re: Following up on our discussion",
-      "date": "2026-04-18T09:14:00+02:00",
-      "snippet": "Hi Andriy, just wanted to circle back on what we discussed last Thursday. I've reviewed the proposal internally and have a few points I'd like to go over. Could we find 30 minutes next week?",
-      "labels": ["INBOX", "UNREAD"],
-      "isUnread": true
+      "id": "19db616c287e2c9c",
+      "messages": [
+        {
+          "date": "2026-04-22T16:47:17Z",
+          "id": "19db616c287e2c9c",
+          "sender": "do-not-reply@trello.com",
+          "snippet": "Hey there, We noticed that you've authorised a new application in your Trello account.",
+          "subject": "New application authorised in your Trello account",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_002",
-      "threadId": "thread_002",
-      "from": "sarah.chen@partner-org.io",
-      "to": "andriy@example.com",
-      "subject": "Meeting request — Thursday 2pm",
-      "date": "2026-04-17T14:22:00+02:00",
-      "snippet": "Hey Andriy, are you available Thursday at 2pm CET for a quick sync on the integration timeline? I'd like to align on the Q3 deliverables before the steering committee next Monday.",
-      "labels": ["INBOX", "UNREAD"],
-      "isUnread": true
+      "id": "19db5f6e2d0e02d2",
+      "messages": [
+        {
+          "date": "2026-04-22T16:12:28Z",
+          "id": "19db5f6e2d0e02d2",
+          "sender": "bonjour@gensdeconfiance.com",
+          "snippet": "Bonjour Andriy, Votre avez récemment souscrit au Pack Locataire Prioritaire et nous vous en remercions.",
+          "subject": "Votre avis compte pour améliorer notre service de location immobilière",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_003",
-      "threadId": "thread_003",
-      "from": "j.martinez@newco.io",
-      "to": "andriy@example.com",
-      "subject": "Partnership opportunity — data mesh tooling",
-      "date": "2026-04-18T11:05:00+02:00",
-      "snippet": "Hi Andriy, I came across your talk on data contracts at the Berlin meetup last month. We're building a data mesh platform and I think there could be interesting synergies. Would you be open to a 20-minute call?",
-      "labels": ["INBOX", "UNREAD"],
-      "isUnread": true
+      "id": "19db5ef2aa8abaed",
+      "messages": [
+        {
+          "date": "2026-04-22T16:04:01Z",
+          "id": "19db5ef2aa8abaed",
+          "sender": "no-reply@getcontrast.io",
+          "snippet": "Just a quick reminder, How to stop babysitting your agents will take place tomorrow!",
+          "subject": "Get Ready for 'How to stop babysitting your agents' tomorrow!",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_004",
-      "threadId": "thread_004",
-      "from": "elena.volkov@internal-team.com",
-      "to": "andriy@example.com",
-      "subject": "Sprint review notes — data pipeline team",
-      "date": "2026-04-17T16:45:00+02:00",
-      "snippet": "Hi Andriy, attaching the sprint review notes from today's session. Key highlights: the ingestion pipeline migration is 80% complete, we identified a blocker on the schema registry integration. No action needed from you — just keeping you in the loop.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db5a8bc3d22c23",
+      "messages": [
+        {
+          "date": "2026-04-22T14:47:07Z",
+          "id": "19db5a8bc3d22c23",
+          "sender": "sign@modelo.fr",
+          "snippet": "Vous êtes invité à relire et signer le document « Bail logement loué meublé à usage de résidence principale »",
+          "subject": "Guy Hoquet PARIS 5 Maubert : Invitation à signer électroniquement",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_005",
-      "threadId": "thread_005",
-      "from": "notifications@github.com",
-      "to": "andriy@example.com",
-      "subject": "[data-contracts-toolkit] Issue #247: Schema validation fails on nested arrays",
-      "date": "2026-04-18T08:30:00+02:00",
-      "snippet": "New issue opened by @user-xyz: When validating a schema with nested arrays, the validator throws an unexpected error...",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db4e8d17da335b",
+      "messages": [
+        {
+          "date": "2026-04-22T11:17:29Z",
+          "id": "19db4e8d17da335b",
+          "sender": "inmail-hit-reply@linkedin.com",
+          "snippet": "Bonjour, Mon client, réseau social qui permet d'ex...",
+          "subject": "CDI - Head of Data (H/F)",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_006",
-      "threadId": "thread_006",
-      "from": "receipts@aws.amazon.com",
-      "to": "andriy@example.com",
-      "subject": "Your AWS invoice for April 2026",
-      "date": "2026-04-16T03:00:00+02:00",
-      "snippet": "Your AWS invoice for the billing period April 1-15, 2026 is now available. Total: €342.17.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db4dd29a6840e5",
+      "messages": [
+        {
+          "date": "2026-04-22T11:04:40Z",
+          "id": "19db4dd29a6840e5",
+          "sender": "noreply@b.economist.com",
+          "snippet": "At The Economist Pro, we hope you benefited from sampling our high-quality, trustworthy information.",
+          "subject": "Andriy, see the shifts of tomorrow",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_007",
-      "threadId": "thread_007",
-      "from": "pierre.dubois@acme-corp.com",
-      "to": "andriy@example.com",
-      "subject": "Re: Contract renewal timeline",
-      "date": "2026-04-17T10:30:00+02:00",
-      "snippet": "Andriy, quick heads up — the legal team needs the signed addendum by end of month. Marc mentioned you two are still discussing the technical scope. Let me know if I can help unblock.",
-      "labels": ["INBOX", "UNREAD"],
-      "isUnread": true
+      "id": "19db4d445e8d2832",
+      "messages": [
+        {
+          "date": "2026-04-22T10:55:03Z",
+          "id": "19db4d445e8d2832",
+          "sender": "nepasrepondre@citya.com",
+          "snippet": "Citya Immobilier vous aide pour la déclaration des revenus fonciers !",
+          "subject": "Citya Immobilier vous aide pour la déclaration des revenus fonciers !",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_008",
-      "threadId": "thread_008",
-      "from": "newsletter@dataengineering-weekly.com",
-      "to": "andriy@example.com",
-      "subject": "Data Engineering Weekly #287 — dbt 2.0 deep dive",
-      "date": "2026-04-16T07:00:00+02:00",
-      "snippet": "This week: dbt 2.0 launches with native Python models, Snowflake acquires data observability startup, and why data contracts are becoming the new API specs...",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db4c592d534cff",
+      "messages": [
+        {
+          "date": "2026-04-22T10:38:59Z",
+          "id": "19db4c592d534cff",
+          "sender": "contact@desertfest.be",
+          "snippet": "We're beyond stoked to announce our first headliner for Desertfest Belgium 2026.",
+          "subject": "Desertfest Belgium First Headliner: UNCLE ACID AND THE DEADBEATS",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_009",
-      "threadId": "thread_009",
-      "from": "calendar-noreply@google.com",
-      "to": "andriy@example.com",
-      "subject": "Reminder: Team standup — tomorrow 9:30 AM",
-      "date": "2026-04-17T18:00:00+02:00",
-      "snippet": "Reminder: Team standup is scheduled for tomorrow, Friday April 18, at 9:30 AM CET.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db4879bbcd4deb",
+      "messages": [
+        {
+          "date": "2026-04-22T09:31:19Z",
+          "id": "19db4879bbcd4deb",
+          "sender": "ne-pas-repondre@pasngr.ouigo.com",
+          "snippet": "Nous avons le plaisir de vous confirmer votre réservation en train OUIGO le 22/04/2026",
+          "subject": "Confirmation réservation OUIGO 22/04/2026 Lille Flandres → Lyon Part Dieu",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_010",
-      "threadId": "thread_010",
-      "from": "thomas.berg@client-b.de",
-      "to": "andriy@example.com",
-      "subject": "Quick question on data quality metrics",
-      "date": "2026-04-18T10:15:00+02:00",
-      "snippet": "Hi Andriy, we're setting up our data quality dashboard and I wanted to ask — which metrics do you recommend tracking for contract compliance? We're using Great Expectations but open to alternatives.",
-      "labels": ["INBOX", "UNREAD"],
-      "isUnread": true
+      "id": "19db48798f4e493e",
+      "messages": [
+        {
+          "date": "2026-04-22T09:31:18Z",
+          "id": "19db48798f4e493e",
+          "sender": "noreply@connect.sncf",
+          "snippet": "Your selection has been exchanged. Your new ticket to Lyon part dieu on 22 Apr 2026.",
+          "subject": "Exchange confirmation",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_011",
-      "threadId": "thread_011",
-      "from": "shipping@zalando.de",
-      "to": "andriy@example.com",
-      "subject": "Your order has been shipped",
-      "date": "2026-04-17T12:00:00+02:00",
-      "snippet": "Good news! Your order #ZL-9283747 has been shipped and is on its way. Expected delivery: April 19-20.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db35bdad536b27",
+      "messages": [
+        {
+          "date": "2026-04-22T04:03:54Z",
+          "id": "19db35bdad536b27",
+          "sender": "support@github.com",
+          "snippet": "Your GitHub Enterprise trial will be deleted in 7 days",
+          "subject": "[GitHub] Your GitHub Enterprise trial will be deleted in 7 days",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_012",
-      "threadId": "thread_012",
-      "from": "lisa.park@internal-team.com",
-      "to": "andriy@example.com",
-      "subject": "FYI: New data governance policy draft",
-      "date": "2026-04-16T14:20:00+02:00",
-      "snippet": "Hi all, sharing the draft data governance policy for review. Comments welcome by end of next week. This covers data classification, retention, and access control standards.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db35bda6e1cf1c",
+      "messages": [
+        {
+          "date": "2026-04-22T04:03:54Z",
+          "id": "19db35bda6e1cf1c",
+          "sender": "support@github.com",
+          "snippet": "Your GitHub organization in GitHub Enterprise trial will be deleted in 7 days",
+          "subject": "[GitHub] Your GitHub organization trial will be deleted in 7 days",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_013",
-      "threadId": "thread_013",
-      "from": "noreply@linkedin.com",
-      "to": "andriy@example.com",
-      "subject": "You have 5 new connection requests",
-      "date": "2026-04-18T06:00:00+02:00",
-      "snippet": "Sarah Chen, Marc Lefèvre, and 3 others want to connect with you.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db199fc45c199f",
+      "messages": [
+        {
+          "date": "2026-04-21T19:52:31Z",
+          "id": "19db199fc45c199f",
+          "sender": "gabriela@excalidraw.com",
+          "snippet": "Since you canceled recently, I thought I'd drop by and ask for your thoughts.",
+          "subject": "Let me know what went wrong",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        },
+        {
+          "date": "2026-04-21T19:55:14Z",
+          "id": "19db19c7a1e03d40",
+          "sender": "a.mandyev@gmail.com",
+          "snippet": "The tool is blocked by my employer, so can't use it anymore. Sorry. Really love it otherwise!",
+          "subject": "Re: Let me know what went wrong",
+          "toRecipients": [
+            "gabriela@excalidraw.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_014",
-      "threadId": "thread_014",
-      "from": "ops-alerts@internal-team.com",
-      "to": "andriy@example.com",
-      "subject": "[RESOLVED] Pipeline delay — customer_events ingestion",
-      "date": "2026-04-17T22:15:00+02:00",
-      "snippet": "The customer_events ingestion pipeline delay has been resolved. Root cause: upstream API rate limiting. SLA impact: 47 minutes. No data loss.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db1696c2f823f1",
+      "messages": [
+        {
+          "date": "2026-04-21T18:59:29Z",
+          "id": "19db1696c2f823f1",
+          "sender": "noreply@eurostar.com",
+          "snippet": "Here are the tickets for ANDRIY MANDYEV to Lille Europe on Wednesday, 22 April 2026",
+          "subject": "Your Eurostar tickets to Lille Europe on Wednesday, 22 April 2026",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     },
     {
-      "id": "msg_015",
-      "threadId": "thread_015",
-      "from": "marc.lefevre@acme-corp.com",
-      "to": "andriy@example.com",
-      "subject": "Re: Technical scope for Phase 2",
-      "date": "2026-04-16T15:40:00+02:00",
-      "snippet": "Andriy, I've attached the updated requirements for Phase 2. The main change is the addition of real-time streaming, which Pierre flagged as a priority for the renewal. Let me know your thoughts.",
-      "labels": ["INBOX"],
-      "isUnread": false
+      "id": "19db1675f6b992db",
+      "messages": [
+        {
+          "date": "2026-04-21T18:57:14Z",
+          "id": "19db1675f6b992db",
+          "sender": "noreply@eurostar.com",
+          "snippet": "Your reservation is confirmed. Reference: TJ4JN2",
+          "subject": "Your exchange confirmation | Wednesday, 22 April 2026 - Reference: TJ4JN2",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19db163170543a9d",
+      "messages": [
+        {
+          "date": "2026-04-21T18:52:31Z",
+          "id": "19db163170543a9d",
+          "sender": "no-reply@excalidraw.com",
+          "snippet": "Your Excalidraw+ subscription plan was canceled.",
+          "subject": "Your Excalidraw+ subscription plan was canceled",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19db0b29883386ab",
+      "messages": [
+        {
+          "date": "2026-04-21T15:39:47Z",
+          "id": "19db0b29883386ab",
+          "sender": "no-reply@accounts.google.com",
+          "snippet": "You allowed Claude access to some of your Google Account data",
+          "subject": "Security alert",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        },
+        {
+          "date": "2026-04-21T15:40:39Z",
+          "id": "19db0b3690e3a3e8",
+          "sender": "no-reply@accounts.google.com",
+          "snippet": "You allowed Claude for Google Calendar access to some of your Google Account data",
+          "subject": "Security alert",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19db075c29d9b46a",
+      "messages": [
+        {
+          "date": "2026-04-21T14:33:11Z",
+          "id": "19db075c29d9b46a",
+          "sender": "marion.teppa@guyhoquet.com",
+          "snippet": "Ci joint les projets d'actes et le projet de bail. Pensez à bien souscrire votre assurance habitation pour le 27 avril.",
+          "subject": "Projet de bail et sommes a régler",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19db0494182d15bc",
+      "messages": [
+        {
+          "date": "2026-04-21T13:44:43Z",
+          "id": "19db0494182d15bc",
+          "sender": "generativeai-france-lyon@calendar.luma-mail.com",
+          "snippet": "You have registered for Comment mieux gérer le context de vos agents - MAY 5",
+          "subject": "Registration confirmed for Comment mieux gérer le context de vos agents",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19db030621db4e3a",
+      "messages": [
+        {
+          "date": "2026-04-21T13:17:33Z",
+          "id": "19db030621db4e3a",
+          "sender": "alexa@fyxer.com",
+          "snippet": "Your trial period has ended and your subscription is now live: Plan: Pro",
+          "subject": "Thank you for trying Fyxer",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19db021a6ac20b23",
+      "messages": [
+        {
+          "date": "2026-04-21T13:01:28Z",
+          "id": "19db021a6ac20b23",
+          "sender": "usr-ninNxpTDCAUlvIp@user.luma-mail.com",
+          "snippet": "Notre prochain event GenAI Lyon aura lieu le 05/05/26 à partir de 18:30 au H7",
+          "subject": "You are invited to Comment mieux gérer le context de vos agents",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19db00d82f12ccbc",
+      "messages": [
+        {
+          "date": "2026-04-21T12:39:28Z",
+          "id": "19db00d82f12ccbc",
+          "sender": "owner-f5b311d4-368b-4461-becd-77a2c6480d05@messaging.lodgify.com",
+          "snippet": "A charge of GBP 27.00 has been applied to your credit card for diesel damage.",
+          "subject": "Damage charge for your stay at Rogue Four (#B19938859)",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dafea938c662cd",
+      "messages": [
+        {
+          "date": "2026-04-21T12:01:18Z",
+          "id": "19dafea938c662cd",
+          "sender": "noreply@eurostar.com",
+          "snippet": "Everything you need to know about your trip to Lille Europe on 22 April 2026",
+          "subject": "Essential info for your trip to Lille Europe on 22 April 2026 - ref TJ4JN2",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        },
+        {
+          "date": "2026-04-21T19:01:16Z",
+          "id": "19db16b13eda54ac",
+          "sender": "noreply@eurostar.com",
+          "snippet": "Everything you need to know about your trip to Lille Europe on 22 April 2026",
+          "subject": "Essential info for your trip to Lille Europe on 22 April 2026 - ref TJ4JN2",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dafb2268436008",
+      "messages": [
+        {
+          "date": "2026-04-21T10:59:40Z",
+          "id": "19dafb2268436008",
+          "sender": "receipts-unitedkingdom@bolt.eu",
+          "snippet": "Thanks for choosing Bolt — here's your ride receipt!",
+          "subject": "Your Bolt ride on Tuesday",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19daf8a6bbca4b15",
+      "messages": [
+        {
+          "date": "2026-04-21T10:15:05Z",
+          "id": "19daf8a6bbca4b15",
+          "sender": "noreply@info.sncf-voyageurs.com",
+          "snippet": "Monsieur Mandyev, départ imminent ! Tout est prêt ?",
+          "subject": "J-1 avant votre voyage à Lyon Part Dieu",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19daf87a3cee0385",
+      "messages": [
+        {
+          "date": "2026-04-21T10:02:26Z",
+          "id": "19daf87a3cee0385",
+          "sender": "LCL@message.lcl.fr",
+          "snippet": "Le Récap Avril 2026 - Entrez gratuitement à la Foire de Paris !",
+          "subject": "Le Récap - Avril 2026",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19daf0c6f5594667",
+      "messages": [
+        {
+          "date": "2026-04-21T07:58:40Z",
+          "id": "19daf0c6f5594667",
+          "sender": "feedback@feedback.avis-verifies.com",
+          "snippet": "Nous aimerions connaître votre avis suite à votre location sur Bsp-auto.com",
+          "subject": "Suite à votre location sur Bsp-auto.com",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19daebf2d70ddae4",
+      "messages": [
+        {
+          "date": "2026-04-21T06:34:17Z",
+          "id": "19daebf2d70ddae4",
+          "sender": "events@engage.accelevents.com",
+          "snippet": "La Product Conf, c'est demain ! L'application officielle est officiellement ouverte.",
+          "subject": "L'app de LPC 2026 est ouverte ! Prêt(e) pour le networking ?",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19daea0ef2603fbc",
+      "messages": [
+        {
+          "date": "2026-04-21T06:01:14Z",
+          "id": "19daea0ef2603fbc",
+          "sender": "owner-f5b311d4-368b-4461-becd-77a2c6480d05@messaging.lodgify.com",
+          "snippet": "We hope you've had an excellent time camping in Rogue Four. Check-out information.",
+          "subject": "Important Check-Out Information for Rogue Four",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dadec040b23b09",
+      "messages": [
+        {
+          "date": "2026-04-21T02:43:38Z",
+          "id": "19dadec040b23b09",
+          "sender": "noreply@github.com",
+          "snippet": "The GitHub App Claude is requesting additional access to your account.",
+          "subject": "[GitHub] Claude is requesting updated permissions",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dac5f25ebf3928",
+      "messages": [
+        {
+          "date": "2026-04-20T19:29:30Z",
+          "id": "19dac5f25ebf3928",
+          "sender": "arato.bence@biconsulting.hu",
+          "snippet": "I'm sorry to inform you that we will not be able to grant you an in-person speaking slot this time.",
+          "subject": "Re: Budapest Data+AI Forum 2026 - You are on the shortlist - Andriy Mandyev",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        },
+        {
+          "date": "2026-04-20T19:30:31Z",
+          "id": "19dac5f7a96327a2",
+          "sender": "a.mandyev@gmail.com",
+          "snippet": "Yes, that would be of interest - I'd be happy to deliver a virtual talk via Zoom on May 20th.",
+          "subject": "Re: Budapest Data+AI Forum 2026 - You are on the shortlist - Andriy Mandyev",
+          "toRecipients": [
+            "arato.bence@biconsulting.hu"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dabec07ea16dab",
+      "messages": [
+        {
+          "date": "2026-04-20T17:24:24Z",
+          "id": "19dabec07ea16dab",
+          "sender": "alexa@fyxer.com",
+          "snippet": "Share Fyxer with a friend and get 7 extra days free",
+          "subject": "Extend your trial",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dab95dac7eaef7",
+      "messages": [
+        {
+          "date": "2026-04-20T15:50:05Z",
+          "id": "19dab95dac7eaef7",
+          "sender": "gregoire.bonnin@thiga.co",
+          "snippet": "Dear Speakers, With La Product Conf 2026 on the horizon, we are thrilled to share this experience with you.",
+          "subject": "La Product Conf Paris 2026: Here's what you need to know before going on stage",
+          "toRecipients": [
+            "fabrice.bernhard@theodo.com",
+            "katia@openai.com",
+            "aiden@anthropic.com",
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dab8b444f5a4bb",
+      "messages": [
+        {
+          "date": "2026-04-20T15:38:44Z",
+          "id": "19dab8b444f5a4bb",
+          "sender": "vepayet@citya.com",
+          "snippet": "Nous vous prions de trouver ci joint votre courrier d'acompte du mois d'Avril 2026.",
+          "subject": "Votre acompte du mois d'avril 2026 - Citya Gerimmo [368]",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dab75b08e216d8",
+      "messages": [
+        {
+          "date": "2026-04-20T15:15:09Z",
+          "id": "19dab75b08e216d8",
+          "sender": "assitancesyndic5@calot-et-associes.com",
+          "snippet": "Nouveau message: INTERDICTION DES BRISE VUES ET MOBILIER DE JARDIN SOUS RESERVE",
+          "subject": "CALOT ET ASSOCIES - Nouveau Message / Imm: 1082 SAINT PAUL",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19dab64bcb26a218",
+      "messages": [
+        {
+          "date": "2026-04-20T14:56:26Z",
+          "id": "19dab64bcb26a218",
+          "sender": "julien.landure@techtown.fr",
+          "snippet": "Je fais ce rapide email pour vous mettre en relation pour la table ronde ROI de l'IA à TechReady.",
+          "subject": "[TechReady] Mise en relation pour la table ronde",
+          "toRecipients": [
+            "alexia@datactik.com",
+            "cgillet@santeclair.fr",
+            "thomas.piton@cooperative-u.fr",
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19daafcf23c44baf",
+      "messages": [
+        {
+          "date": "2026-04-20T13:03:16Z",
+          "id": "19daafcf23c44baf",
+          "sender": "communication@amiltone.com",
+          "snippet": "La soirée Amiltone Partners Connect approche - informations pratiques pour jeudi 24 avril.",
+          "subject": "J-4 – Amiltone Partners Connect | Informations pratiques",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19daa2c76f74c957",
+      "messages": [
+        {
+          "date": "2026-04-20T09:15:33Z",
+          "id": "19daa2c76f74c957",
+          "sender": "peter.deeley@neo4j.com",
+          "snippet": "Generative AI Summit London - more accurate and accountable AI output",
+          "subject": "Generative AI Summit - more accurate and accountable AI output",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da99c78f788a12",
+      "messages": [
+        {
+          "date": "2026-04-20T06:38:13Z",
+          "id": "19da99c78f788a12",
+          "sender": "info@mail.sncf-connect.com",
+          "snippet": "Votre voyage à Lyon Part-Dieu le mercredi 22 avril",
+          "subject": "Votre voyage à Lyon Part-Dieu le mercredi 22 avril",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da94909a56ad26",
+      "messages": [
+        {
+          "date": "2026-04-20T05:07:09Z",
+          "id": "19da94909a56ad26",
+          "sender": "decathlon@henner.fr",
+          "snippet": "Un nouveau relevé de remboursement santé est disponible sur votre espace client.",
+          "subject": "Relevé de remboursement disponible",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da7611bb3a8f0f",
+      "messages": [
+        {
+          "date": "2026-04-19T20:14:11Z",
+          "id": "19da7611bb3a8f0f",
+          "sender": "hello@zurichjs.com",
+          "snippet": "Update on your ZurichJS Conference 2026 submission",
+          "subject": "Update on your ZurichJS Conference 2026 submission",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da6ed69fbac585",
+      "messages": [
+        {
+          "date": "2026-04-19T18:07:48Z",
+          "id": "19da6ed69fbac585",
+          "sender": "jakub@mail.leadershipintech.com",
+          "snippet": "Use your products deeply and as intended, not just for a quick look",
+          "subject": "LT#304 Learning from competition",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da6c5ab147c65c",
+      "messages": [
+        {
+          "date": "2026-04-19T17:24:25Z",
+          "id": "19da6c5ab147c65c",
+          "sender": "archie.hollingsworth@fyxer.com",
+          "snippet": "Notetaker makes your drafts more accurate - connect your calendar",
+          "subject": "Use Notetaker to improve your drafts",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da62a288254e4d",
+      "messages": [
+        {
+          "date": "2026-04-19T14:34:33Z",
+          "id": "19da62a288254e4d",
+          "sender": "upcoming-invoice@excalidraw.com",
+          "snippet": "Your Excalidraw subscription will automatically renew on April 26, 2026.",
+          "subject": "Your Excalidraw subscription will renew soon",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da5785b6ed4c06",
+      "messages": [
+        {
+          "date": "2026-04-19T11:20:20Z",
+          "id": "19da5785b6ed4c06",
+          "sender": "noreply@booking.com",
+          "snippet": "Rate Novotel London West",
+          "subject": "Rate Novotel London West",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da476ec24e5e0e",
+      "messages": [
+        {
+          "date": "2026-04-19T06:39:04Z",
+          "id": "19da476ec24e5e0e",
+          "sender": "eurostar@e.eurostar.com",
+          "snippet": "Please complete your Advance Passenger Information for your journey on 22 April 2026",
+          "subject": "Please complete your Advance Passenger Information (API)",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da244e27e1ffdb",
+      "messages": [
+        {
+          "date": "2026-04-18T20:25:16Z",
+          "id": "19da244e27e1ffdb",
+          "sender": "noreply@sosh.fr",
+          "snippet": "Votre facture du 16/04/2026 est disponible en ligne",
+          "subject": "Votre facture est arrivée",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da22e00450486f",
+      "messages": [
+        {
+          "date": "2026-04-18T20:00:00Z",
+          "id": "19da22e00450486f",
+          "sender": "noreply@booking.com",
+          "snippet": "Rate Kick Ass Greyfriars",
+          "subject": "Rate Kick Ass Greyfriars (18+)",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da19f4aa56738a",
+      "messages": [
+        {
+          "date": "2026-04-18T17:24:24Z",
+          "id": "19da19f4aa56738a",
+          "sender": "archie.hollingsworth@fyxer.com",
+          "snippet": "Tell Fyxer who's important",
+          "subject": "Never miss an email from your VIPs",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "19da160a81dfe84b",
+      "messages": [
+        {
+          "date": "2026-04-18T16:15:59Z",
+          "id": "19da160a81dfe84b",
+          "sender": "receipts-unitedkingdom@bolt.eu",
+          "snippet": "Thanks for choosing Bolt — here's your ride receipt!",
+          "subject": "Your Bolt ride on Saturday",
+          "toRecipients": [
+            "a.mandyev@gmail.com"
+          ]
+        }
+      ]
     }
   ]
 }

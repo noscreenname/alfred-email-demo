@@ -49,13 +49,21 @@ def load_context(level: int, period: str) -> str:
             "",
             "### Calendar (raw API response)",
             _read_json(level_dir / "calendar.json"),
-            "",
-            "### CRM Contacts (raw CSV export)",
-            _read_csv_as_text(level_dir / "crm.csv"),
+        ]
+
+        crm_path = level_dir / "crm.csv"
+        if crm_path.exists():
+            parts.extend([
+                "",
+                "### CRM Contacts (raw CSV export)",
+                _read_csv_as_text(crm_path),
+            ])
+
+        parts.extend([
             "",
             "### Trello Tasks (raw API response)",
             _read_json(level_dir / "trello.json"),
-        ]
+        ])
 
     elif level == 2:
         parts = [
@@ -114,7 +122,6 @@ def validate_data_files():
     required = [
         DATA_DIR / "level-1" / "gmail.json",
         DATA_DIR / "level-1" / "calendar.json",
-        DATA_DIR / "level-1" / "crm.csv",
         DATA_DIR / "level-1" / "trello.json",
         DATA_DIR / "level-2" / "inbox-product.json",
         DATA_DIR / "level-3" / "inbox-product.json",
