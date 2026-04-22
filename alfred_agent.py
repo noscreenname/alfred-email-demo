@@ -100,16 +100,16 @@ def load_context(level: int, period: str) -> str:
 
 
 def run_agent(system_prompt: str, context: str) -> dict:
-    """Call the Anthropic API and return the recap with usage metrics.
+    """Call the Anthropic API and return parsed recap with usage metrics.
 
-    Returns dict with keys: content (str), input_tokens (int),
-    output_tokens (int), context_chars (int).
+    Returns dict with keys: parsed (dict|None), raw (str),
+    input_tokens (int), output_tokens (int), context_chars (int).
     """
     client = anthropic.Anthropic()
 
     message = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=4096,
+        max_tokens=8192,
         temperature=0,
         system=system_prompt,
         messages=[
@@ -120,8 +120,23 @@ def run_agent(system_prompt: str, context: str) -> dict:
     if not message.content:
         raise RuntimeError("LLM returned empty response")
 
+    raw_text = message.content[0].text
+
+    # Try to parse JSON — strip markdown fences if present
+    cleaned = raw_text.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.split("\n", 1)[1] if "\n" in cleaned else cleaned
+        if cleaned.endswith("```"):
+            cleaned = cleaned[:-3].strip()
+
+    try:
+        parsed = json.loads(cleaned)
+    except (json.JSONDecodeError, ValueError):
+        parsed = None
+
     return {
-        "content": message.content[0].text,
+        "parsed": parsed,
+        "raw": raw_text,
         "input_tokens": message.usage.input_tokens,
         "output_tokens": message.usage.output_tokens,
         "context_chars": len(context),

@@ -23,48 +23,117 @@
     </form>
 
     {% if results %}
-    <div class="results">
+
+    <!-- Metrics Row -->
+    <div class="metrics-row-top">
         {% for result in results %}
-        <section class="level-block level-{{ result.number }}">
-            <div class="level-header">
-                <h2>{{ result.name }}</h2>
-                <p class="level-description">{{ result.description }}</p>
-            </div>
+        <div class="metrics-card level-{{ result.number }}-border">
+            <h3>{{ result.name }}</h3>
+            <p class="metrics-desc">{{ result.description }}</p>
             {% if result.metrics %}
-            <div class="level-metrics">
-                <div class="metrics-row">
-                    <span title="Time to process this level">{{ result.metrics.processing_seconds }}s</span>
-                    <span title="Data volume sent to agent">{{ result.metrics.context_kb }} KB</span>
-                    <span title="Input tokens consumed">{{ "{:,}".format(result.metrics.input_tokens) }} in</span>
-                    <span title="Output tokens generated">{{ "{:,}".format(result.metrics.output_tokens) }} out</span>
-                    <span class="metrics-total" title="Total tokens">{{ "{:,}".format(result.metrics.total_tokens) }} total</span>
-                </div>
+            <div class="metrics-values">
+                <span>{{ result.metrics.processing_seconds }}s</span>
+                <span>{{ result.metrics.context_kb }} KB</span>
+                <span>{{ "{:,}".format(result.metrics.input_tokens) }} in</span>
+                <span>{{ "{:,}".format(result.metrics.output_tokens) }} out</span>
+                <span class="metrics-total">{{ "{:,}".format(result.metrics.total_tokens) }} total</span>
             </div>
             {% endif %}
-            <div class="level-content">
-                {% if result.error %}
-                <div class="error-block">
-                    <p><strong>Error:</strong> {{ result.error }}</p>
-                </div>
-                {% else %}
-                {{ result.content | safe }}
-                {% endif %}
+            {% if result.error %}
+            <div class="error-inline">{{ result.error }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if comparison %}
+
+    <!-- Summaries -->
+    <div class="summaries-row">
+        {% for level_num in [1, 2, 3] %}
+        <div class="summary-card level-{{ level_num }}-border">
+            <h4>Summary</h4>
+            <p>{{ comparison.summaries.get(level_num, '—') }}</p>
+            {% if comparison.stats.get(level_num) %}
+            {% set s = comparison.stats[level_num] %}
+            <div class="stats-bar">
+                <span class="stat-action">{{ s.get('require_action', 0) }} action</span>
+                <span class="stat-info">{{ s.get('informatif', 0) }} info</span>
+                <span class="stat-notif">{{ s.get('notification', 0) }} notif</span>
+                <span class="stat-total">{{ s.get('total', 0) }} total</span>
             </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th class="col-email">Email</th>
+                    <th class="col-level">Level 1 — Raw APIs</th>
+                    <th class="col-level">Level 2 — Data Product</th>
+                    <th class="col-level">Level 3 — Data Contract</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for email in comparison.emails %}
+                <tr class="{% if email.has_diff %}diff-row{% endif %}">
+                    <td class="email-cell">
+                        <div class="email-subject">{{ email.subject[:80] }}{% if email.subject|length > 80 %}...{% endif %}</div>
+                        <div class="email-sender">{{ email.sender_name or email.sender }}</div>
+                    </td>
+                    {% for level_num in [1, 2, 3] %}
+                    {% set cell = email.levels.get(level_num, {}) %}
+                    {% set cls = cell.get('classification', 'missing') %}
+                    <td class="classification-cell cls-{{ cls }}" onclick="toggleReasoning(this)">
+                        <span class="cls-label">{{ cls.replace('_', ' ') }}</span>
+                        {% if cell.get('reasoning') %}
+                        <div class="reasoning-panel" style="display: none;">
+                            <p>{{ cell.reasoning }}</p>
+                        </div>
+                        {% endif %}
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% endif %}
+
+    <!-- Raw Data Toggles -->
+    <div class="raw-data-section">
+        <h3>Raw Data</h3>
+        <div class="raw-toggles">
+            {% for result in results %}
             {% if result.raw_context %}
-            <div class="raw-toggle">
-                <button onclick="toggleRaw(this)" class="toggle-btn">Show raw data</button>
+            <div class="raw-toggle-block">
+                <button onclick="toggleRaw(this)" class="toggle-btn">{{ result.name }} — context sent to agent</button>
                 <div class="raw-context" style="display: none;">
                     <pre>{{ result.raw_context }}</pre>
                 </div>
             </div>
             {% endif %}
-        </section>
-        {% endfor %}
+            {% if result.raw_response %}
+            <div class="raw-toggle-block">
+                <button onclick="toggleRaw(this)" class="toggle-btn">{{ result.name }} — agent response</button>
+                <div class="raw-context" style="display: none;">
+                    <pre>{{ result.raw_response }}</pre>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
     </div>
+
     {% else %}
     <div class="empty-state">
         <p>Select a time period and click <strong>Run Alfred</strong> to generate recaps at each maturity level.</p>
-        <p class="note">This will make 3 sequential LLM calls — expect ~30 seconds.</p>
+        <p class="note">This will make 3 sequential LLM calls — expect ~60 seconds.</p>
     </div>
     {% endif %}
 
@@ -73,14 +142,20 @@
     </footer>
 
     <script>
+    function toggleReasoning(cell) {
+        const panel = cell.querySelector('.reasoning-panel');
+        if (!panel) return;
+        panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    }
+
     function toggleRaw(btn) {
         const container = btn.nextElementSibling;
         if (container.style.display === 'none') {
             container.style.display = 'block';
-            btn.textContent = 'Hide raw data';
+            btn.classList.add('active');
         } else {
             container.style.display = 'none';
-            btn.textContent = 'Show raw data';
+            btn.classList.remove('active');
         }
     }
     </script>
