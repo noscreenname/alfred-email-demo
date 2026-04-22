@@ -134,6 +134,22 @@ header .subtitle {
     background: #f5f9f0;
 }
 
+/* Metrics bar */
+.level-metrics {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 1.25rem;
+    background: #f4f4f4;
+    border-bottom: 1px solid #eee;
+    font-size: 0.75rem;
+    color: #666;
+    font-family: "SF Mono", "Fira Code", monospace;
+}
+
+.level-metrics span {
+    white-space: nowrap;
+}
+
 /* Content typography */
 .level-content h1,
 .level-content h2,

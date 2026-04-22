@@ -1,8 +1,6 @@
 """Alfred agent — load context per maturity level and run LLM."""
 
-import csv
 import json
-import io
 from pathlib import Path
 
 import anthropic
@@ -44,7 +42,7 @@ def load_context(level: int, period: str) -> str:
             "",
             "Below is the raw data from multiple sources. Use it to produce the inbox recap.",
             "",
-            "### Gmail Inbox (raw API response)",
+            "### Gmail Inbox (raw API response with full message bodies)",
             _read_json(level_dir / "gmail.json"),
             "",
             "### Calendar (raw API response)",
@@ -98,8 +96,12 @@ def load_context(level: int, period: str) -> str:
     return "\n".join(parts)
 
 
-def run_agent(system_prompt: str, context: str) -> str:
-    """Call the Anthropic API and return the markdown recap."""
+def run_agent(system_prompt: str, context: str) -> dict:
+    """Call the Anthropic API and return the recap with usage metrics.
+
+    Returns dict with keys: content (str), input_tokens (int),
+    output_tokens (int), context_chars (int).
+    """
     client = anthropic.Anthropic()
 
     message = client.messages.create(
@@ -114,7 +116,13 @@ def run_agent(system_prompt: str, context: str) -> str:
 
     if not message.content:
         raise RuntimeError("LLM returned empty response")
-    return message.content[0].text
+
+    return {
+        "content": message.content[0].text,
+        "input_tokens": message.usage.input_tokens,
+        "output_tokens": message.usage.output_tokens,
+        "context_chars": len(context),
+    }
 
 
 def validate_data_files():

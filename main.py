@@ -56,18 +56,26 @@ async def run(request: Request, period: str = Form("week")):
         level = level_info["number"]
         try:
             context = load_context(level, period)
-            raw_md = run_agent(SYSTEM_PROMPT, context)
-            html = markdown.markdown(raw_md, extensions=["tables", "fenced_code"])
+            result = run_agent(SYSTEM_PROMPT, context)
+            html = markdown.markdown(result["content"], extensions=["tables", "fenced_code"])
             results.append({
                 **level_info,
                 "content": html,
                 "error": None,
+                "metrics": {
+                    "input_tokens": result["input_tokens"],
+                    "output_tokens": result["output_tokens"],
+                    "total_tokens": result["input_tokens"] + result["output_tokens"],
+                    "context_chars": result["context_chars"],
+                    "context_kb": round(result["context_chars"] / 1024, 1),
+                },
             })
         except Exception as e:
             results.append({
                 **level_info,
                 "content": None,
                 "error": f"{type(e).__name__}: {e}",
+                "metrics": None,
             })
 
     return templates.TemplateResponse("index.html", {

@@ -30,6 +30,14 @@
                 <h2>{{ result.name }}</h2>
                 <p class="level-description">{{ result.description }}</p>
             </div>
+            {% if result.metrics %}
+            <div class="level-metrics">
+                <span>Input: {{ "{:,}".format(result.metrics.input_tokens) }} tokens</span>
+                <span>Output: {{ "{:,}".format(result.metrics.output_tokens) }} tokens</span>
+                <span>Total: {{ "{:,}".format(result.metrics.total_tokens) }} tokens</span>
+                <span>Data loaded: {{ result.metrics.context_kb }} KB</span>
+            </div>
+            {% endif %}
             <div class="level-content">
                 {% if result.error %}
                 <div class="error-block">
