@@ -67,8 +67,11 @@ def load_context(level: int, period: str) -> str:
         parts = [
             f"## Time period: {period}",
             "",
-            "Below is a curated data product combining email, calendar, CRM, and task data.",
-            "Each email thread is pre-joined with sender contact info, related tasks, and calendar context.",
+            "Below is a curated data product. Email threads are pre-joined with:",
+            "- Sender classification (person, automated, newsletter, transactional)",
+            "- Cross-source context: related Trello tasks, calendar conflicts, sender frequency",
+            "- Derived signals: has_action_signal, has_related_task, has_calendar_conflict",
+            "- Cleaned bodies: tracking URLs, footers, and noise removed",
             "",
             "### Inbox Intelligence Product",
             _read_json(level_dir / "inbox-product.json"),

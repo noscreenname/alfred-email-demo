@@ -1,334 +1,1834 @@
 {
   "product": {
     "name": "Inbox Intelligence Product",
+    "description": "Curated email threads enriched with cross-source context from Calendar and Trello. Cleaned bodies, classified senders, joined relationships, and derived action signals.",
     "owner": "data-platform-team",
-    "description": "Pre-joined email threads enriched with contact, calendar, and task context.",
-    "last_updated": "2026-04-18T12:00:00+02:00"
+    "source_data": {
+      "gmail_threads": 50,
+      "calendar_events": 10,
+      "trello_cards": 79
+    },
+    "generated_at": "2026-04-22T21:11:54.178807+00:00"
   },
   "threads": [
     {
-      "thread_id": "thread_001",
-      "subject": "Re: Following up on our discussion",
-      "latest_message_date": "2026-04-18T09:14:00+02:00",
-      "sender": {
-        "name": "Marc Lefèvre",
-        "email": "marc.lefevre@acme-corp.com",
-        "organisation": "Acme Corp",
-        "relationship_type": "client",
-        "deal_stage": "negotiation",
-        "deal_value": 120000,
-        "deal_owner": "andriy@example.com"
-      },
-      "snippet": "Hi Andriy, just wanted to circle back on what we discussed last Thursday. I've reviewed the proposal internally and have a few points I'd like to go over. Could we find 30 minutes next week?",
+      "thread_id": "19db616c287e2c9c",
+      "subject": "New application authorised in your Trello account",
+      "date": "2026-04-22T16:47:17Z",
+      "snippet": "Hey there, We noticed that you've authorised a new application in your Trello account.",
+      "body": "Trello notification about Alfred app authorization",
       "is_unread": true,
-      "labels": ["INBOX", "UNREAD"],
-      "related_tasks": [
-        {
-          "name": "Prepare Acme proposal revision — Phase 2 scope",
-          "status": "In Progress",
-          "assignee": "andriy@example.com",
-          "due": "2026-04-17",
-          "overdue": true
-        }
-      ],
-      "calendar_context": []
+      "sender": {
+        "name": "Do Not Reply",
+        "email": "do-not-reply@trello.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 6
+      }
     },
     {
-      "thread_id": "thread_002",
-      "subject": "Meeting request — Thursday 2pm",
-      "latest_message_date": "2026-04-17T14:22:00+02:00",
-      "sender": {
-        "name": "Sarah Chen",
-        "email": "sarah.chen@partner-org.io",
-        "organisation": "Partner Org",
-        "relationship_type": "partner"
-      },
-      "snippet": "Hey Andriy, are you available Thursday at 2pm CET for a quick sync on the integration timeline? I'd like to align on the Q3 deliverables before the steering committee next Monday.",
+      "thread_id": "19db5f6e2d0e02d2",
+      "subject": "Votre avis compte pour améliorer notre service de location immobilière",
+      "date": "2026-04-22T16:12:28Z",
+      "snippet": "GDC Bonjour Andriy, Votre avez récemment souscrit au Pack Locataire Prioritaire et nous vous en remercions. Pour nous aider à améliorer notre service, nous serions heureux que vous nous disiez comment",
+      "body": "Bonjour Andriy,\n\nVotre avez récemment souscrit au Pack Locataire Prioritaire et nous vous en\nremercions.\nPour nous aider à améliorer notre service, nous serions heureux que vous nous\ndisiez comment se passe votre expérience de recherche immobilière sur\nGens de Confiance.\nIl suffit de répondre à une simple question en cliquant ci-dessous.\n\n\n\nNoter votre expérience\n[\n\n\n\n\n\n\nMerci beaucoup par avance.\n\nBien amicalement,\nL'équipe Gens de Confiance.\n\n\n\nLa confiance certifiée B corp",
       "is_unread": true,
-      "labels": ["INBOX", "UNREAD"],
-      "related_tasks": [],
-      "calendar_context": [
-        {
-          "event": "Data governance working group",
-          "start": "2026-04-18T14:00:00+02:00",
-          "end": "2026-04-18T15:00:00+02:00",
-          "conflict": true,
-          "conflict_note": "Proposed meeting time overlaps with confirmed event"
-        }
-      ]
+      "sender": {
+        "name": "Bonjour",
+        "email": "bonjour@gensdeconfiance.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "Draft service proposal for conto",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: service"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 71
+      }
     },
     {
-      "thread_id": "thread_003",
-      "subject": "Partnership opportunity — data mesh tooling",
-      "latest_message_date": "2026-04-18T11:05:00+02:00",
-      "sender": {
-        "name": "J. Martinez",
-        "email": "j.martinez@newco.io",
-        "organisation": "NewCo",
-        "relationship_type": "unknown"
-      },
-      "snippet": "Hi Andriy, I came across your talk on data contracts at the Berlin meetup last month. We're building a data mesh platform and I think there could be interesting synergies. Would you be open to a 20-minute call?",
+      "thread_id": "19db5ef2aa8abaed",
+      "subject": "Get Ready for 'How to stop babysitting your agents' tomorrow!",
+      "date": "2026-04-22T16:04:01Z",
+      "snippet": "Unblocked April 23, 2026 09:00 AM How to stop babysitting your agents Just a quick reminder, How to stop babysitting your agents will take place tomorrow! A replay will be available shortly after the",
+      "body": "",
       "is_unread": true,
-      "labels": ["INBOX", "UNREAD"],
-      "related_tasks": [],
-      "calendar_context": []
+      "sender": {
+        "name": "No Reply",
+        "email": "no-reply@getcontrast.io",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "extra instructions for agents in specs",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: agents"
+          },
+          {
+            "task_name": "Idea: modeling interaction as a merge of 2 knowledge graphs. What's the interface? Does it help create control over probabilistic agents?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: agents"
+          }
+        ],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
     },
     {
-      "thread_id": "thread_004",
-      "subject": "Sprint review notes — data pipeline team",
-      "latest_message_date": "2026-04-17T16:45:00+02:00",
-      "sender": {
-        "name": "Elena Volkov",
-        "email": "elena.volkov@internal-team.com",
-        "organisation": "Internal",
-        "relationship_type": "internal"
-      },
-      "snippet": "Hi Andriy, attaching the sprint review notes from today's session. Key highlights: the ingestion pipeline migration is 80% complete, we identified a blocker on the schema registry integration. No action needed from you — just keeping you in the loop.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [
-        {
-          "name": "Schema registry integration — unblock pipeline team",
-          "status": "Blocked",
-          "assignee": "elena.volkov@internal-team.com",
-          "due": "2026-04-22",
-          "overdue": false
-        }
-      ],
-      "calendar_context": []
-    },
-    {
-      "thread_id": "thread_005",
-      "subject": "[data-contracts-toolkit] Issue #247: Schema validation fails on nested arrays",
-      "latest_message_date": "2026-04-18T08:30:00+02:00",
-      "sender": {
-        "name": "GitHub Notifications",
-        "email": "notifications@github.com",
-        "organisation": "GitHub",
-        "relationship_type": "automated"
-      },
-      "snippet": "New issue opened by @user-xyz: When validating a schema with nested arrays, the validator throws an unexpected error...",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [],
-      "calendar_context": []
-    },
-    {
-      "thread_id": "thread_006",
-      "subject": "Your AWS invoice for April 2026",
-      "latest_message_date": "2026-04-16T03:00:00+02:00",
-      "sender": {
-        "name": "AWS Billing",
-        "email": "receipts@aws.amazon.com",
-        "organisation": "Amazon Web Services",
-        "relationship_type": "vendor"
-      },
-      "snippet": "Your AWS invoice for the billing period April 1-15, 2026 is now available. Total: €342.17.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [],
-      "calendar_context": []
-    },
-    {
-      "thread_id": "thread_007",
-      "subject": "Re: Contract renewal timeline",
-      "latest_message_date": "2026-04-17T10:30:00+02:00",
-      "sender": {
-        "name": "Pierre Dubois",
-        "email": "pierre.dubois@acme-corp.com",
-        "organisation": "Acme Corp",
-        "relationship_type": "client",
-        "deal_stage": "negotiation",
-        "deal_value": 120000,
-        "deal_owner": "andriy@example.com"
-      },
-      "snippet": "Andriy, quick heads up — the legal team needs the signed addendum by end of month. Marc mentioned you two are still discussing the technical scope. Let me know if I can help unblock.",
+      "thread_id": "19db5a8bc3d22c23",
+      "subject": "Guy Hoquet PARIS 5 Maubert : Invitation à signer électroniquement",
+      "date": "2026-04-22T14:47:07Z",
+      "snippet": "La signature électronique de votre document Bonjour , Vous êtes invité à relire et signer le document « Bail logement loué meublé à usage de résidence principale » (BAIL 237 avenue Daumesnil - Mandyev)",
+      "body": "",
       "is_unread": true,
-      "labels": ["INBOX", "UNREAD"],
-      "related_tasks": [
-        {
-          "name": "Prepare Acme proposal revision — Phase 2 scope",
-          "status": "In Progress",
-          "assignee": "andriy@example.com",
-          "due": "2026-04-17",
-          "overdue": true
-        }
-      ],
-      "calendar_context": [
-        {
-          "event": "Lunch with Pierre (Acme)",
-          "start": "2026-04-16T12:00:00+02:00",
-          "end": "2026-04-16T13:30:00+02:00",
-          "conflict": false,
-          "conflict_note": "Recent in-person meeting with this contact"
-        }
-      ]
+      "sender": {
+        "name": "Sign",
+        "email": "sign@modelo.fr",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "investigate Station F sign-up",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: sign"
+          },
+          {
+            "task_name": "How much is cowork in Paris ",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: paris"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
     },
     {
-      "thread_id": "thread_008",
-      "subject": "Data Engineering Weekly #287 — dbt 2.0 deep dive",
-      "latest_message_date": "2026-04-16T07:00:00+02:00",
-      "sender": {
-        "name": "Data Engineering Weekly",
-        "email": "newsletter@dataengineering-weekly.com",
-        "organisation": "Data Engineering Weekly",
-        "relationship_type": "newsletter"
-      },
-      "snippet": "This week: dbt 2.0 launches with native Python models, Snowflake acquires data observability startup, and why data contracts are becoming the new API specs...",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [],
-      "calendar_context": []
-    },
-    {
-      "thread_id": "thread_009",
-      "subject": "Reminder: Team standup — tomorrow 9:30 AM",
-      "latest_message_date": "2026-04-17T18:00:00+02:00",
-      "sender": {
-        "name": "Google Calendar",
-        "email": "calendar-noreply@google.com",
-        "organisation": "Google",
-        "relationship_type": "automated"
-      },
-      "snippet": "Reminder: Team standup is scheduled for tomorrow, Friday April 18, at 9:30 AM CET.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [],
-      "calendar_context": [
-        {
-          "event": "Team standup",
-          "start": "2026-04-18T09:30:00+02:00",
-          "end": "2026-04-18T09:45:00+02:00",
-          "conflict": false,
-          "conflict_note": "Event already on calendar"
-        }
-      ]
-    },
-    {
-      "thread_id": "thread_010",
-      "subject": "Quick question on data quality metrics",
-      "latest_message_date": "2026-04-18T10:15:00+02:00",
-      "sender": {
-        "name": "Thomas Berg",
-        "email": "thomas.berg@client-b.de",
-        "organisation": "Client B",
-        "relationship_type": "client",
-        "deal_stage": "active",
-        "deal_value": 45000,
-        "deal_owner": "andriy@example.com"
-      },
-      "snippet": "Hi Andriy, we're setting up our data quality dashboard and I wanted to ask — which metrics do you recommend tracking for contract compliance? We're using Great Expectations but open to alternatives.",
+      "thread_id": "19db4e8d17da335b",
+      "subject": "🚨 CDI - Head of Data (H/F) 🚨",
+      "date": "2026-04-22T11:17:29Z",
+      "snippet": "Bonjour, Mon client, réseau social qui permet d'ex... ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏",
+      "body": "🚨 CDI - Head of Data (H/F) 🚨\n🚨 CDI - Head of Data (H/F) 🚨\n\n      Elio El Bitar\n        Reply\n        \n\nBonjour,\n\nMon client, réseau social qui permet d'explorer la diversité des pratiques sexuelles dans un cadre sécurisé, cherche un Head of Data (H/F) pour être garant de la cohérence de la vision data, de l'équipe data, et de la transformation des données en insights actionnables pour le produit.\n\n.\n💥 Le défi :\n\n* Construire et piloter une roadmap data (architecture technique, IA, prédiction, optimisation produit)\n* Réaliser un état des lieux complet de la donnée et la rendre accessible et exploitable par toutes les équipes\n* Industrialiser et automatiser les analyses via Tableau, Quicksight, Amplitude, GSheet ou d'autres outils à déployer\n* Manipuler et modéliser la donnée au quotidien (SQL, Python, AWS, ETL) avec un fort engagement opérationnel\n* Accompagner les équipes internes dans l'adoption de la data et instaurer une culture de Data Driven Development\n* Définir, fiabiliser et suivre les KPI business et produit\n* Manager et faire monter en compétence l'équipe data\n\n\n💻 Stack technique :\n\n- Python / SQL\n- Analyse de cohortes, funnels, A/B tests\n- Data visualisation / BI (ex : Tableau, Quicksight, Amplitude)\n- Maîtrise de la manipulation de données, y compris la collecte, l'organisation, la transformation, la visualisation et l'analyse de données\n\n\n🎯 Votre profil :\n* Expérience sur projets à fort trafic\n* A l'aise avec l'anglais\n* Facilité à vulgariser ses propos\n* Connaissance globale du fonctionnement web\n* A l'aise avec le management\n* Force de proposition et fédérateur\n\n\n💸 Salaire : 60K – 70K (selon expérience)\n 💼 Contrat : CDI à temps plein\n 📍 Lieu : Levallois / Télétravail (3 jours)\n\nSi l'opportunité vous intéresse, n'hésitez pas à me communiquer vos coordonnées pour que nous puissions en discuter.\n\nPS : Bien entendu si vous connaissez une autre personne susceptible d'être intéressé, je suis preneur ! 🙂\n\nBonne fin de journée et à bientôt !\n\nElio El Bitar\neelbitar@matchunt.com\n🗣️  🇫🇷 🇬🇧 🇪🇸 🇱🇧",
       "is_unread": true,
-      "labels": ["INBOX", "UNREAD"],
-      "related_tasks": [
-        {
-          "name": "Client B — data quality metrics recommendation",
-          "status": "To Do",
-          "assignee": "andriy@example.com",
-          "due": "2026-04-21",
-          "overdue": false
-        }
-      ],
-      "calendar_context": []
+      "sender": {
+        "name": "Inmail Hit Reply",
+        "email": "inmail-hit-reply@linkedin.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "Writing: AI slot? Is it necessary bad? We are now generating huge amounts of data. It's not human vs ai, it's valuable vs noise. The key is no longer to get the info, it's to get the right info, at the right time, in the right form. It's to sort through everything available to know what's relevant. ",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: data"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 336
+      }
     },
     {
-      "thread_id": "thread_011",
-      "subject": "Your order has been shipped",
-      "latest_message_date": "2026-04-17T12:00:00+02:00",
+      "thread_id": "19db4dd29a6840e5",
+      "subject": "Andriy, see the shifts of tomorrow",
+      "date": "2026-04-22T11:04:40Z",
+      "snippet": "Enjoy your sample articles The Economist Read in browser Dear Andriy, At The Economist Pro, we hope you benefited from sampling our high-quality, trustworthy information. We'd like to offer you",
+      "body": "",
+      "is_unread": true,
       "sender": {
-        "name": "Zalando",
-        "email": "shipping@zalando.de",
-        "organisation": "Zalando",
-        "relationship_type": "vendor"
+        "name": "Noreply",
+        "email": "noreply@b.economist.com",
+        "type": "newsletter"
       },
-      "snippet": "Good news! Your order #ZL-9283747 has been shipped and is on its way. Expected delivery: April 19-20.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [],
-      "calendar_context": []
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
     },
     {
-      "thread_id": "thread_012",
-      "subject": "FYI: New data governance policy draft",
-      "latest_message_date": "2026-04-16T14:20:00+02:00",
+      "thread_id": "19db4d445e8d2832",
+      "subject": "Citya Immobilier vous aide pour la déclaration des revenus fonciers !",
+      "date": "2026-04-22T10:55:03Z",
+      "snippet": "Bien chez soi ! Si vous n'arrivez pas à visualiser cet email, cliquez-ici guide-revenu-foncier Bien chez soi Facebook Twitter Instagram LinkedIn Vous recevez cette newsletter car vous avez accepté",
+      "body": "Bien chez soi !",
+      "is_unread": true,
       "sender": {
-        "name": "Lisa Park",
-        "email": "lisa.park@internal-team.com",
-        "organisation": "Internal",
-        "relationship_type": "internal"
+        "name": "Nepasrepondre",
+        "email": "nepasrepondre@citya.com",
+        "type": "newsletter"
       },
-      "snippet": "Hi all, sharing the draft data governance policy for review. Comments welcome by end of next week. This covers data classification, retention, and access control standards.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [
-        {
-          "name": "Review data governance policy draft",
-          "status": "To Do",
-          "assignee": "andriy@example.com",
-          "due": "2026-04-25",
-          "overdue": false
-        }
-      ],
-      "calendar_context": []
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 4
+      }
     },
     {
-      "thread_id": "thread_013",
-      "subject": "You have 5 new connection requests",
-      "latest_message_date": "2026-04-18T06:00:00+02:00",
+      "thread_id": "19db4c592d534cff",
+      "subject": "Desertfest Belgium First Headliner: UNCLE ACID AND THE DEADBEATS",
+      "date": "2026-04-22T10:38:59Z",
+      "snippet": "Desertfest Belgium Newsletter Hi Desertheads We're beyond stoked to announce our first headliner for Desertfest Belgium 2026. Uncle Acid and The Deadbeats will be gracing our stage come October.",
+      "body": "",
+      "is_unread": true,
       "sender": {
-        "name": "LinkedIn",
-        "email": "noreply@linkedin.com",
-        "organisation": "LinkedIn",
-        "relationship_type": "automated"
+        "name": "Contact",
+        "email": "contact@desertfest.be",
+        "type": "newsletter"
       },
-      "snippet": "Sarah Chen, Marc Lefèvre, and 3 others want to connect with you.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [],
-      "calendar_context": []
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
     },
     {
-      "thread_id": "thread_014",
-      "subject": "[RESOLVED] Pipeline delay — customer_events ingestion",
-      "latest_message_date": "2026-04-17T22:15:00+02:00",
+      "thread_id": "19db4879bbcd4deb",
+      "subject": "\r\nNous avons le plaisir de vous confirmer votre réservation en train OUIGO le 22/04/2026 au départ de Lille Flandres et à destination de Lyon Part Dieu.\r\n",
+      "date": "2026-04-22T09:31:19Z",
+      "snippet": "OUIGO Votre billet OUIGO Bonjour, Nous avons le plaisir de vous confirmer votre réservation en train OUIGO le 22/04/2026 au départ de Lille Flandres et à destination de Lyon Part Dieu. Afin d'",
+      "body": "",
+      "is_unread": true,
       "sender": {
-        "name": "Ops Alerts",
-        "email": "ops-alerts@internal-team.com",
-        "organisation": "Internal",
-        "relationship_type": "automated"
+        "name": "Ne Pas Repondre",
+        "email": "ne-pas-repondre@pasngr.ouigo.com",
+        "type": "transactional"
       },
-      "snippet": "The customer_events ingestion pipeline delay has been resolved. Root cause: upstream API rate limiting. SLA impact: 47 minutes. No data loss.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [],
-      "calendar_context": []
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "technical part of context api",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: part"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
     },
     {
-      "thread_id": "thread_015",
-      "subject": "Re: Technical scope for Phase 2",
-      "latest_message_date": "2026-04-16T15:40:00+02:00",
+      "thread_id": "19db48798f4e493e",
+      "subject": "Exchange confirmation",
+      "date": "2026-04-22T09:31:18Z",
+      "snippet": "Exchange of your ticket Hello Andriy, Your selection has been exchanged Your new ticket Your trips Trip to Lyon part dieu on 22 Apr 2026 12:56 Lille flandres 16:00 Lyon part dieu x1 Reference KLWNFX",
+      "body": "",
+      "is_unread": true,
       "sender": {
-        "name": "Marc Lefèvre",
-        "email": "marc.lefevre@acme-corp.com",
-        "organisation": "Acme Corp",
-        "relationship_type": "client",
-        "deal_stage": "negotiation",
-        "deal_value": 120000,
-        "deal_owner": "andriy@example.com"
+        "name": "Noreply",
+        "email": "noreply@connect.sncf",
+        "type": "transactional"
       },
-      "snippet": "Andriy, I've attached the updated requirements for Phase 2. The main change is the addition of real-time streaming, which Pierre flagged as a priority for the renewal. Let me know your thoughts.",
-      "is_unread": false,
-      "labels": ["INBOX"],
-      "related_tasks": [
-        {
-          "name": "Prepare Acme proposal revision — Phase 2 scope",
-          "status": "In Progress",
-          "assignee": "andriy@example.com",
-          "due": "2026-04-17",
-          "overdue": true
-        }
-      ],
-      "calendar_context": []
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19db35bdad536b27",
+      "subject": "[GitHub] Your GitHub Enterprise trial will be deleted in 7 days",
+      "date": "2026-04-22T04:03:54Z",
+      "snippet": "Your Enterprise trial account contolabs will be deleted in 7 days Your GitHub Enterprise trial will be deleted in 7 days Hi Andrey! Your GitHub Enterprise trial has ended. GitHub Enterprise trial",
+      "body": "Your Enterprise trial account contolabs will be deleted in 7 days.\n\nHi Andrey!\n\nYour GitHub Enterprise trial has ended.\n\nGitHub Enterprise trial accounts are automatically deleted 90 days after the trial period ends.\n\nOn April 29, your account, contolabs will be deleted.\n\nTo continue using GitHub Enterprise, manage your projects, and save all your past work, you will need to upgrade your account.\n\n  Any organization associated with this enterprise trial account will also be deleted.\n      contolabs\n\n\n\n- If you get a 404 page, make sure you're signed in as an owner of contolabs.",
+      "is_unread": true,
+      "sender": {
+        "name": "Support",
+        "email": "support@github.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "conto-github-app ?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: github"
+          },
+          {
+            "task_name": "GitHub app?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: github"
+          },
+          {
+            "task_name": "Idea. Agentic knowledge Management a la databricks for collaborative Enterprise level maturity",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: enterprise"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 93
+      }
+    },
+    {
+      "thread_id": "19db35bda6e1cf1c",
+      "subject": "[GitHub] Your GitHub organization trial will be deleted in 7 days",
+      "date": "2026-04-22T04:03:54Z",
+      "snippet": "Your organization account contolabs will be deleted in 7 days Your GitHub organization in GitHub Enterprise trial will be deleted in 7 days Hi Andrey! Your GitHub Enterprise trial has ended. GitHub",
+      "body": "Your Enterprise trial account contolabs will be deleted in 7 days.\n\nHi Andrey!\n\nYour GitHub Enterprise trial has ended.\n\nGitHub Enterprise trial accounts are automatically deleted 90 days after the trial period ends.\n\nOn April 29, your account, contolabs will be deleted.\n\nTo continue using contolabs upgrade to a paid GitHub Enterprise account or move your organiztion outside of the enterprise.\n\n\n\n\n- If you get a 404 page, make sure you're signed in as an owner of contolabs.",
+      "is_unread": true,
+      "sender": {
+        "name": "Support",
+        "email": "support@github.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "conto-github-app ?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: github"
+          },
+          {
+            "task_name": "GitHub app?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: github"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 78
+      }
+    },
+    {
+      "thread_id": "19db199fc45c199f",
+      "subject": "Re: Let me know what went wrong",
+      "date": "2026-04-21T19:55:14Z",
+      "snippet": "The tool is blocked by my employer, so can't use it anymore. Sorry. Really love it otherwise! Andriy Mandyev On Tue, Apr 21, 2026, 20:52 Gabriela from Excalidraw+ &lt;gabriela@excalidraw.com&gt;",
+      "body": "Let me know what went wrong\n\nHi,\n\nThanks for trying out Excalidraw!\n\nSince you canceled recently, I thought I'd drop by and ask for your thoughts. Is there anything you were missing or wasn't working for you?\n\nWe are still at the start of our journey, so any feedback will help.\n\nBest,\nGabriela Macakova\n\nExcalidraw + (  )",
+      "is_unread": true,
+      "sender": {
+        "name": "A Mandyev",
+        "email": "a.mandyev@gmail.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "Deploy Mandyev.com",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: mandyev"
+          },
+          {
+            "task_name": "Idea: modeling interaction as a merge of 2 knowledge graphs. What's the interface? Does it help create control over probabilistic agents?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: what"
+          },
+          {
+            "task_name": "Writing: AI slot? Is it necessary bad? We are now generating huge amounts of data. It's not human vs ai, it's valuable vs noise. The key is no longer to get the info, it's to get the right info, at the right time, in the right form. It's to sort through everything available to know what's relevant. ",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: what, know"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 58
+      }
+    },
+    {
+      "thread_id": "19db1696c2f823f1",
+      "subject": "Your Eurostar tickets to Lille Europe on Wednesday, 22 April 2026",
+      "date": "2026-04-21T18:59:29Z",
+      "snippet": "Get the Eurostar App Email looking a bit odd? View online Eurostar Your Eurostar ticket For 1 passenger Booking reference: TJ4JN2 Hello, Here are the ticket/s for: ANDRIY MANDYEV. We look forward to",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@eurostar.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 3
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19db1675f6b992db",
+      "subject": "Your exchange confirmation | Wednesday, 22 April 2026 - Reference: TJ4JN2",
+      "date": "2026-04-21T18:57:14Z",
+      "snippet": "Get the Eurostar App Your exchange confirmation | Reference: TJ4JN2 Email looking a bit odd? View online Eurostar Your journey has been changed Dear customer, Your reservation is confirmed. Thank you",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@eurostar.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "While I'm at ideation stage and writing a lot. Create an agentic coding user group, reference page a la hugging face, with tutorials, curated material, etc",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: reference"
+          }
+        ],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 3
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19db163170543a9d",
+      "subject": "😟 Your Excalidraw+ subscription plan was canceled",
+      "date": "2026-04-21T18:52:31Z",
+      "snippet": "We&#39;re sorry to say goodbye, but we hope to see you soon on board again. Excalidraw+ Goodbye for now from Excalidraw+ Hey there, Your Excalidraw+ subscription plan was canceled. We&#39;re sorry to",
+      "body": "We're sorry to say goodbye, but we hope to see you soon on board again.\n\nExcalidraw+ (  )\n\n*Goodbye for now from Excalidraw+*\n\nHey there,\n\nYour Excalidraw+ subscription plan was canceled. We're sorry to say goodbye, but we hope to see you soon on board again. Our team is working on *amazing features* that *will only be available to Plus users* !\n\nDon't forget to *follow our* *Twitter* (  ) *,* *LinkedIn* (  ) *or* *join our Discord* (  ) ** to ** stay up-to-date and not miss any of this exciting news!\n\nUntil then, *you can still enjoy the benefits of our forever-free editor*. Even with 1 scene, you can create outstanding results in our unique hand-drawn-like style that will take your projects to the next level.\n\nUse free editor (  )\n\nAnd – if you would like to share some thoughts with us, go ahead and drop us an email at *support@excalidraw.com* ( support@excalidraw.com?subject=Excalidraw+ feedback&body= ).\n\nThanks for being the part of Excalidraw+ community!\n\n*With love,*\nThe Excalidraw+ team\n\n(  ) (  ) (  )\n\nYou received this email to let you know about the important information and changes to your Excalidraw+ account.",
+      "is_unread": true,
+      "sender": {
+        "name": "No Reply",
+        "email": "no-reply@excalidraw.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "plan surf session",
+            "list": "Fridge",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: plan"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 195
+      }
+    },
+    {
+      "thread_id": "19db0b29883386ab",
+      "subject": "Security alert",
+      "date": "2026-04-21T15:40:39Z",
+      "snippet": "You allowed Claude for Google Calendar access to some of your Google Account data a.mandyev@gmail.com If you didn&#39;t allow Claude for Google Calendar access to some of your Google Account data,",
+      "body": "[image: Google]\nYou allowed Claude access to some of your Google Account data\n\n\na.mandyev@gmail.com\n\nIf you didn't allow Claude access to some of your Google Account data,\nsomeone else may be trying to access your Google Account data.\n\nTake a moment now to check your account activity and secure your account.\nCheck activity\n<\nTo make changes at any time to the access that Claude has to your data, go\nto your Google Account\n<\nYou can also see security activity at\nhttps://myaccount.google.com/notifications\nYou received this email to let you know about important changes to your\nGoogle Account and services.\n© 2026 Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Ireland",
+      "is_unread": true,
+      "sender": {
+        "name": "No Reply",
+        "email": "no-reply@accounts.google.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 112
+      }
+    },
+    {
+      "thread_id": "19db075c29d9b46a",
+      "subject": "Projet de bail et sommes a régler ",
+      "date": "2026-04-21T14:33:11Z",
+      "snippet": "Bonjour, Ci joint les projets d&#39;actes et le projet de bail. Pensez à bien souscrire votre assurance habitation pour le 27 avril. Concernant les règlements : Le 1er Loyer + charges de mars : 184€",
+      "body": "Bonjour,\n\nCi joint les projets d'actes et le projet de bail.\n\nPensez à bien souscrire votre assurance habitation pour le 27 avril.\n\nConcernant les règlements :\n Le 1er\nLoyer + charges de mars : 184€\nDépôt de garantie :2240€\nTT :2724€\nA verser au propriétaire Madame TANGUY (RIB en PJ)\n\nLe 2e\nHonoraires visite dossier et bail : 501.48€\nHonoraire état des lieux : 125.37€\nTT : 626.85€\nA verser au cabinet Guy hoquet Convention (RIB COMPTE COURANT MAUBERT en PJ)\n\nBien à vous\n\n--\n\n[cid:f5b2e54e-e33f-4fbb-aa47-aa14525bd1c7]",
+      "is_unread": true,
+      "sender": {
+        "name": "Marion Teppa",
+        "email": "marion.teppa@guyhoquet.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 86
+      }
+    },
+    {
+      "thread_id": "19db0494182d15bc",
+      "subject": "Registration confirmed for Comment mieux gérer le context de vos agents",
+      "date": "2026-04-21T13:44:43Z",
+      "snippet": "GenAI France - Lyon You have registered for Comment mieux gérer le context de vos agents MAY 5 Tuesday, May 5 6:30 PM - 9:00 PM GMT+2 H7 - Halle GIRARD ↗ Lyon, Auvergne-Rhône-Alpes Event Page My Ticket",
+      "body": "You have registered for\nComment mieux gérer le context de vos agents\nTuesday, May 5 6:30 PM - 9:00 PM GMT+2\nLocation: In Person\n\nEvent Page: https://luma.com/o5khjhd9?pk=g-G9caofeEKe4bCSV\nMy Ticket: https://luma.com/e/ticket/evt-OOwDZ9XVjpRNB67?pk=g-G9caofeEKe4bCSV\n\nDownload the Luma App — Access your tickets for quick check-in, receive event updates and blasts, and get directions conveniently.\nhttps://apps.apple.com/us/app/luma-delightful-events/id1546150895\nhttps://play.google.com/store/apps/details?id=com.luma.mobile\n\nSent using https://luma.com",
+      "is_unread": true,
+      "sender": {
+        "name": "Generativeai France Lyon",
+        "email": "generativeai-france-lyon@calendar.luma-mail.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "extra instructions for agents in specs",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: agents"
+          },
+          {
+            "task_name": "Idea: modeling interaction as a merge of 2 knowledge graphs. What's the interface? Does it help create control over probabilistic agents?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: agents"
+          },
+          {
+            "task_name": "How does palatir work ? -> context API",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "Idea: context degradation as blocker to long term value ",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "technical part of context api",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "Create context based on action analysis impact",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "Agent context governance",
+            "list": "Code",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          }
+        ],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": true,
+        "word_count": 55
+      }
+    },
+    {
+      "thread_id": "19db030621db4e3a",
+      "subject": "Thank you for trying Fyxer",
+      "date": "2026-04-21T13:17:33Z",
+      "snippet": "Hi Andriy, Thank you trying Fyxer! Your trial period has ended and your subscription is now live: Plan: Pro Billing: monthly Seats: 1 If you think your teammates would like to try it, make sure to",
+      "body": "Hi Andriy,\n\nThank you trying Fyxer! Your trial period has ended and your subscription is now live:\n\n* Plan: Pro\n* Billing: monthly\n* Seats: 1\n\nIf you think your teammates would like to try it, make sure to\ninvite them (  )!\n\nBest,\n\nAlexa\n\n--\n\nAlexa Maingard\n\nCustomer Success | Fyxer\n\nNeed support with Fyxer?\nChat with Our Support Team (  )",
+      "is_unread": true,
+      "sender": {
+        "name": "Alexa",
+        "email": "alexa@fyxer.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 63
+      }
+    },
+    {
+      "thread_id": "19db021a6ac20b23",
+      "subject": "You are invited to Comment mieux gérer le context de vos agents",
+      "date": "2026-04-21T13:01:28Z",
+      "snippet": "Hello, notre prochain event GenAI Lyon aura lieu le 05/05/26 à partir de 18:30 au H7 ! Au… corentin charneau You&#39;re invited to Comment mieux gérer le context de vos agents MAY 5 Tuesday, May 5 6:30",
+      "body": "You're invited to\nComment mieux gérer le context de vos agents\nTuesday, May 5 6:30 PM - 9:00 PM GMT+2\nLocation: In Person\n\nHello, notre prochain event GenAI Lyon aura lieu le 05/05/26 à partir de 18:30 au H7 ! Au programme, Andriy Mandyev, Head of Data Factory chez Decathlon nous montrera à travers des exemples concrets comment mieux gérer le context de vos agents à travers la notion de Context APIs. A très vite !\nAccept Invite: https://luma.com/i/mKh6GqshYX\nView Event: https://luma.com/i/mKh6GqshYX\n\nCan't make it? Decline the invite: https://luma.com/i/mKh6GqshYX to stop receiving emails about this event.\n\nSent using https://luma.com",
+      "is_unread": true,
+      "sender": {
+        "name": "Usr Ninnxptdcaulvip",
+        "email": "usr-ninNxpTDCAUlvIp@user.luma-mail.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "extra instructions for agents in specs",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: agents"
+          },
+          {
+            "task_name": "Idea: modeling interaction as a merge of 2 knowledge graphs. What's the interface? Does it help create control over probabilistic agents?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: agents"
+          },
+          {
+            "task_name": "How does palatir work ? -> context API",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "Idea: context degradation as blocker to long term value ",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "technical part of context api",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "Create context based on action analysis impact",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          },
+          {
+            "task_name": "Agent context governance",
+            "list": "Code",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: context"
+          }
+        ],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": true,
+        "word_count": 99
+      }
+    },
+    {
+      "thread_id": "19db00d82f12ccbc",
+      "subject": "Damage charge for your stay at Rogue Four (#B19938859)",
+      "date": "2026-04-21T12:39:28Z",
+      "snippet": "Hi Andriy, Following your stay at Rogue Four, a charge of GBP 27.00 has been applied to your credit card in relation to the property&#39;s damage policy. This charge covers the following: Diesel If you",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Owner F5B311D4 368B 4461 Becd 77A2C6480D05",
+        "email": "owner-f5b311d4-368b-4461-becd-77a2c6480d05@messaging.lodgify.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19dafea938c662cd",
+      "subject": "Essential info for your trip to Lille Europe on 22 April 2026 – ref TJ4JN2",
+      "date": "2026-04-21T19:01:16Z",
+      "snippet": "IMPORTANT. Please read before you travel. Email looking a bit odd? See it online Eurostar Get ready to go Everything you need to know about your trip Hello ANDRIY MANDYEV. It&#39;s almost time for your",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@eurostar.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "Writing: AI slot? Is it necessary bad? We are now generating huge amounts of data. It's not human vs ai, it's valuable vs noise. The key is no longer to get the info, it's to get the right info, at the right time, in the right form. It's to sort through everything available to know what's relevant. ",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: info"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 3
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19dafb2268436008",
+      "subject": "Your Bolt ride on Tuesday",
+      "date": "2026-04-21T10:59:40Z",
+      "snippet": "Thanks for choosing Bolt — here's your ride receipt! ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Receipts Unitedkingdom",
+        "email": "receipts-unitedkingdom@bolt.eu",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19daf8a6bbca4b15",
+      "subject": "J-1 avant votre voyage à Lyon Part Dieu",
+      "date": "2026-04-21T10:15:05Z",
+      "snippet": "On vous a préparé un récapitulatif. Voir la version en ligne TGV INOUI Monsieur Mandyev, départ imminent ! Tout est prêt ? Nous partons ensemble demain et sommes ravis que vous nous ayez choisis. Merci",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@info.sncf-voyageurs.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "technical part of context api",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: part"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19daf87a3cee0385",
+      "subject": "Le Récap - Avril 2026",
+      "date": "2026-04-21T10:02:26Z",
+      "snippet": "NewsPart#2 – Avril 2026 Visualiser la version en ligne Le Récap Avril 2026 Entrez gratuitement à la Foire de Paris ! LCL vous offre une invitation pour deux personnes à la Foire de Paris dans la limite",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Lcl",
+        "email": "LCL@message.lcl.fr",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19daf0c6f5594667",
+      "subject": "Suite à votre location sur Bsp-auto.com",
+      "date": "2026-04-21T07:58:40Z",
+      "snippet": "Commande n° CG947626397 Nous aimerions connaître votre avis Cela ne vous prendra pas plus de 15 secondes... Date de la location : 09/04/2026 Chère/Cher Mme/M. Andriy Mandyev Nous aimerions connaître",
+      "body": "Avis-Verifies                                                    Commande n° CG947626397                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Nous aimerions connaître votre avis\n\n                                              Cela ne vous prendra pas plus de 15 secondes...                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Date de la location: 09/04/2026\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Chère/Cher Mme/M.  Andriy Mandyev                                                                                                                                                                                                                                                                                                                                                                                                                                                     Nous aimerions connaître votre avis au sujet de votre récente location sur Bsp-auto.com. Vos notes et commentaires aideront Bsp-auto.com à améliorer ses services.\n Votre expérience est précieuse, partagez-la !\n\n Quelle note donnez-vous à Bsp-auto.com ?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Très bien ★★★★★                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Bien ★★★★★                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Moyen ★★★★★                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Mauvais ★★★★★                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Très mauvais ★★★★★                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          donner mon avis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 Merci d'avance pour votre participation !                                                                                                                                                                                                                                                                                                                                                                    L'équipe Avis-Verifies                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Prestataire d'évaluations clients indépendant, transparent et certifié NF Service .                                                                                                                                                                                                                                        Pourquoi avez-vous reçu un mail d'Avis Vérifiés ? Le Client d'Avis Vérifiés souhaite connaître votre expérience en tant que consommateur.rice d'un ou de plusieurs de ses produits que vous avez acheté(s) et/ou comme bénéficiaire d'un ou de plusieurs de ses services qu'il vous a délivré(s).  En savoir plus   sur la gestion de vos données et vos droits.\n                                                                    Votre avis ainsi que toutes informations supplémentaires renseignées dans le formulaire seront publiés sur l'attestation du site concerné ainsi que sur le(s) widget(s) présents sur le site du client et plateformes tierces choisies par ce dernier. Seuls votre prénom et la première lettre de votre nom seront affichés avec votre avis. Pour plus de renseignements vous pouvez consulter notre  Politique de Confidentialité .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Remarque importante                                                      : Si vous n'avez pas loué de véhicule avec Bsp-auto.com ou si vous avez un problème spécifique à résoudre, merci de contacter directement  Bsp-auto.com.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              Pour ne plus recevoir de demandes d'avis au sujet de Bsp-auto.com, cliquez-ici.                                                    Pour ne plus recevoir de demandes d'avis de la part d'Avis Vérifiés, quelle que soit l'entreprise concernée, cliquez-ici                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            NET REVIEWS 18-20 Avenue Robert Schuman CS 40494 13002, Marseille France.",
+      "is_unread": true,
+      "sender": {
+        "name": "Feedback",
+        "email": "feedback@feedback.avis-verifies.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 282
+      }
+    },
+    {
+      "thread_id": "19daebf2d70ddae4",
+      "subject": "✨ L'app de LPC 2026 est ouverte ! Prêt(e) pour le networking ?",
+      "date": "2026-04-21T06:34:17Z",
+      "snippet": "Hello Andriy ! La Product Conf, c&#39;est demain (enfin, presque) ! Pour bien te préparer, l&#39;application officielle est officiellement ouverte. 🚀 C&#39;est ton centre de contrôle pour l&#39;",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Events",
+        "email": "events@engage.accelevents.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19daea0ef2603fbc",
+      "subject": "Important Check-Out Information for Rogue Four",
+      "date": "2026-04-21T06:01:14Z",
+      "snippet": "Hello Andriy, We hope you&#39;ve had an excellent time camping in Rogue Four. Here is some helpful information about checking out today. CHECK-OUT INFORMATION Upon arrival or even better, 15 minutes",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Owner F5B311D4 368B 4461 Becd 77A2C6480D05",
+        "email": "owner-f5b311d4-368b-4461-becd-77a2c6480d05@messaging.lodgify.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "check packmind",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: check"
+          },
+          {
+            "task_name": "Check out festival that as shared",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: check"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19dadec040b23b09",
+      "subject": "[GitHub] Claude is requesting updated permissions",
+      "date": "2026-04-21T02:43:38Z",
+      "snippet": "Updated Permissions Request The GitHub App Claude is requesting additional access to your account. Hello there! You&#39;re receiving this email because the GitHub App Claude, which is currently",
+      "body": "A GitHub App, Claude, installed on your account is requesting updated permissions.\n\nVisit https://github.com/settings/installations/101201504/permissions/update to review and accept these permissions.\n\nYou may choose to ignore this request, in which case Claude will retain its current permissions.\n\nYou can view pending requests directly by visiting your account's settings page and clicking on Applications. If you run into problems, please contact support by visiting https://support.github.com/contact?tags=dotcom-integrations.\n\nThanks,\nYour friends at GitHub",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@github.com",
+        "type": "automated"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "create budget limit for claude",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: claude"
+          },
+          {
+            "task_name": "conto-github-app ?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: github"
+          },
+          {
+            "task_name": "GitHub app?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: github"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 68
+      }
+    },
+    {
+      "thread_id": "19dac5f25ebf3928",
+      "subject": "Re: Budapest Data+AI Forum 2026 - You are on the shortlist - Andriy Mandyev",
+      "date": "2026-04-20T19:30:31Z",
+      "snippet": "Hi Bence, Thanks for letting me know. Yes, that would be of interest - I'd be happy to deliver a virtual talk via Zoom on May 20th. Best, Andriy Andriy Mandyev On Mon, Apr 20, 2026 at 20:29 PM",
+      "body": "Hi Andriy,\n\nI'm sorry to inform you that we will not be able to grant you an in-person\nspeaking slot this time.\n\nI apologize for the delay - we were trying to add more slots to accommodate\nmore speakers, but haven't succeeded due to constraints of the venue.\n\nWe do have a  few free slots for virtual/online talks, to be delivered via\nZoom on May 20th. (Wednesday).\n\nWould that be of interest to you?\n\nBests,\n\nBence\nHead of Program\n\n\n\n*Budapest Data & AI Forum 2026*2026. May 18-20.\nbudapestdata.hu <https://budapestdata.hu/en/>\n\nOn Mon, Mar 30, 2026 at 10:35 AM Andriy Mandyev <a.mandyev@gmail.com> wrote:\n\n> Hi Bence,\n> Hope you had a good weekend. Any news about my submission?\n> Thanks,\n> Andriy\n>\n> On Tue, Mar 17, 2026 at 8:53 AM Andriy Mandyev <a.mandyev@gmail.com>\n> wrote:\n>\n>> Hi Bence,\n>>\n>> Thank you for taking interest in my submission! I'd be very excited to\n>> share my thoughts at the Data+AI Forum.\n>> Here's a link to book a slit with me to discuss this further:\n>> https://calendar.app.google/PrzRzV9Bdba4Q3Fw5\n>>\n>> Cheers,\n>>\n>> Andriy Mandyev\n>>\n>> On Mon, Mar 16, 2026, 18:49 Bence Arato <arato.bence@biconsulting.hu>\n>> wrote:\n>>\n>>> Dear Speaker,\n>>>\n>>> Thank you very much for submitting a proposal to our Call for Speakers.\n>>>\n>>> I'm glad to inform you that your submission(s) has been favourably\n>>> reviewed by the PMC and* made it to the shortlist*.\n>>>\n>>> As the next step, we would like to organize a short intro call with each\n>>> shortlisted speaker, so we can get to know each other a bit better. These\n>>> calls are typically 15-20 minutes long and attended by one or two PMC\n>>> members from our side.\n>>>\n>>> We plan to do these intro calls in the next few days, so I'd like to ask\n>>> you  to send us a few time slots when you would be available. These could\n>>> be specific 30 minute slots or flexible ranges (e.g  \"Wednesday 16:00-18:00\n>>> or Thursday 10:00-12:00 is fine\").  Please *do include* your location\n>>> and time zone (e.g \" I'm in New York on ET time\").\n>>>\n>>> Looking forward to talk to you,\n>>>\n>>> Bence Arató\n>>> Head of Program\n>>>\n>>>\n>>>\n>>> *Budapest Data & AI Forum 2026*2026. May 18-20.\n>>> budapestdata.hu <https://budapestdata.hu/en/>\n>>>\n>>\n>\n> --\n> Andriy Mandyev\n>",
+      "is_unread": true,
+      "sender": {
+        "name": "A Mandyev",
+        "email": "a.mandyev@gmail.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "Deploy Mandyev.com",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: mandyev"
+          },
+          {
+            "task_name": "Writing: AI slot? Is it necessary bad? We are now generating huge amounts of data. It's not human vs ai, it's valuable vs noise. The key is no longer to get the info, it's to get the right info, at the right time, in the right form. It's to sort through everything available to know what's relevant. ",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: data"
+          }
+        ],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": true,
+        "word_count": 403
+      }
+    },
+    {
+      "thread_id": "19dabec07ea16dab",
+      "subject": "Extend your trial",
+      "date": "2026-04-20T17:24:24Z",
+      "snippet": "Share Fyxer with a friend and get 7 extra days free ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏",
+      "body": "Share Fyxer with a friend and get 7 extra days free  \n\nHi Andriy,\n\nIf you're finding your Fyxer free trial useful, here's a little bonus for you.\n\nWhen you share Fyxer with someone during your trial, you'll get 7 more free days for every person who joins.\n\nThat means you can keep Fyxer free - for as long as you keep sharing.\n\n👉 Get an extra 7 days free (  )\n\nYou'll help a friend find a calmer inbox, and buy yourself a little more time too.\n\nBest,\n\nAlexa\n\n--\n\nAlexa Mainguard\n\nCustomer Success | Fyxer\n\nIf you'd prefer not to hear from us, you can",
+      "is_unread": true,
+      "sender": {
+        "name": "Alexa",
+        "email": "alexa@fyxer.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 106
+      }
+    },
+    {
+      "thread_id": "19dab95dac7eaef7",
+      "subject": "La Product Conf Paris 2026: Here's what you need to know before going on stage",
+      "date": "2026-04-20T15:50:05Z",
+      "snippet": "Dear Speakers, With La Product Conf 2026 on the horizon, we are thrilled to share this experience with you. Your participation is pivotal to the success of this event, and we extend our gratitude for",
+      "body": "Dear Speakers,\n\nWith La Product Conf 2026 on the horizon, we are thrilled to share this\nexperience with you. Your participation is pivotal to the success of this\nevent, and we extend our gratitude for your commitment. Hugo and I,\nalongside our Advisory Board, wanted to thank you very much for your\ninvolvement and your presence on this event!\n\nTo ensure a smooth and organized event, *please read carefully* the\nfollowing guidelines and key dates. For more detailed information, I\nencourage you to visit your speaker playbook\n<\nwas previously shared with you.\n\n\n*🧠 BEFORE LPC: THE PREPARATION*\n\n   1. *Main Stage Speakers:* Submit the final version of your presentation\n   slides to the designated *Google Drive folder\n   <\n    *by April 29*. The most updated version of the program is available on\n   the LPC website\n   <\n   please refer to it to know your slots and timing. You may tweak your slides\n   until the day before the event, but the final submission *must be in\n   .ppt, .pptx or keynote format*. We cannot accept Google Slides.\n   2. *Technical Requirements:* Personal computers are not permitted. All\n   multimedia files (videos, fonts, gif animations…) should be uploaded to the\n   same Google Drive folder. We cannot accommodate live streaming of YouTube\n   or other internet content. No last-minute changes to your slides will be\n   accepted on the d-day.\n   3. *Rehearsal: Whether you are speaking on the main stage or the second\n   stages (La Scène Parisienne 1 & 2),* please join us on May 18, between 4\n   pm and 8 pm, for a *mandatory rehearsal.* You may book a slot in the\n   provided *Google Sheet*\n   <\n   You will be talking in front of +1000 people, there's no room for\n   improvisation. If you are speaking on a roundtable, you may also come on\n   May 19 to rehearse or get a feel for the room.\n   4. Please dress casually for the rehearsal gathering as some pictures of\n   you will be taken while rehearsing.\n   5. A few days before LPC, you will be contacted by one person of our\n   staff (LPC buddy) who will help you navigate from the makeup station to the\n   stage and to the common areas. They will get in touch with you via text or\n   WhatsApp. *Your LPC buddy is here to:* make sure you are on time and\n   ready to speak (make-up + equipped with a microphone) accompany you from\n   the speaker's corner to the backstage. Please play the game and be\n   respectful of them, we won't be chasing you throughout the day 😉\n   6. Lastly, you are invited to the speaker's dinner after the rehearsals\n   on the 19th. Please *register here*\n   <\n   to confirm your attendance.\n\n\n*🎙️ DURING LPC: YOUR TALK*\n\n   1. *Arrival on 19th May:*\n      1. If you are speaking on the main stage, we kindly ask you to arrive\n      by the entrance located 8 rue Saulnier 75009 Paris, at about 8am.\n      2. If you are speaking in la Scène Parisienne, please enter from the\n      entrance located on the right when you enter les Folies Bergère,\nthere will\n      be a dedicated point for you to get your badge if you haven't had it the\n      day before.\n   2. Upon arrival, a volunteer will give you your badge and guide you to\n   the speaker's corner where you will be able to relax, chill and rehearse if\n   needed.\n   3. *If you are speaking on the main stage*, please be in the speaker's\n   corner at least *40 minutes before* your talk. Your chairperson will\n   join you and a LPC buddy will come to fetch you to accompany you to the\n   stage. *If you are speaking on a Product Conversation,* please meet in\n   the speaker's corner of la Scène Parisienne at least *60 minutes\nbefore* your\n   talk. Your LPC Buddy will guide you, don't worry. Please make sure the\n   participants of your talk are with you. You will get a little makeup\n   touch-up and your microphone right after.\n\n\n*☄ AFTER LPC: WHAT'S NEXT*\n\n   1.\n\n   *Content Sharing:* Your talk will be featured on our YouTube channel,\n   LinkedIn, and Instagram account, reaching over 30,000 subscribers,\n   approximately one month post-conference.\n\nShould you have any inquiries or require further clarification, please do\nnot hesitate to reach out to me. 😊\n\nWarm regards,\nGrégoire Bonnin\n\nHead of Marketing & Events\nThiga\n[image: mobilePhone] 07 45 09 85 43\n[image: emailAddress] gregoire.bonnin@thiga.co\n[image: website] https://www.thiga.co/fr/\n[image: address] 23, rue Taitbout, 75009 Paris\n\n[image: linkedin]\n<\ninstagram]\n<\n\nᐧ",
+      "is_unread": true,
+      "sender": {
+        "name": "Gregoire Bonnin",
+        "email": "gregoire.bonnin@thiga.co",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "How much is cowork in Paris ",
+            "list": "TODO",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: paris"
+          },
+          {
+            "task_name": "Idea: modeling interaction as a merge of 2 knowledge graphs. What's the interface? Does it help create control over probabilistic agents?",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: what"
+          },
+          {
+            "task_name": "While I'm at ideation stage and writing a lot. Create an agentic coding user group, reference page a la hugging face, with tutorials, curated material, etc",
+            "list": "Ideation",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: stage"
+          },
+          {
+            "task_name": "The differentiator in agentic coding is not creating greenfieald projects it's long-term product management.",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: product"
+          },
+          {
+            "task_name": "Writing: AI slot? Is it necessary bad? We are now generating huge amounts of data. It's not human vs ai, it's valuable vs noise. The key is no longer to get the info, it's to get the right info, at the right time, in the right form. It's to sort through everything available to know what's relevant. ",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: what, know"
+          }
+        ],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": true,
+        "word_count": 731
+      }
+    },
+    {
+      "thread_id": "19dab8b444f5a4bb",
+      "subject": "Votre acompte du mois d'avril 2026 - Citya Gerimmo [368]",
+      "date": "2026-04-20T15:38:44Z",
+      "snippet": "Madame, Monsieur,Bonjour Nous vous prions de trouver ci joint votre courrier d&#39;acompte du mois d&#39;Avril 2026. Vous en souhaitant bonne reception, Bien à vous Le Service comptabilité Gérance.",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Vepayet",
+        "email": "vepayet@citya.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19dab75b08e216d8",
+      "subject": "CALOT ET ASSOCIES - COLLAB-7502898-29622128 - Nouveau Message / Imm: 1082 SAINT PAUL - Réf. 7502898 - 1082- INTERDICTION DES BRISE VUES ET MOBILIE DE JARDIN SOUS RESERVE",
+      "date": "2026-04-20T15:15:09Z",
+      "snippet": "=-=-=-= Pour répondre par courriel, écrivez au-dessus de cette ligne =-=-=-= Madame, Monsieur, Voici un nouveau message à votre attention : Sujet : 1082- INTERDICTION DES BRISE VUES ET MOBILIE DE",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Assitancesyndic5",
+        "email": "assitancesyndic5@calot-et-associes.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19dab64bcb26a218",
+      "subject": "[TechReady] Mise en relation pour la table ronde",
+      "date": "2026-04-20T14:56:26Z",
+      "snippet": "Bonjour à vous 4 👋 Je fais ce rapide email pour vous mettre en relation pour la table ronde &quot;ROI de l'IA : où en est-on en 2026 ?&quot; à TechReady. https://techready.live/talks/table-ronde-5/",
+      "body": "Bonjour à vous 4 👋\n\nJe fais ce rapide email pour vous mettre en relation pour la table\nronde \"ROI de l'IA : où en est-on en 2026 ?\" à TechReady.\nhttps://techready.live/talks/table-ronde-5/\n\nThomas, Cédric & Andriy, je vous présente Alexia, l'animatrice de la table\nronde.\n\nAlexia, je te présente :\n- Thomas, Directeur Stratégie et Transformation IT,  U Tech\n- Cédric, Directeur des Systèmes d'Information & CTO de SantéClair\n- Andriy, Head of Data Factory, Decathlon\n\nMerci encore à vous ! Vous nous faites l'honneur d'être présent à cette\ntable ronde.\n\nEncore un grand merci pour votre participation à TechReady.\nJe vous laisse échanger tranquillement.\n\nBonne semaine. ☀️\n\n--\nJulien",
+      "is_unread": true,
+      "sender": {
+        "name": "Julien Landure",
+        "email": "julien.landure@techtown.fr",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 110
+      }
+    },
+    {
+      "thread_id": "19daafcf23c44baf",
+      "subject": "J-4 – Amiltone Partners Connect | Informations pratiques",
+      "date": "2026-04-20T13:03:16Z",
+      "snippet": "Bonjour, La soirée Amiltone Partners Connect, organisée en partenariat avec Esker, approche et nous avons hâte de vous accueillir. Voici les informations pratiques pour préparer votre venue : 📅 Jeudi",
+      "body": "Bonjour,\n\n\nLa soirée **Amiltone Partners Connect**, organisée en partenariat avec **Esker**, approche et nous avons hâte de vous accueillir.\n\n\nVoici les informations pratiques pour préparer votre venue :\n\n\n📅 **Jeudi 23 avril à partir de 18h30**\n\n📍 **Théâtre L'Île Ô**\n\nBerges Bertha von Suttner, 69007 Lyon\n\n*(Accessible en transports en commun et en voiture – parking à proximité)*\n\n \n\n\n###**Au programme**\n18h30 : accueil\n\n19h00 : début de la conférence\n\n20h00 : démonstration live\n\n20h30 : cocktail dînatoire\n\n \n\nDans un souci de qualité d'accueil, nous vous remercions de bien vouloir nous prévenir dans les meilleurs délais si vous ne pouviez finalement pas être présent.\n\n \n\nPour toute question, notre équipe Communication reste à votre disposition :\n\n📩 communication@amiltone.com\n\n \n\nAu plaisir de vous retrouver jeudi,\n\n \n\n**L'équipe Amiltone**\n\n\n**L'équipe Amiltone**\n\ncommunication@amiltone.com\n\n76 boulevard du 11 novembre 1918, 69100 Villeurbanne\n\n\n[Mettre à jour vos préférences]() | [Politique de confidentialité](\n\n[Mentions légales](",
+      "is_unread": true,
+      "sender": {
+        "name": "Communication",
+        "email": "communication@amiltone.com",
+        "type": "newsletter"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": true,
+        "word_count": 146
+      }
+    },
+    {
+      "thread_id": "19daa2c76f74c957",
+      "subject": "Generative AI Summit - more accurate and accountable AI output",
+      "date": "2026-04-20T09:15:33Z",
+      "snippet": "Open email for further resources Generative AI Summit London Hello Andriy, Hopefully you, like us, were left inspired by Generative AI Summit London last week. The event covered a range of AI topics,",
+      "body": "<\n\nGenerative AI Summit London\nHello Andriy,\n\nHopefully you, like us, were left inspired by Generative AI Summit London last week.\nThe event covered a range of AI topics, including governance, responsible AI and the importance of AI-ready data. Graph databases, like those offered by Neo4j can help with all of these - helping provide context that results in more accurate and accountable output from AI.\n\n\nWe were there as an event sponsor - you may have spoken to one of our experts at the booth or joined our presentation on day one (Knowledge Graphs as a Reasoning Engine: Deploying Agents to Uncover Deep Insights).\n\n\nInterested in learning more about how graph databases can support your AI projects? Check out some useful resources below:\n\n\n\n\n\t- Download the slides from our presentation here <\n\t- Have questions? Join our Ask the Expert session < on 27 May.\n\t- Want to speak to an expert? Get in touch <\n\n\nWe hope to see you at an event again soon!\n\n\nThanks,\n\n\n\nPeter Deeley\nHead of Marketing, UK&I\n<    <    <    <\n<\n© 2026 Neo4j, Inc.\n\n\n Nordenskiöldsgatan 24, 211 19 Malmö, Sweden",
+      "is_unread": true,
+      "sender": {
+        "name": "Peter Deeley",
+        "email": "peter.deeley@neo4j.com",
+        "type": "newsletter"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "DPP Summit London - Expenses",
+            "list": "Fridge",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: summit"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 189
+      }
+    },
+    {
+      "thread_id": "19da99c78f788a12",
+      "subject": "Votre voyage à Lyon Part-Dieu le mercredi 22 avril",
+      "date": "2026-04-20T06:38:13Z",
+      "snippet": "Pour visualiser correctement cette lettre d'information, consultez la version en ligne. Andriy Mandyev ‌ ‌ Mon carnet de voyage London Saint-Pancras Int'l (Londres) → Lyon Part-Dieu Le 22/04/",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Info",
+        "email": "info@mail.sncf-connect.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "technical part of context api",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: part"
+          },
+          {
+            "task_name": "Writing: AI slot? Is it necessary bad? We are now generating huge amounts of data. It's not human vs ai, it's valuable vs noise. The key is no longer to get the info, it's to get the right info, at the right time, in the right form. It's to sort through everything available to know what's relevant. ",
+            "list": "Writing",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: info"
+          }
+        ],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19da94909a56ad26",
+      "subject": "Relevé de remboursement disponible",
+      "date": "2026-04-20T05:07:09Z",
+      "snippet": "Relevé de remboursement disponible Cher(e) assuré(e), Un nouveau relevé de remboursement santé est disponible sur votre espace client. Pour y accéder, nous vous invitons à vous connecter sur clients.",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Decathlon",
+        "email": "decathlon@henner.fr",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19da7611bb3a8f0f",
+      "subject": "Update on your ZurichJS Conference 2026 submission",
+      "date": "2026-04-19T20:14:11Z",
+      "snippet": "Update on your ZurichJS Conference 2026 submission ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿ ‌​‍‎‏﻿",
+      "body": "Update on Your Submission\n\nHi Andriy,\n\nThank you for submitting \"The Skills AI Won't Cover For You\" to ZurichJS Conference 2026. We genuinely appreciate you taking the time to share your idea with us.\n\nAfter careful review, we weren't able to include your submission in this year's program. This was a really hard decision for our committee.\n\nMany of us on the program committee and organizing team are conference speakers ourselves. We know exactly how disheartening it feels to receive an email like this — we've been there, and we don't want you to feel that way. Your submission had merit, and the competition was simply fierce this year.\n\nSome context on our selection\n\n * We received 434 submissions this year\n * Our committee completed 2489 reviews",
+      "is_unread": true,
+      "sender": {
+        "name": "Hello",
+        "email": "hello@zurichjs.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "personal website update",
+            "list": "Code",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: update"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 127
+      }
+    },
+    {
+      "thread_id": "19da6ed69fbac585",
+      "subject": "LT#304 Learning from competition",
+      "date": "2026-04-19T18:07:48Z",
+      "snippet": "use your products deeply and as intended, not just for a quick look ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏ ‌ ͏",
+      "body": "April 19, 2026 | Read Online\n( https://leadershipintech.com/newsletters/2261?sid=97e273-4ed4-4937-9b5d-7c7646830003 )\n\n\nLearning from competition\n( https://leadershipintech.com/links/22100/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n10 minutes by Steven Sinofsky\n\nStudying competitors is essential for everyone on a product team,\nnot just managers or analysts. Steven suggests to use their\nproducts deeply and as intended, not just for a quick look. Avoid\nstatic thinking, since competitors know their own weaknesses and\nwill fix them. Tools like feature lists, scenario tests, and\nwriting mock reviews from a competitor's perspective all help\nbuild real understanding.\n\nNew Survey: AI in Design and Development Workflows 2025\n( https://leadershipintech.com/links/22101/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\nsponsored by Progress Telerik\n\n84% of teams use AI—but many still struggle with consistency,\nquality, and collaboration. Explore real adoption data, key\nchallenges, and what it takes to move from experimentation to\nscalable workflows—plus what to watch next in 2026.\n\nWhy isn't everything different yet?\n( https://leadershipintech.com/links/22102/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n9 minutes by Dave Griffith\n\nAI is transforming the economy, just not as fast as people\nexpect. Like electricity, the real productivity gains came\ndecades after the technology arrived, once workflows,\ninfrastructure, and business models caught up. Every domain needs\nreal people to figure out what changes and how. We are moving 5\nto 10 times faster than past technology shifts, which still feels\nslow because we are impatient.\n\nHow can I as a leader build hope in my team?\n( https://leadershipintech.com/links/22103/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n8 minutes by Andi Roberts\n\nHope is a practical leadership tool, not a soft sentiment. Gallup\nresearch across 52 countries shows it is the top psychological\nneed employees have from their leaders, outweighing trust or\nstability. Leaders build hope by giving teams clear goals,\nmultiple paths forward, and real ownership over their work.\nMaking small wins visible and being honest about uncertainty\nkeeps people believing their effort matters.\n\nBlessed with constraints\n( https://leadershipintech.com/links/22104/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n9 minutes by Maarten Dalmijn\n\nToo many choices overwhelm people just as much as too few.\nCompanies often pile on internal rules, approvals, and processes\nthat drain employee agency and create \"railroading,\" where\neveryone just keeps the machine running instead of solving real\nproblems. The fix is not removing all constraints but replacing\nlimiting ones with enabling ones like clear vision and strategy.\nMaarten argues that when done right, this creates a sandbox where\nteams can do their best work.\n\nWhy your best employee becomes your worst manager\n( https://leadershipintech.com/links/22105/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n5 minutes by Yaniv Preiss\n\nPutting the wrong person in a management role hurts everyone: the\nteam disengages, the manager suffers, and trust in leadership\nbreaks down. The core mistake is treating management as a reward\nfor technical skill, when it is actually a new profession\nrequiring emotional intelligence, strategic thinking, and strong\ncommunication.\n\nScale Your AI, Not Your Tech Debt: Vector Search Powered by Redis\n\n( https://leadershipintech.com/links/22106/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\nsponsored by Redis\n\nEliminate infrastructure sprawl by leveraging Redis as your\nvector database. RedisVL lets your team deploy production-ready\nRAG and semantic search on your existing footprint. No new\nsecurity reviews, no additional vendor contracts, just faster\ntime-to-market and lower TCO. Have your team run pip install\nredisvl to turn your existing data into your next AI\nbreakthrough.\n\n--------\nindustry\n--------\n\n* Cal.com Goes Closed Source\n( https://leadershipintech.com/links/22107/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n* Sometimes powerful people just do dumb things\n( https://leadershipintech.com/links/22108/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n* Stanford report highlights growing disconnect between AI\ninsiders and everyone else\n( https://leadershipintech.com/links/22109/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n* Protected quantum gates using qubit doublons in dynamical\noptical lattices\n( https://leadershipintech.com/links/22110/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n\n--------\nsecurity\n--------\n\n* Organizational Politics & The Security Program\n( https://leadershipintech.com/links/22111/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n* Cybersecurity Looks Like Proof of Work Now\n( https://leadershipintech.com/links/22112/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n* We May Be Living Through the Most Consequential Hundred Days in\nCyber History\n( https://leadershipintech.com/links/22113/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n* Someone Bought 30 WordPress Plugins and Planted a Backdoor in\nAll of Them\n( https://leadershipintech.com/links/22114/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n\nAnd the most popular article from the last issue was:\n\n* Dropping sprints: A year with shape up\n( https://leadershipintech.com/links/22115/fd97e273-4ed4-4937-9b5d-7c7646830003/email )\n\n\n-----------\nnewsletters\n-----------\n\n* Programming Digest\n( https://programmingdigest.net/?utm_medium=campaign&utm_source=leadershipintech )\n\n* React Digest\n( https://reactdigest.net/?utm_medium=campaign&utm_source=leadershipintech )\n\n* C# Digest\n( https://csharpdigest.net/?utm_medium=campaign&utm_source=leadershipintech )\n\n\nWould you like to advertise ( https://bonobopress.com/ ) in the\nnewsletter? Check out our media kit\n( https://bonobopress.com/media-kit/ ) and get in touch.\n\n© 2026 Bonobo Press ( https://bonobopress.com/ )\n\nJakub Chodounsky (dba. Bonobo Press)\n\n1/25 Mana Street\n\nWellington, New Zealand\n\nPrivacy Policy ( https://leadershipintech.com/privacy )\n\nIf you no longer wish to receive these emails, click to\n\n(  )\n.",
+      "is_unread": true,
+      "sender": {
+        "name": "Jakub",
+        "email": "jakub@mail.leadershipintech.com",
+        "type": "newsletter"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 729
+      }
+    },
+    {
+      "thread_id": "19da6c5ab147c65c",
+      "subject": "Use Notetaker to improve your drafts",
+      "date": "2026-04-19T17:24:25Z",
+      "snippet": "Hi Andriy, Notetaker makes your drafts more accurate - if you talked about next steps on a call, your reply drafts will reflect that context. If you want better email drafts, connect your calendar in",
+      "body": "Hi Andriy,\n\nNotetaker makes your drafts more accurate - if you talked about next steps on a call, your reply drafts will reflect that context.\n\nIf you want better email drafts, connect your calendar in integrations (  ) and choose which meetings you'd like Fyxer to join in notetaker settings (  ).\n\nYou can also customize the background image of the notetaker, to control how others see it show up.\n\nBest,\n\nArchie\n\n--\n\nArchie Hollingsworth\n\nCo-Founder | Fyxer\n\nPS. Want an extra 7 days of FREE Fyxer? Share your referral link with a friend. If they sign up, we'll give you 7 days for free. 👉 Refer a friend (  )\n\nIf you'd prefer not to hear from us, you can",
+      "is_unread": true,
+      "sender": {
+        "name": "Archie Hollingsworth",
+        "email": "archie.hollingsworth@fyxer.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 121
+      }
+    },
+    {
+      "thread_id": "19da62a288254e4d",
+      "subject": "Your Excalidraw subscription will renew soon",
+      "date": "2026-04-19T14:34:33Z",
+      "snippet": "This is a friendly reminder that your Excalidraw subscription for Excalidraw+ will automatically renew on April 26, 2026. ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏",
+      "body": "Excalidraw (https://plus.excalidraw.com/)\n\nExcalidraw\n\nYour subscription will renew soon This is a friendly reminder that your Excalidraw subscription for Excalidraw+ will automatically renew on April 26, 2026. Your mastercard ending in 0550 will be charged at that time. If your billing information has changed, you can update your payment details now. Update payment method (https://plus.excalidraw.com/?referer=upcoming_invoice) Questions? Contact us at support@excalidraw.com (support@excalidraw.com).\n\nPowered by    stripe logo (https://stripe.com)  |   Learn more about Stripe Billing (https://stripe.com/billing)",
+      "is_unread": true,
+      "sender": {
+        "name": "Upcoming Invoice",
+        "email": "upcoming-invoice@excalidraw.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 72
+      }
+    },
+    {
+      "thread_id": "19da5785b6ed4c06",
+      "subject": "Rate Novotel London West",
+      "date": "2026-04-19T11:20:20Z",
+      "snippet": "‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@booking.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [
+          {
+            "task_name": "DPP Summit London - Expenses",
+            "list": "Fridge",
+            "due": null,
+            "overdue": false,
+            "match_reason": "keyword match: london"
+          }
+        ],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": true,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19da476ec24e5e0e",
+      "subject": "Please complete your Advance Passenger Information (API)",
+      "date": "2026-04-19T06:39:04Z",
+      "snippet": "Complete your API now Complete your API now Email looking a bit odd? See it online. Eurostar Eurostar Hello. Your journey from London St Pancras Int&#39;l to Lille Europe on 22 April 2026 is fast",
+      "body": "Eurostar\n\n Complete your API now\nEmail looking a bit odd? \n \nSee it online .\n \n\n \n\n \n\nHello.\n\nYour journey from London St Pancras Int'lto Lille Europe on 22 April 2026 is fast approaching. \n\nIf you've not done it already, remember to complete your Advance Passenger Information (API) in \n \nManage your booking before you travel. This information is required by the UK government. \n \nWhat's API? \n\nYou'll need your booking reference TJ4JN2 and travel document information for you and anyone else on your booking. \n\n \nComplete API now \n\n \n\n \n\n \n\n \n\n \n\n \nPrivacy policy   |  \n \nContact us \n\nThis email contains important information regarding your account, your journey or security on board Eurostar trains. \n\nCopyright (c) 2026 Eurostar International Ltd. 6th Floor, Kings Place, 90 York Way, London N1 9AG. Registration number 02462001. All Rights Reserved",
+      "is_unread": true,
+      "sender": {
+        "name": "Eurostar",
+        "email": "eurostar@e.eurostar.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 126
+      }
+    },
+    {
+      "thread_id": "19da244e27e1ffdb",
+      "subject": "Votre facture est arrivée",
+      "date": "2026-04-18T20:25:16Z",
+      "snippet": "Votre facture est disponible en ligne N° de mobile : 0770317395 N° client : 0109489533 Réf. mail : RPAI01836 Pour nous contacter : assistance.sosh.fr Bonjour, Votre facture du 16/04/2026 d'un",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@sosh.fr",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 1
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19da22e00450486f",
+      "subject": "Rate Kick Ass Greyfriars (18+)",
+      "date": "2026-04-18T20:00:00Z",
+      "snippet": "‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Noreply",
+        "email": "noreply@booking.com",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 0
+      }
+    },
+    {
+      "thread_id": "19da19f4aa56738a",
+      "subject": "Never miss an email from your VIPs",
+      "date": "2026-04-18T17:24:24Z",
+      "snippet": "Tell Fyxer who&#39;s important ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏ ͏",
+      "body": "Tell Fyxer who's important  \n\nHi Andriy,\n\nWant to guarantee drafts for your most important emails?\n\nIn categorization settings (  ), scroll to Add email or subject to 'To Respond'. Add any address or subject line, and Fyxer will always create a draft reply for them.\n\nThis way, your VIPs will always show up in To Respond.\n\nBest,\n\nArchie\n\n--\n\nArchie Hollingsworth\n\nCo-Founder | Fyxer\n\nPS. Want an extra 7 days of FREE Fyxer? Share your referral link with a friend. If they sign up, we'll give you 7 days for free. 👉 Refer a friend (  )\n\nIf you'd prefer not to hear from us, you can",
+      "is_unread": true,
+      "sender": {
+        "name": "Archie Hollingsworth",
+        "email": "archie.hollingsworth@fyxer.com",
+        "type": "person"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": true,
+        "has_related_task": false,
+        "has_calendar_conflict": false,
+        "word_count": 107
+      }
+    },
+    {
+      "thread_id": "19da160a81dfe84b",
+      "subject": "Your Bolt ride on Saturday",
+      "date": "2026-04-18T16:15:59Z",
+      "snippet": "Thanks for choosing Bolt — here's your ride receipt! ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌ ‌",
+      "body": "",
+      "is_unread": true,
+      "sender": {
+        "name": "Receipts Unitedkingdom",
+        "email": "receipts-unitedkingdom@bolt.eu",
+        "type": "transactional"
+      },
+      "cross_source": {
+        "related_tasks": [],
+        "calendar_conflicts": [
+          {
+            "event_name": "busy",
+            "start": "2026-04-15T08:00:00+02:00",
+            "end": "2026-04-15T20:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Repet LPC",
+            "start": "2026-04-15T10:30:00+02:00",
+            "end": "2026-04-15T11:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          },
+          {
+            "event_name": "Fia",
+            "start": "2026-04-15T19:00:00+02:00",
+            "end": "2026-04-15T21:00:00+02:00",
+            "conflict_type": "potential_overlap"
+          }
+        ],
+        "sender_history": 2
+      },
+      "derived": {
+        "has_action_signal": false,
+        "has_related_task": false,
+        "has_calendar_conflict": true,
+        "word_count": 0
+      }
     }
   ]
 }
