@@ -1,14 +1,14 @@
 {
   "product": {
     "name": "Inbox Intelligence Product",
-    "description": "Curated email threads enriched with cross-source context from Calendar and Trello. Cleaned bodies, classified senders, joined relationships, and derived action signals.",
+    "description": "Curated email threads enriched with cross-source context from Calendar, Trello, and 1-year Gmail sender history. Cleaned bodies, classified senders, contact intelligence, joined relationships, and derived action signals.",
     "owner": "data-platform-team",
     "source_data": {
       "gmail_threads": 50,
       "calendar_events": 10,
       "trello_cards": 79
     },
-    "generated_at": "2026-04-22T21:11:54.178807+00:00"
+    "generated_at": "2026-04-23T12:57:54.534700+00:00"
   },
   "threads": [
     {
@@ -23,15 +23,23 @@
         "email": "do-not-reply@trello.com",
         "type": "automated"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 1,
+        "first_exchange": "2026-04-22",
+        "last_exchange": "2026-04-22",
+        "intensity": "rare",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 6
       }
     },
@@ -47,6 +55,13 @@
         "email": "bonjour@gensdeconfiance.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 1,
+        "first_exchange": "2026-04-22",
+        "last_exchange": "2026-04-22",
+        "intensity": "rare",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -58,12 +73,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 71
       }
     },
@@ -78,6 +94,13 @@
         "name": "No Reply",
         "email": "no-reply@getcontrast.io",
         "type": "automated"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 2,
+        "first_exchange": "2026-04-13",
+        "last_exchange": "2026-04-22",
+        "intensity": "occasional",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -116,12 +139,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": true,
+        "is_significant_sender": false,
         "word_count": 0
       }
     },
@@ -136,6 +160,13 @@
         "name": "Sign",
         "email": "sign@modelo.fr",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 2,
+        "first_exchange": "2026-04-22",
+        "last_exchange": "2026-04-23",
+        "intensity": "occasional",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -155,12 +186,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 0
       }
     },
@@ -176,6 +208,13 @@
         "email": "inmail-hit-reply@linkedin.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 7,
+        "first_exchange": "2026-01-12",
+        "last_exchange": "2026-04-22",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -187,12 +226,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 336
       }
     },
@@ -208,15 +248,23 @@
         "email": "noreply@b.economist.com",
         "type": "newsletter"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 1,
+        "first_exchange": "2026-04-22",
+        "last_exchange": "2026-04-22",
+        "intensity": "rare",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 0
       }
     },
@@ -232,15 +280,23 @@
         "email": "nepasrepondre@citya.com",
         "type": "newsletter"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 4,
+        "first_exchange": "2025-05-30",
+        "last_exchange": "2026-04-22",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 4
       }
     },
@@ -256,15 +312,23 @@
         "email": "contact@desertfest.be",
         "type": "newsletter"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 3,
+        "first_exchange": "2026-01-11",
+        "last_exchange": "2026-04-22",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 0
       }
     },
@@ -280,6 +344,13 @@
         "email": "ne-pas-repondre@pasngr.ouigo.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 3,
+        "first_exchange": "2025-07-20",
+        "last_exchange": "2026-04-22",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -291,12 +362,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 0
       }
     },
@@ -311,6 +383,13 @@
         "name": "Noreply",
         "email": "noreply@connect.sncf",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 39,
+        "first_exchange": "2025-05-16",
+        "last_exchange": "2026-04-22",
+        "intensity": "frequent",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [],
@@ -334,12 +413,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": true,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -354,6 +434,13 @@
         "name": "Support",
         "email": "support@github.com",
         "type": "automated"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 13,
+        "first_exchange": "2025-12-26",
+        "last_exchange": "2026-04-22",
+        "intensity": "regular",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -380,12 +467,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 93
       }
     },
@@ -400,6 +488,13 @@
         "name": "Support",
         "email": "support@github.com",
         "type": "automated"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 13,
+        "first_exchange": "2025-12-26",
+        "last_exchange": "2026-04-22",
+        "intensity": "regular",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -419,12 +514,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 78
       }
     },
@@ -439,6 +535,13 @@
         "name": "A Mandyev",
         "email": "a.mandyev@gmail.com",
         "type": "person"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 0,
+        "first_exchange": null,
+        "last_exchange": null,
+        "intensity": "rare",
+        "is_known_sender": false
       },
       "cross_source": {
         "related_tasks": [
@@ -461,16 +564,17 @@
             "list": "Writing",
             "due": null,
             "overdue": false,
-            "match_reason": "keyword match: what, know"
+            "match_reason": "keyword match: know, what"
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 58
       }
     },
@@ -485,6 +589,13 @@
         "name": "Noreply",
         "email": "noreply@eurostar.com",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 13,
+        "first_exchange": "2026-01-19",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [],
@@ -508,12 +619,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 3
+        "sender_history_7d": 3
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": true,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -528,6 +640,13 @@
         "name": "Noreply",
         "email": "noreply@eurostar.com",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 13,
+        "first_exchange": "2026-01-19",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -559,12 +678,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 3
+        "sender_history_7d": 3
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": true,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -580,6 +700,13 @@
         "email": "no-reply@excalidraw.com",
         "type": "automated"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 4,
+        "first_exchange": "2025-04-26",
+        "last_exchange": "2026-04-21",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -591,12 +718,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 195
       }
     },
@@ -612,15 +740,23 @@
         "email": "no-reply@accounts.google.com",
         "type": "automated"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 16,
+        "first_exchange": "2025-06-13",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 112
       }
     },
@@ -636,15 +772,23 @@
         "email": "marion.teppa@guyhoquet.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 2,
+        "first_exchange": "2026-03-27",
+        "last_exchange": "2026-04-21",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 86
       }
     },
@@ -660,6 +804,13 @@
         "email": "generativeai-france-lyon@calendar.luma-mail.com",
         "type": "automated"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 5,
+        "first_exchange": "2026-01-12",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -732,12 +883,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": true,
+        "is_significant_sender": true,
         "word_count": 55
       }
     },
@@ -753,15 +905,23 @@
         "email": "alexa@fyxer.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 4,
+        "first_exchange": "2026-04-13",
+        "last_exchange": "2026-04-21",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 63
       }
     },
@@ -776,6 +936,13 @@
         "name": "Usr Ninnxptdcaulvip",
         "email": "usr-ninNxpTDCAUlvIp@user.luma-mail.com",
         "type": "automated"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 1,
+        "first_exchange": "2026-04-21",
+        "last_exchange": "2026-04-21",
+        "intensity": "rare",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -849,12 +1016,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": true,
+        "is_significant_sender": false,
         "word_count": 99
       }
     },
@@ -870,6 +1038,13 @@
         "email": "owner-f5b311d4-368b-4461-becd-77a2c6480d05@messaging.lodgify.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 10,
+        "first_exchange": "2026-04-17",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [
@@ -892,12 +1067,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": true,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -913,6 +1089,13 @@
         "email": "noreply@eurostar.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 13,
+        "first_exchange": "2026-01-19",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -924,12 +1107,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 3
+        "sender_history_7d": 3
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -944,6 +1128,13 @@
         "name": "Receipts Unitedkingdom",
         "email": "receipts-unitedkingdom@bolt.eu",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 3,
+        "first_exchange": "2026-04-17",
+        "last_exchange": "2026-04-21",
+        "intensity": "occasional",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [],
@@ -967,12 +1158,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": true,
+        "is_significant_sender": false,
         "word_count": 0
       }
     },
@@ -988,6 +1180,13 @@
         "email": "noreply@info.sncf-voyageurs.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 10,
+        "first_exchange": "2025-10-04",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -999,12 +1198,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1020,15 +1220,23 @@
         "email": "LCL@message.lcl.fr",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 50,
+        "first_exchange": "2025-04-28",
+        "last_exchange": "2026-04-21",
+        "intensity": "frequent",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1044,15 +1252,23 @@
         "email": "feedback@feedback.avis-verifies.com",
         "type": "automated"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 8,
+        "first_exchange": "2025-11-28",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 282
       }
     },
@@ -1068,15 +1284,23 @@
         "email": "events@engage.accelevents.com",
         "type": "automated"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 1,
+        "first_exchange": "2026-04-21",
+        "last_exchange": "2026-04-21",
+        "intensity": "rare",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 0
       }
     },
@@ -1091,6 +1315,13 @@
         "name": "Owner F5B311D4 368B 4461 Becd 77A2C6480D05",
         "email": "owner-f5b311d4-368b-4461-becd-77a2c6480d05@messaging.lodgify.com",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 10,
+        "first_exchange": "2026-04-17",
+        "last_exchange": "2026-04-21",
+        "intensity": "regular",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -1110,12 +1341,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1130,6 +1362,13 @@
         "name": "Noreply",
         "email": "noreply@github.com",
         "type": "automated"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 50,
+        "first_exchange": "2025-07-01",
+        "last_exchange": "2026-04-21",
+        "intensity": "frequent",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -1156,12 +1395,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 68
       }
     },
@@ -1176,6 +1416,13 @@
         "name": "A Mandyev",
         "email": "a.mandyev@gmail.com",
         "type": "person"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 0,
+        "first_exchange": null,
+        "last_exchange": null,
+        "intensity": "rare",
+        "is_known_sender": false
       },
       "cross_source": {
         "related_tasks": [
@@ -1214,12 +1461,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": true,
+        "is_significant_sender": false,
         "word_count": 403
       }
     },
@@ -1235,15 +1483,23 @@
         "email": "alexa@fyxer.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 4,
+        "first_exchange": "2026-04-13",
+        "last_exchange": "2026-04-21",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 106
       }
     },
@@ -1258,6 +1514,13 @@
         "name": "Gregoire Bonnin",
         "email": "gregoire.bonnin@thiga.co",
         "type": "person"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 2,
+        "first_exchange": "2026-03-19",
+        "last_exchange": "2026-04-20",
+        "intensity": "occasional",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -1317,12 +1580,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": true,
+        "is_significant_sender": false,
         "word_count": 731
       }
     },
@@ -1338,15 +1602,23 @@
         "email": "vepayet@citya.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 11,
+        "first_exchange": "2025-04-24",
+        "last_exchange": "2026-04-20",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1362,15 +1634,23 @@
         "email": "assitancesyndic5@calot-et-associes.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 8,
+        "first_exchange": "2026-02-17",
+        "last_exchange": "2026-04-20",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1386,15 +1666,23 @@
         "email": "julien.landure@techtown.fr",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 3,
+        "first_exchange": "2026-03-26",
+        "last_exchange": "2026-04-20",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 110
       }
     },
@@ -1409,6 +1697,13 @@
         "name": "Communication",
         "email": "communication@amiltone.com",
         "type": "newsletter"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 2,
+        "first_exchange": "2026-03-26",
+        "last_exchange": "2026-04-20",
+        "intensity": "occasional",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [],
@@ -1432,12 +1727,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": true,
+        "is_significant_sender": false,
         "word_count": 146
       }
     },
@@ -1453,6 +1749,13 @@
         "email": "peter.deeley@neo4j.com",
         "type": "newsletter"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 1,
+        "first_exchange": "2026-04-20",
+        "last_exchange": "2026-04-20",
+        "intensity": "rare",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -1464,12 +1767,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 189
       }
     },
@@ -1484,6 +1788,13 @@
         "name": "Info",
         "email": "info@mail.sncf-connect.com",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 10,
+        "first_exchange": "2025-05-18",
+        "last_exchange": "2026-04-20",
+        "intensity": "regular",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [
@@ -1522,12 +1833,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": true,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1543,15 +1855,23 @@
         "email": "decathlon@henner.fr",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 12,
+        "first_exchange": "2025-04-28",
+        "last_exchange": "2026-04-20",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1567,6 +1887,13 @@
         "email": "hello@zurichjs.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 2,
+        "first_exchange": "2026-04-01",
+        "last_exchange": "2026-04-19",
+        "intensity": "occasional",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -1578,12 +1905,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 127
       }
     },
@@ -1599,15 +1927,23 @@
         "email": "jakub@mail.leadershipintech.com",
         "type": "newsletter"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 50,
+        "first_exchange": "2025-08-17",
+        "last_exchange": "2026-04-23",
+        "intensity": "frequent",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 729
       }
     },
@@ -1623,15 +1959,23 @@
         "email": "archie.hollingsworth@fyxer.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 5,
+        "first_exchange": "2026-04-14",
+        "last_exchange": "2026-04-19",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 121
       }
     },
@@ -1647,15 +1991,23 @@
         "email": "upcoming-invoice@excalidraw.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 1,
+        "first_exchange": "2026-04-19",
+        "last_exchange": "2026-04-19",
+        "intensity": "rare",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": false,
         "word_count": 72
       }
     },
@@ -1671,6 +2023,13 @@
         "email": "noreply@booking.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 35,
+        "first_exchange": "2025-05-25",
+        "last_exchange": "2026-04-22",
+        "intensity": "frequent",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [
           {
@@ -1682,12 +2041,13 @@
           }
         ],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": true,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1703,15 +2063,23 @@
         "email": "eurostar@e.eurostar.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 8,
+        "first_exchange": "2026-01-16",
+        "last_exchange": "2026-04-19",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 126
       }
     },
@@ -1727,15 +2095,23 @@
         "email": "noreply@sosh.fr",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 27,
+        "first_exchange": "2025-05-14",
+        "last_exchange": "2026-04-18",
+        "intensity": "frequent",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 1
+        "sender_history_7d": 1
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1751,15 +2127,23 @@
         "email": "noreply@booking.com",
         "type": "transactional"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 35,
+        "first_exchange": "2025-05-25",
+        "last_exchange": "2026-04-22",
+        "intensity": "frequent",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 0
       }
     },
@@ -1775,15 +2159,23 @@
         "email": "archie.hollingsworth@fyxer.com",
         "type": "person"
       },
+      "contact_intelligence": {
+        "total_messages_1yr": 5,
+        "first_exchange": "2026-04-14",
+        "last_exchange": "2026-04-19",
+        "intensity": "regular",
+        "is_known_sender": true
+      },
       "cross_source": {
         "related_tasks": [],
         "calendar_conflicts": [],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": true,
         "has_related_task": false,
         "has_calendar_conflict": false,
+        "is_significant_sender": true,
         "word_count": 107
       }
     },
@@ -1798,6 +2190,13 @@
         "name": "Receipts Unitedkingdom",
         "email": "receipts-unitedkingdom@bolt.eu",
         "type": "transactional"
+      },
+      "contact_intelligence": {
+        "total_messages_1yr": 3,
+        "first_exchange": "2026-04-17",
+        "last_exchange": "2026-04-21",
+        "intensity": "occasional",
+        "is_known_sender": true
       },
       "cross_source": {
         "related_tasks": [],
@@ -1821,12 +2220,13 @@
             "conflict_type": "potential_overlap"
           }
         ],
-        "sender_history": 2
+        "sender_history_7d": 2
       },
       "derived": {
         "has_action_signal": false,
         "has_related_task": false,
         "has_calendar_conflict": true,
+        "is_significant_sender": false,
         "word_count": 0
       }
     }

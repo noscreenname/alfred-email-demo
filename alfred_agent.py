@@ -63,14 +63,23 @@ def load_context(level: int, period: str) -> str:
             _read_json(level_dir / "trello.json"),
         ])
 
+        history_path = level_dir / "sender-history.json"
+        if history_path.exists():
+            parts.extend([
+                "",
+                "### Sender History (1-year Gmail thread counts per sender)",
+                _read_json(history_path),
+            ])
+
     elif level == 2:
         parts = [
             f"## Time period: {period}",
             "",
             "Below is a curated data product. Email threads are pre-joined with:",
             "- Sender classification (person, automated, newsletter, transactional)",
-            "- Cross-source context: related Trello tasks, calendar conflicts, sender frequency",
-            "- Derived signals: has_action_signal, has_related_task, has_calendar_conflict",
+            "- Contact intelligence: 1-year message history, relationship intensity, first/last exchange",
+            "- Cross-source context: related Trello tasks, calendar conflicts",
+            "- Derived signals: has_action_signal, has_related_task, has_calendar_conflict, is_significant_sender",
             "- Cleaned bodies: tracking URLs, footers, and noise removed",
             "",
             "### Inbox Intelligence Product",

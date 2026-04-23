@@ -188,6 +188,54 @@ schema:
         - "Heuristic-based: new automated senders not in patterns will be misclassified as person"
         - "Newsletter list is manually maintained and may be incomplete"
 
+  contact_intelligence:
+    - name: contact_intelligence.total_messages_1yr
+      type: integer
+      description: "Total Gmail threads from this sender in the past 365 days"
+      nullable: false
+      provenance: gmail_search
+      use: >
+        Primary relationship strength signal. Higher = more important relationship.
+        Capped at 50 (Gmail API page limit) — senders showing 50 may have more.
+
+    - name: contact_intelligence.first_exchange
+      type: datetime
+      description: "Date of earliest thread from this sender in the 1-year window"
+      nullable: true
+      use: "How long you've been in contact. Null if no history found."
+
+    - name: contact_intelligence.last_exchange
+      type: datetime
+      description: "Date of most recent thread from this sender"
+      nullable: true
+      use: "Recency of relationship. Recent = active relationship."
+
+    - name: contact_intelligence.intensity
+      type: enum
+      values: [frequent, regular, occasional, rare]
+      description: >
+        Relationship intensity derived from total_messages_1yr:
+        frequent (≥20/yr), regular (5-19/yr), occasional (2-4/yr), rare (1/yr or less)
+      nullable: false
+      use: >
+        KEY CLASSIFICATION SIGNAL. Intensity directly correlates with sender
+        importance. A 'frequent' sender's emails deserve more attention than
+        a 'rare' sender, even if the email content looks similar.
+      classification_rules:
+        - "frequent + person → almost always require_action or informatif, never notification"
+        - "regular + person + has_action_signal → require_action (high confidence)"
+        - "rare + person → treat with caution, may be important first contact or spam"
+        - "frequent + automated → regular service the user relies on (informatif, not notification)"
+
+    - name: contact_intelligence.is_known_sender
+      type: boolean
+      description: "True if sender has any Gmail history in the past year"
+      nullable: false
+      use: >
+        Unknown senders (is_known_sender == false) with substantive content
+        may be new contacts worth attention. Unknown senders with short/template
+        content are likely spam or cold outreach.
+
   cross_source:
     - name: cross_source.related_tasks
       type: array[object]
@@ -266,16 +314,13 @@ schema:
         potential conflict but do NOT treat it as confirmed. Suggest the user
         verify their calendar.
 
-    - name: cross_source.sender_history
+    - name: cross_source.sender_history_7d
       type: integer
       description: >
-        Number of threads in this dataset from the same sender email address.
-        Higher values indicate a frequent correspondent.
+        Number of threads in the current 7-day dataset from the same sender.
+        Use contact_intelligence.total_messages_1yr for the full picture.
       nullable: false
-      use: >
-        sender_history > 3 suggests a regular correspondent whose emails
-        deserve attention. sender_history == 1 is a first-time or rare sender —
-        may warrant extra scrutiny or may be spam.
+      use: "Short-term frequency. Use contact_intelligence.intensity for relationship assessment."
 
   derived:
     - name: derived.has_action_signal
@@ -313,6 +358,15 @@ schema:
       use: >
         Shortcut flag. WARNING: high false positive rate (see calendar_conflicts
         known_limitations). Do not use as sole basis for flagging conflicts.
+
+    - name: derived.is_significant_sender
+      type: boolean
+      description: "True if contact_intelligence.intensity is 'frequent' or 'regular'"
+      nullable: false
+      use: >
+        KEY derived signal. Significant senders have an established relationship.
+        Their emails should be weighted toward require_action or informatif,
+        almost never notification (unless sender.type is transactional).
 
     - name: derived.word_count
       type: integer
@@ -375,14 +429,22 @@ classification_guidance:
         confidence: high
         reasoning: "Email relates to an overdue task — needs attention"
 
+      - condition: "is_significant_sender == true AND sender.type == 'person' AND has_action_signal == true"
+        confidence: high
+        reasoning: "Established relationship + person + action signal = definite action needed"
+
     moderate_signals:
-      - condition: "sender.type == 'person' AND sender_history >= 3"
+      - condition: "is_significant_sender == true AND sender.type == 'person'"
         confidence: medium
-        reasoning: "Frequent correspondent — likely part of an ongoing conversation that needs follow-up"
+        reasoning: "Frequent/regular correspondent — their emails usually matter"
 
       - condition: "subject contains 'signer' OR 'signature' OR 'sign'"
         confidence: medium
         reasoning: "Document signing requests require action regardless of sender type"
+
+      - condition: "contact_intelligence.intensity == 'rare' AND sender.type == 'person' AND word_count > 50"
+        confidence: medium
+        reasoning: "Rare sender writing a substantive email — could be important new contact or re-engagement"
 
     weak_signals:
       - condition: "has_calendar_conflict == true"
@@ -436,15 +498,23 @@ known_gaps:
   - gap: "No CRM data"
     impact: >
       Cannot determine if a sender is a client, prospect, or partner.
-      Cannot see deal stage, deal value, or account owner. Sender
-      relationships are inferred from email domain heuristics only.
+      Cannot see deal stage, deal value, or account owner.
     workaround: >
-      Use sender_history and sender.type as proxies. A person sender
-      with high sender_history is likely an important relationship.
+      contact_intelligence provides relationship signals: intensity, message
+      volume, and exchange history over 1 year. Use is_significant_sender
+      as a proxy for important relationships.
 
-  - gap: "No email thread history beyond 7 days"
-    impact: "Cannot assess long-running conversations or follow-up patterns"
-    workaround: "Classify based on current thread content only"
+  - gap: "No Google Contacts integration"
+    impact: >
+      Cannot access contact names, organizations, or job titles from
+      Google Contacts. Sender names are derived from email addresses.
+    workaround: >
+      contact_intelligence.intensity provides relationship strength.
+      Sender names from email headers are usually accurate for person senders.
+
+  - gap: "Sender history capped at 50 threads per sender"
+    impact: "Gmail API returns max 50 results per search. Very frequent senders may show 50 but have more."
+    workaround: "Treat 50 as 'at least 50' — the sender is definitely frequent."
 
   - gap: "Trello task matching is keyword-based, not semantic"
     impact: "May miss relevant tasks or match irrelevant ones"

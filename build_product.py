@@ -227,6 +227,18 @@ def count_sender_history(sender_email: str, all_threads: list) -> int:
 
 # --- Main pipeline ---
 
+def _classify_intensity(total_threads_1yr: int) -> str:
+    """Classify relationship intensity based on 1-year message volume."""
+    if total_threads_1yr >= 20:
+        return "frequent"
+    elif total_threads_1yr >= 5:
+        return "regular"
+    elif total_threads_1yr >= 2:
+        return "occasional"
+    else:
+        return "rare"
+
+
 def build_product():
     """Run the full data product pipeline."""
     # Load raw data
@@ -237,13 +249,23 @@ def build_product():
     with open(LEVEL_1 / "trello.json") as f:
         trello_data = json.load(f)
 
+    # Load sender history (optional — may not exist yet)
+    sender_history_path = LEVEL_1 / "sender-history.json"
+    sender_history_map = {}
+    if sender_history_path.exists():
+        with open(sender_history_path) as f:
+            history_data = json.load(f)
+        for s in history_data.get("senders", []):
+            sender_history_map[s["sender_email"].lower()] = s
+        print(f"Sender history loaded: {len(sender_history_map)} senders")
+
     threads = gmail_data["threads"]
     events = calendar_data["events"]
     cards = trello_data["cards"]
 
     print(f"Raw data loaded: {len(threads)} threads, {len(events)} events, {len(cards)} cards")
 
-    # Pre-compute sender frequency
+    # Pre-compute sender frequency (within current dataset)
     sender_freq = {}
     for thread in threads:
         for msg in thread.get("messages", []):
@@ -274,6 +296,11 @@ def build_product():
         calendar_conflicts = find_calendar_conflicts(subject, cleaned or latest_msg.get("snippet", ""), events)
         sender_history = count_sender_history(sender_email, threads)
 
+        # Contact intelligence from sender history
+        history = sender_history_map.get(sender_email.lower(), {})
+        total_1yr = history.get("total_threads", 0)
+        intensity = _classify_intensity(total_1yr)
+
         product_threads.append({
             "thread_id": thread["id"],
             "subject": subject,
@@ -286,15 +313,23 @@ def build_product():
                 "email": sender_email,
                 "type": classify_sender_type(sender_email),
             },
+            "contact_intelligence": {
+                "total_messages_1yr": total_1yr,
+                "first_exchange": history.get("earliest_date"),
+                "last_exchange": history.get("latest_date"),
+                "intensity": intensity,
+                "is_known_sender": total_1yr > 0,
+            },
             "cross_source": {
                 "related_tasks": related_tasks,
                 "calendar_conflicts": calendar_conflicts,
-                "sender_history": sender_history,
+                "sender_history_7d": sender_history,
             },
             "derived": {
                 "has_action_signal": has_action_signal(subject, cleaned or latest_msg.get("snippet", "")),
                 "has_related_task": len(related_tasks) > 0,
                 "has_calendar_conflict": len(calendar_conflicts) > 0,
+                "is_significant_sender": intensity in ("frequent", "regular"),
                 "word_count": len(cleaned.split()) if cleaned else 0,
             },
         })
@@ -303,7 +338,7 @@ def build_product():
     product = {
         "product": {
             "name": "Inbox Intelligence Product",
-            "description": "Curated email threads enriched with cross-source context from Calendar and Trello. Cleaned bodies, classified senders, joined relationships, and derived action signals.",
+            "description": "Curated email threads enriched with cross-source context from Calendar, Trello, and 1-year Gmail sender history. Cleaned bodies, classified senders, contact intelligence, joined relationships, and derived action signals.",
             "owner": "data-platform-team",
             "source_data": {
                 "gmail_threads": len(threads),
@@ -338,6 +373,8 @@ def build_product():
     print(f"  Action signals: {action_count} threads")
     print(f"  Related tasks: {task_match_count} threads matched to Trello cards")
     print(f"  Calendar conflicts: {conflict_count} threads")
+    sig_sender_count = sum(1 for t in product_threads if t["derived"]["is_significant_sender"])
+    print(f"  Significant senders (frequent/regular): {sig_sender_count} threads")
     print(f"\nWritten to:")
     print(f"  {LEVEL_2 / 'inbox-product.json'}")
     print(f"  {LEVEL_3 / 'inbox-product.json'} (identical copy)")
